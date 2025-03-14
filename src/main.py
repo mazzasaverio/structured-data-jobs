@@ -3,7 +3,7 @@ import sys
 import time
 from src.utils.logging import setup_logging, get_logger, log_span
 from src.db.connection import init_db, test_connection, get_db_session, verify_database_url
-from src.db.models import Company
+from src.db.models import CompanyUrl, Frontier, TargetUrl, JobPostingUrl
 
 setup_logging()
 logger = get_logger()
@@ -36,15 +36,14 @@ async def main():
     
     try:
         async with get_db_session() as session:
-            result = await session.execute(Company.__table__.select())
+            result = await session.execute(CompanyUrl.__table__.select())
             companies = result.scalars().all()
             
             if not companies:
                 logger.info("No companies found. Creating a test company...")
-                company = Company(
-                    name="Test Company",
-                    website="https://testcompany.com",
-                    description="A company used for testing the database connection"
+                company = CompanyUrl(
+                    name="Igenius",
+                    url="https://www.igenius.ai",
                 )
                 session.add(company)
                 await session.commit()
