@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Your rule content
+
+- Always reply in English. Only add comments to the code in English when necessary. If you need to add logs, use Logfire

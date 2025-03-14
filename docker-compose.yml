@@ -1,0 +1,41 @@
+services:
+  app:
+    build: .
+    volumes:
+      - ./src:/app/src
+    env_file:
+      - .env
+    environment:
+      - ENVIRONMENT=development
+      - PYTHONPATH=/app:/app/src
+    ports:
+      - "8000:8000"
+    command: python -m src.main
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+          ignore:
+            - .venv/
+        - action: rebuild
+          path: ./pyproject.toml
+        - action: rebuild
+          path: ./uv.lock
+
+  # Optional: Mantenuto per sviluppo locale ma disabilitato per default
+  local-db:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=lean-jobs-crawler
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    profiles:
+      - local # Attivato solo con --profile local
+
+volumes:
+  postgres_data:
