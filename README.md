@@ -1,14 +1,20 @@
 # Lean Jobs Crawler
 
-A specialized web crawler for discovering job postings directly from company websites, designed to work across different website structures using LLM-powered intelligence.
+A specialized web crawler for discovering job postings directly from company websites, designed to work across different website structures using openAI.
 
 ## Overview
 
 This project aims to create a standardized approach to crawling job postings across various company websites, regardless of their structure or features. The crawler uses Large Language Models (LLMs) to:
 
-1. Identify and store seed URLs (potential entry points that may lead to job postings)
-2. Extract target URLs (where job posting information is actually located)
-With all target URLs collected, you can seamlessly extract relevant information and conduct any desired analysis.
+The system discovers and processes four types of URLs:
+
+1. CompanyUrl: The main website URLs for companies with their names
+2. Frontier: History of already explored URLs that shouldn't be crawled again
+3. TargetUrl: Pages containing listings of multiple job postings
+4. JobPostingUrl: Individual job description pages
+
+> **Note:** In the current implementation, company URLs are populated manually. Future development will include a separate crawler to automatically discover and validate company career sites. The present focus is on identifying and storing job postings from known companies.
+
 
 ## Project Status
 
@@ -16,14 +22,22 @@ With all target URLs collected, you can seamlessly extract relevant information 
 
 This project is currently in its very early stages of development. The core functionality is being implemented, and the architecture is subject to change. The repository has just been initialized, and significant parts of the codebase are still under construction.
 
+Current priorities:
+- Setting up the database schema
+- Implementing the crawling logic for job postings from known company sites
+- Developing the content extraction for standardized job data
+
+Future enhancements will include automated company discovery and more comprehensive data analysis.
+
 Contributors are welcome, but be aware that major refactoring may occur as the project evolves.
 
 ## Architecture
 
 The system follows a modular architecture:
 
-- **URL Discovery**: Uses LLMs to identify promising seed URLs and target URLs
+- **URL Discovery**: Uses LLMs to identify promising target URLs and job posting URLs
 - **Crawling Engine**: Efficiently navigates websites while respecting robots.txt and rate limits
+- **Frontier Management**: Tracks explored URLs to avoid redundant crawling
 - **Content Extraction**: Parses job posting data into a standardized format
 - **Storage Layer**: Persists both the raw and structured data in Neon Postgres
 - **Orchestration**: Manages crawling jobs, retries, and scheduling
