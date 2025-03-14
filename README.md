@@ -115,16 +115,3 @@ docker-compose down
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-
-
-Requirements:
-- The project should use uv as the package manager.
-- It should support running, testing, and debugging both locally and in the cloud (possibly using Docker).
-- Neon Postgres will be used to store the data.
-- Logfire will be used for logging.
-- Use SQLAlchemy come ORM
-
-Show me the best practices for developing a high-performance, efficient, and effective specialized crawler starting from the abbove requirements
-
-
-References:
