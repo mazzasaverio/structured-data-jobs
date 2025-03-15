@@ -6,8 +6,19 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "asyncpg>=0.30.0",
+    "black>=25.1.0",
+    "flake8>=7.1.2",
+    "isort>=6.0.1",
     "logfire[asyncpg,sqlalchemy]>=3.8.1",
+    "playwright>=1.50.0",
+    "psutil>=7.0.0",
     "psycopg2-binary>=2.9.10",
     "python-dotenv>=1.0.1",
     "sqlalchemy>=2.0.39",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "flake8>=7.1.2",
 ]

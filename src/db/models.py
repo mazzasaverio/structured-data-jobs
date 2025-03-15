@@ -24,13 +24,13 @@ class CompanyUrl(Base):
     )
     
     # Relationships
-    frontier_urls: Mapped[List["Frontier"]] = relationship(back_populates="company", cascade="all, delete-orphan")
+    frontier_urls: Mapped[List["FrontierUrl"]] = relationship(back_populates="company", cascade="all, delete-orphan")
     target_urls: Mapped[List["TargetUrl"]] = relationship(back_populates="company", cascade="all, delete-orphan")
 
 
-class Frontier(Base):
+class FrontierUrl(Base):
     """URLs that have already been explored and shouldn't be crawled again"""
-    __tablename__ = "frontier"
+    __tablename__ = "frontier_urls"
     
     id: Mapped[int] = mapped_column(primary_key=True)
     company_id: Mapped[int] = mapped_column(ForeignKey("company_urls.id"))

@@ -9,10 +9,8 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sess
 from sqlalchemy import text
 
 from src.db.models import Base
-from src.utils.logging import get_logger, log_span, log_db_query
+from src.utils.logging import  log_span, log_db_query
 import logfire
-
-logger = get_logger()
 
 load_dotenv()
 def create_async_db_engine():
@@ -26,7 +24,7 @@ def create_async_db_engine():
     
     # Mask password in logs
     safe_url = async_url.replace(f":{parsed_url.password}@", ":***@")
-    logger.info("Connecting to database", url=safe_url)
+    logfire.info("Connecting to database", url=safe_url)
     
     engine = create_async_engine(
         async_url,
@@ -75,10 +73,10 @@ async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
         try:
             yield session
             await session.commit()
-            logger.info("Database session committed")
+            logfire.info("Database session committed")
         except Exception as e:
             await session.rollback()
-            logger.error("Database session error", error=str(e))
+            logfire.error("Database session error", error=str(e))
             raise
         finally:
             await session.close()
@@ -92,9 +90,9 @@ async def init_db() -> None:
         try:
             async with engine.begin() as conn:
                 await conn.run_sync(Base.metadata.create_all)
-            logger.info("Database tables created")
+            logfire.info("Database tables created")
         except Exception as e:
-            logger.error("Database initialization failed", error=str(e))
+            logfire.error("Database initialization failed", error=str(e))
             raise
         finally:
             await engine.dispose()
@@ -113,12 +111,12 @@ async def test_connection() -> bool:
                 result = await conn.execute(text(query))
                 row = result.fetchone()
                 
-                logger.info("Database connection successful", 
+                logfire.info("Database connection successful", 
                            postgres_version=str(row[0]),
                            server_time=str(row[1]))
                 return True
         except Exception as e:
-            logger.error("Database connection failed", 
+            logfire.error("Database connection failed", 
                         error=str(e),
                         error_type=type(e).__name__,
                         traceback=traceback.format_exc())
@@ -153,7 +151,7 @@ def verify_database_url():
     
     # Check if DATABASE_URL is set
     if not database_url:
-        logger.error("DATABASE_URL environment variable is not set")
+        logfire.error("DATABASE_URL environment variable is not set")
         return False
         
     # Parse URL to verify components
@@ -161,24 +159,24 @@ def verify_database_url():
     
     # Check essential components
     if not parsed_url.hostname:
-        logger.error("DATABASE_URL is missing hostname")
+        logfire.error("DATABASE_URL is missing hostname")
         return False
     
     if not parsed_url.username:
-        logger.error("DATABASE_URL is missing username")
+        logfire.error("DATABASE_URL is missing username")
         return False
         
     if not parsed_url.password:
-        logger.error("DATABASE_URL is missing password")
+        logfire.error("DATABASE_URL is missing password")
         return False
     
     # Check for Neon.tech specific requirements
     is_neon = 'neon.tech' in parsed_url.hostname
     if is_neon and 'sslmode=require' not in database_url and 'ssl=true' not in database_url:
-        logger.warning("Neon PostgreSQL detected but sslmode=require is missing - adding automatically")
+        logfire.warning("Neon PostgreSQL detected but sslmode=require is missing - adding automatically")
     
     # Log masked URL for verification
     safe_url = database_url.replace(parsed_url.password, "***")
-    logger.info("Database URL verified", url=safe_url)
+    logfire.info("Database URL verified", url=safe_url)
     
     return True

@@ -16,6 +16,14 @@ The system discovers and processes four types of URLs:
 > **Note:** In the current implementation, company URLs are populated manually. Future development will include a separate crawler to automatically discover and validate company career sites. The present focus is on identifying and storing job postings from known companies.
 
 
+- Let's begin at the most basic level. Look for a link like 'Careers' or 'Work With Us' since, in 95% of cases, it will be on the homepage of the official website. (As usual, we’ll handle exceptions at the end)
+
+I'm using Playwright to find and extract career-related URLs from company websites. (However, we should consider exploring more efficient alternatives to minimize dependencies while maintaining performance.) The crawler will function as follows:
+
+- Depth Level 0: It will scan websites for links with keywords like "Careers," "Work With Us," or similar phrases, identifying relevant URLs based on the link text.
+- Depth Level ≥ 1: After finding a career-related page, it will navigate to it, extract all textual content, and save it as a .txt file for further analysis.
+
+
 ## Project Status
 
 ⚠️ **Early Development Phase** ⚠️

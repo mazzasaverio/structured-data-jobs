@@ -19,7 +19,8 @@ ENV UV_LINK_MODE=copy \
     UV_PYTHON_DOWNLOADS=never \
     UV_PYTHON=python3.12 \
     UV_PROJECT_ENVIRONMENT=/app \
-    UV_NO_CACHE=1
+    UV_NO_CACHE=1\
+    PLAYWRIGHT_BROWSERS_PATH=/playwright-browsers
 
 # Prima installa le dipendenze senza il progetto
 WORKDIR /workspace
@@ -43,6 +44,9 @@ FROM python:3.12-slim
 ENV PATH=/app/bin:$PATH \
     PYTHONPATH=/app:/app/src
 
+RUN uv tool install playwright
+RUN playwright install --with-deps chromium
+RUN chmod -Rf 777 $PLAYWRIGHT_BROWSERS_PATH
 # Installa le dipendenze runtime
 RUN apt-get update -qy && \
     apt-get install -qyy \

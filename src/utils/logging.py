@@ -1,67 +1,62 @@
-import os
-import sys
-from typing import Any, Dict, Optional
-
 import logfire
+import os
+from contextlib import contextmanager
+from typing import Optional, Any, Dict
 
-def setup_logging() -> None:
-    """Configure Logfire for application logging with fault tolerance."""
+def setup_logging(service_name: str = "lean-jobs-crawler", 
+                  environment: Optional[str] = None):
+    """Set up the Logfire logging system."""
+
+    logfire.configure(
+        service_name=service_name,
+          console={
+         "colors": "auto",
+        "include_timestamps": False
+    } 
+     
+    )
+
+    try: 
+        import asyncpg
+        logfire.instrument_asyncpg()
+    except (ImportError, AttributeError):
+        pass
+    
     try:
-        env = os.environ.get("ENVIRONMENT", "development")
-        service_name = "lean-jobs-crawler"
-        
-        logfire.configure(
-            service_name=service_name,
-            environment=env,
-        )
-        
-        log_level = "DEBUG" if env == "development" else "INFO"
-        
-        _try_setup_integrations()
-        
-        logfire.info(
-            "Logging system initialized successfully", 
-            service=service_name, 
-            environment=env,
-            log_level=log_level
-        )
-    except Exception as e:
-        print(f"WARNING: Failed to initialize Logfire: {e}", file=sys.stderr)
-        print("Continuing without structured logging...", file=sys.stderr)
+        import sqlalchemy
+        logfire.instrument_sqlalchemy()
+    except (ImportError, AttributeError):
+        pass
+    
+    logfire.info("Logging system initialized successfully")
 
+@contextmanager
+def log_span(name: str, extra_attrs: Optional[Dict[str, Any]] = None):
+    """Context manager for creating spans."""
+    with logfire.span(name) as span:
+        try:
+            yield span
+        except Exception as e:
+            # Log the exception
+            logfire.error(f"{name} failed", exception=str(e))
+            raise
 
-def _try_setup_integrations():
-    """Setup available integrations without failing if they're missing."""
-    pass
+# Funzione per aggiungere un separatore visivo nei log
+def log_separator(title=None):
+    """Print a visual separator in the logs."""
+    if title:
+        separator = f"\n{'=' * 30} {title} {'=' * 30}\n"
+    else:
+        separator = f"\n{'=' * 70}\n"
+    print(separator)
 
-
-def setup_sqlalchemy_instrumentation(engine) -> bool:
-    """Configure SQLAlchemy instrumentation if available."""
-    try:
-        logfire.instrument_sqlalchemy(engine=engine)
-        logfire.info("SQLAlchemy instrumentation configured")
-        return True
-    except Exception as e:
-        print(f"SQLAlchemy instrumentation skipped: {str(e)}", file=sys.stderr)
-        return False
-
-
-def get_logger() -> Any:
-    """Get a reference to the Logfire logger."""
+# Funzione per abilitare il logging in modalità debug
+def enable_debug_logging():
+    """Enable detailed debug logging."""
+    setup_logging()
     return logfire
 
-
-def log_span(name: str, **attrs) -> Any:
-    """Create a fault-tolerant logging span."""
-    try:
-        return logfire.span(name, **attrs)
-    except Exception:
-        class DummySpan:
-            def __enter__(self): return self
-            def __exit__(self, *args): pass
-        return DummySpan()
-
-
+# Funzione mancante per il logging delle query del database
 def log_db_query(query: str, parameters: Optional[Dict[str, Any]] = None) -> None:
     """Log a database query with sensitive data masking."""
     try:
