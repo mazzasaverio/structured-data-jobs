@@ -11,7 +11,6 @@ def setup_logging(service_name: str = "lean-jobs-crawler",
         service_name=service_name,
           console={
          "colors": "auto",
-        "include_timestamps": False
     } 
      
     )

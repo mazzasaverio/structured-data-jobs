@@ -96,7 +96,36 @@ class CareerCrawler:
         
         return False
     
-    async def process_company(self, company: CompanyUrl, session: AsyncSession, browser: Browser) -> None:
+    async def extract_page_links(self, page: Page) -> List[str]:
+        """Extract all links from a page."""
+        links = await page.query_selector_all('a')
+        result = []
+        
+        for link in links:
+            try:
+                href = await link.get_attribute('href') or ''
+                if not href or href == '#' or href.startswith('javascript:') or href.startswith('mailto:'):
+                    continue
+                    
+                text = (await link.text_content() or '').strip()
+                
+                # Normalizza URL relativi
+                if not href.startswith('http'):
+                    base_url = page.url
+                    if href.startswith('/'):
+                        domain_parts = base_url.split('/')
+                        if len(domain_parts) >= 3:
+                            href = f"{domain_parts[0]}//{domain_parts[2]}{href}"
+                    else:
+                        href = f"{base_url.rstrip('/')}/{href.lstrip('/')}"
+                
+                result.append({"url": href, "text": text})
+            except Exception as e:
+                logfire.warning(f"Error extracting link", error=str(e))
+        
+        return result
+    
+    async def process_company(self, company: CompanyUrl, browser: Browser) -> None:
         """Process a single company to find its career page."""
         logfire.info(f"Processing company: {company.name}", url=company.url)
         
@@ -104,38 +133,35 @@ class CareerCrawler:
         page = await context.new_page()
         
         try:
-            # Visit company homepage (level 0)
-            await page.goto(company.url, timeout=60000, wait_until="domcontentloaded")
-            
-            # Verifica prima se l'URL base esiste già nel frontier
-            existing_frontier = await session.execute(
-                select(FrontierUrl).where(
-                    FrontierUrl.company_id == company.id,
-                    FrontierUrl.url == company.url
+            # Ogni operazione di database usa una sessione separata
+            async with get_db_session() as session:
+                # Visit company homepage (level 0)
+                await page.goto(company.url, timeout=60000, wait_until="domcontentloaded")
+                
+                # Verifica l'esistenza nel database in una singola transazione
+                existing_frontier = await session.execute(
+                    select(FrontierUrl).where(
+                        FrontierUrl.company_id == company.id,
+                        FrontierUrl.url == company.url
+                    )
                 )
-            )
-            existing_frontier = existing_frontier.scalars().first()
+                existing_frontier = existing_frontier.scalars().first()
+                
+                if not existing_frontier:
+                    frontier_url = FrontierUrl(
+                        company_id=company.id,
+                        url=company.url,
+                        depth=0,
+                        last_visited=datetime.now()
+                    )
+                    session.add(frontier_url)
+                    await session.commit()  # Commit qui per chiudere la transazione
             
-            if not existing_frontier:
-                # Record URL as visited
-                frontier_url = FrontierUrl(
-                    company_id=company.id,
-                    url=company.url,
-                    depth=0,
-                    last_visited=datetime.now()
-                )
-                session.add(frontier_url)
-                await session.commit()
-            else:
-                # Aggiorna timestamp
-                existing_frontier.last_visited = datetime.now()
-                await session.commit()
-            
-            # Find career link
+            # Continua con una nuova sessione per le prossime operazioni
             career_url = await self.find_career_link(page)
             
             if career_url:
-                logfire.info(f"Found career page", company=company.name, url=career_url)
+                logfire.info(f"Found career page: {career_url}")
                 
                 # Level 1: Visit career page and extract text
                 await page.goto(career_url, timeout=60000, wait_until="domcontentloaded")
@@ -143,47 +169,48 @@ class CareerCrawler:
                 # Extract text
                 page_text = await self.extract_page_text(page)
                 
-                # Save text to file
+                # Extract all links from the career page
+                page_links = await self.extract_page_links(page)
+                logfire.info(f"Found {len(page_links)} links on career page")
+                
+                # Save text to file with links
                 filename = f"{company.name.replace(' ', '_').lower()}_career_page.txt"
                 file_path = self.output_dir / filename
                 
                 with open(file_path, "w", encoding="utf-8") as f:
                     f.write(page_text)
+                    f.write("\n\n--- LINKS FOUND ON THIS PAGE ---\n\n")
+                    for link in page_links:
+                        f.write(f"{link['text']} -> {link['url']}\n")
                 
-                logfire.info(f"Saved career page text", file=str(file_path))
+                logfire.info(f"Saved career page text with {len(page_links)} links", file=str(file_path))
                 
                 # Simple validation
                 is_valid = await self.validate_career_page(page_text)
                 
-                # Check if URL exists in database
-                existing_frontier = await session.execute(
-                    select(FrontierUrl).where(
-                        FrontierUrl.company_id == company.id,
-                        FrontierUrl.url == career_url
-                    )
-                )
-                existing_frontier = existing_frontier.scalars().first()
-                
-                try:
-                    if not existing_frontier:
-                        # Store career URL in database
-                        frontier_url = FrontierUrl(
-                            company_id=company.id,
-                            url=career_url,
-                            depth=1,
-                            contains_job_listings=is_valid,
-                            last_visited=datetime.now()
+                # Aggiungi tutti i link in un'unica transazione
+                for link in page_links:
+                    try:
+                        existing_url = await session.execute(
+                            select(FrontierUrl).where(
+                                FrontierUrl.company_id == company.id,
+                                FrontierUrl.url == link['url']
+                            )
                         )
-                        session.add(frontier_url)
-                        await session.commit()
-                    else:
-                        # Update fields
-                        existing_frontier.contains_job_listings = is_valid
-                        existing_frontier.last_visited = datetime.now()
-                        await session.commit()
-                except Exception as db_error:
-                    logfire.error("Database error", error=str(db_error))
-                    await session.rollback()
+                        existing_url = existing_url.scalars().first()
+                        
+                        if not existing_url:
+                            frontier_url = FrontierUrl(
+                                company_id=company.id,
+                                url=link['url'],
+                                depth=2
+                            )
+                            session.add(frontier_url)
+                    except Exception as e:
+                        logfire.warning(f"Error adding link to frontier", url=link['url'], error=str(e))
+                
+                # Un singolo commit alla fine per tutti i link
+                await session.commit()
                 
                 if is_valid:
                     logfire.info("Page contains job listings", url=career_url)
@@ -194,7 +221,13 @@ class CareerCrawler:
                 logfire.warning(f"No career page found", company=company.name)
         
         except Exception as e:
-            logfire.error(f"Error processing company", company=company.name, error=str(e))
+            import traceback
+            logfire.error("Error processing company", 
+                         company=company.name, 
+                         url=company.url,
+                         error=str(e),
+                         traceback=traceback.format_exc())
+            # Non fare rollback qui, la sessione è già stata gestita nel blocco with
         
         finally:
             await context.close()
@@ -217,12 +250,22 @@ class CareerCrawler:
                 
                 logfire.info(f"Found {len(companies)} companies to process")
                 
-                # Process each company
+                # Process each company with its own session to isolate transactions
                 for company in companies:
-                    await self.process_company(company, session, browser)
+                    try:
+                        await self.process_company(company, browser)
+                    except Exception as e:
+                        import traceback
+                        logfire.error(f"Error processing company", 
+                                    company=company.name,
+                                    error=str(e),
+                                    traceback=traceback.format_exc())
         
         except Exception as e:
-            logfire.error(f"Crawler error", error=str(e))
+            import traceback
+            logfire.error(f"Crawler error", 
+                        error=str(e),
+                        traceback=traceback.format_exc())
         
         finally:
             await context.close()
