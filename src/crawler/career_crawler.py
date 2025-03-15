@@ -9,9 +9,10 @@ from playwright.async_api import async_playwright, Page, Browser, BrowserContext
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.db.models import CompanyUrl, FrontierUrl, TargetUrl
+from src.db.models import CompanyUrl, FrontierUrl, JobPostingUrl
 from src.db.connection import get_db_session
 from src.utils.logging import  log_span
+import re
 
 
 # Career-related terms in English and Italian
@@ -133,9 +134,9 @@ class CareerCrawler:
                 
                 # Check if URL exists in database
                 existing_target = await session.execute(
-                    select(TargetUrl).where(
-                        TargetUrl.company_id == company.id,
-                        TargetUrl.url == career_url
+                    select(FrontierUrl).where(
+                        FrontierUrl.company_id == company.id,
+                        FrontierUrl.url == career_url
                     )
                 )
                 existing_target = existing_target.scalars().first()
@@ -143,15 +144,18 @@ class CareerCrawler:
                 if is_valid:
                     if not existing_target:
                         # Store career URL in database
-                        target_url = TargetUrl(
+                        frontier_url = FrontierUrl(
                             company_id=company.id,
                             url=career_url,
-                            last_crawled_at=datetime.now()
+                            depth=1,
+                            contains_job_listings=True,
+                            last_visited=datetime.now()
                         )
-                        session.add(target_url)
+                        session.add(frontier_url)
                     else:
                         # Update last crawled timestamp
-                        existing_target.last_crawled_at = datetime.now()
+                        existing_target.contains_job_listings = True
+                        existing_target.last_visited = datetime.now()
                 else:
                     logfire.info("Page doesn't appear to contain job listings", url=career_url)
                 

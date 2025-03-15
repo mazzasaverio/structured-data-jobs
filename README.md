@@ -9,9 +9,8 @@ This project aims to create a standardized approach to crawling job postings acr
 The system discovers and processes four types of URLs:
 
 1. CompanyUrl: The main website URLs for companies with their names
-2. Frontier: History of already explored URLs that shouldn't be crawled again
-3. TargetUrl: Pages containing listings of multiple job postings
-4. JobPostingUrl: Individual job description pages
+2. Frontier: the table records previously explored URLs, distinguishing between those that no longer need exploration and those related to job postings. It includes a "depth" column (showing the level where the URL was found) and a column indicating whether the URL belongs to a job posting page (True/False).
+3. JobPostingUrl: Individual job description pages
 
 > **Note:** In the current implementation, company URLs are populated manually. Future development will include a separate crawler to automatically discover and validate company career sites. The present focus is on identifying and storing job postings from known companies.
 
