@@ -13,7 +13,6 @@ from src.db.connection import init_db, test_connection, get_db_session, verify_d
 from src.db.models import CompanyUrl, FrontierUrl, JobPostingUrl
 from src.crawler.career_crawler import run_career_crawler       
 
-# Track subprocess resources for debugging
 _subprocess_resources = []
 
 def track_resource(resource, name):
@@ -35,24 +34,8 @@ warnings.filterwarnings("ignore",
 async def main():
     """Main application entry point."""
     setup_logging()
-    log_separator("STARTING APPLICATION")
-    
-    logfire.info("Testing database connection...")
-    verify_result = verify_database_url()
-    if not verify_result:
-        logfire.error("Invalid database URL configuration")
-        return 1
-    
-    connection_ok = await test_connection()
-    
-    if not connection_ok:
-        logfire.error("Failed to connect to the database")
-        return 1
-    
-    logfire.info("Successfully connected to the database!")
     
     with log_span("database_initialization"):
-        logfire.info("Initializing database...")
         await init_db()
         logfire.info("Database initialized successfully")
     
@@ -151,9 +134,7 @@ signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
 
 if __name__ == "__main__":
-    start_time = time.time()
-    
-    # First create the event loop and set it
+  
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     
@@ -182,7 +163,6 @@ if __name__ == "__main__":
             logfire.info("Waiting for task cancellation")
             loop.run_until_complete(asyncio.wait(pending, timeout=5))
     finally:
-        # Force garbage collection before exit
         gc.collect()
         
         # Add a small delay to let OS processes terminate
@@ -201,10 +181,6 @@ if __name__ == "__main__":
         except ImportError:
             pass
     
-    duration = time.time() - start_time
-    print(f"Application completed in {duration:.2f} seconds with exit code {exit_code}")
-    
-    # Final check of process resources - make sure psutil is installed
     try:
         import psutil
         process = psutil.Process()

@@ -29,16 +29,16 @@ def create_async_db_engine():
     engine = create_async_engine(
         async_url,
         echo=False,
-        pool_pre_ping=True,  # Ensures connections are checked before use
+        pool_pre_ping=True,   
         pool_size=10,
-        pool_recycle=300,    # Recycle connections before Neon's scale-to-zero timeout
+        pool_recycle=300,   
         pool_timeout=30,
         connect_args={
             "command_timeout": 10,
             "server_settings": {
                 "application_name": "lean-jobs-crawler",
-                "statement_timeout": "10000",         # Must be string, not integer
-                "idle_in_transaction_session_timeout": "30000"  # Must be string, not integer
+                "statement_timeout": "10000",         
+                "idle_in_transaction_session_timeout": "30000"  
             }
         }
     )
@@ -130,14 +130,6 @@ async def test_connection() -> bool:
 
 
 def setup_sqlalchemy_instrumentation(engine):
-    """
-    Configura l'instrumentazione di SQLAlchemy con Logfire.
-    
-    Questo crea uno span per ogni query eseguita dall'engine.
-    
-    Args:
-        engine: L'istanza dell'engine SQLAlchemy da strumentare
-    """
     try:
         logfire.instrument_sqlalchemy(engine=engine)
         logfire.info("SQLAlchemy instrumentation configured successfully")
@@ -156,8 +148,7 @@ def verify_database_url():
         
     # Parse URL to verify components
     parsed_url = urlparse(database_url)
-    
-    # Check essential components
+  
     if not parsed_url.hostname:
         logfire.error("DATABASE_URL is missing hostname")
         return False

@@ -42,6 +42,13 @@ class CareerCrawler:
     async def find_career_link(self, page: Page) -> Optional[str]:
         """Find career/jobs link on a company homepage."""
         links = await page.query_selector_all('a')
+
+        logfire.info(f"Found {len(links)} links on page")
+
+
+        logfire.info(f"Links: {links}")
+
+
         
         for link in links:
             href = await link.get_attribute('href') or ''
@@ -100,13 +107,29 @@ class CareerCrawler:
             # Visit company homepage (level 0)
             await page.goto(company.url, timeout=60000, wait_until="domcontentloaded")
             
-            # Record URL as visited
-            frontier_url = FrontierUrl(
-                company_id=company.id,
-                url=company.url,
-                last_crawled_at=datetime.now()
+            # Verifica prima se l'URL base esiste già nel frontier
+            existing_frontier = await session.execute(
+                select(FrontierUrl).where(
+                    FrontierUrl.company_id == company.id,
+                    FrontierUrl.url == company.url
+                )
             )
-            session.add(frontier_url)
+            existing_frontier = existing_frontier.scalars().first()
+            
+            if not existing_frontier:
+                # Record URL as visited
+                frontier_url = FrontierUrl(
+                    company_id=company.id,
+                    url=company.url,
+                    depth=0,
+                    last_visited=datetime.now()
+                )
+                session.add(frontier_url)
+                await session.commit()
+            else:
+                # Aggiorna timestamp
+                existing_frontier.last_visited = datetime.now()
+                await session.commit()
             
             # Find career link
             career_url = await self.find_career_link(page)
@@ -133,44 +156,42 @@ class CareerCrawler:
                 is_valid = await self.validate_career_page(page_text)
                 
                 # Check if URL exists in database
-                existing_target = await session.execute(
+                existing_frontier = await session.execute(
                     select(FrontierUrl).where(
                         FrontierUrl.company_id == company.id,
                         FrontierUrl.url == career_url
                     )
                 )
-                existing_target = existing_target.scalars().first()
+                existing_frontier = existing_frontier.scalars().first()
                 
-                if is_valid:
-                    if not existing_target:
+                try:
+                    if not existing_frontier:
                         # Store career URL in database
                         frontier_url = FrontierUrl(
                             company_id=company.id,
                             url=career_url,
                             depth=1,
-                            contains_job_listings=True,
+                            contains_job_listings=is_valid,
                             last_visited=datetime.now()
                         )
                         session.add(frontier_url)
+                        await session.commit()
                     else:
-                        # Update last crawled timestamp
-                        existing_target.contains_job_listings = True
-                        existing_target.last_visited = datetime.now()
+                        # Update fields
+                        existing_frontier.contains_job_listings = is_valid
+                        existing_frontier.last_visited = datetime.now()
+                        await session.commit()
+                except Exception as db_error:
+                    logfire.error("Database error", error=str(db_error))
+                    await session.rollback()
+                
+                if is_valid:
+                    logfire.info("Page contains job listings", url=career_url)
                 else:
                     logfire.info("Page doesn't appear to contain job listings", url=career_url)
-                
-                # Add to frontier
-                frontier_url = FrontierUrl(
-                    company_id=company.id,
-                    url=career_url,
-                    last_crawled_at=datetime.now()
-                )
-                session.add(frontier_url)
-                await session.commit()
             
             else:
                 logfire.warning(f"No career page found", company=company.name)
-                await session.commit()
         
         except Exception as e:
             logfire.error(f"Error processing company", company=company.name, error=str(e))
