@@ -1,0 +1,41 @@
+career_validation:
+  model: "gpt-4o-2024-08-06"
+  messages:
+    - role: "system"
+      content: "You are an expert in analyzing career pages from company websites. Always answer in English. Your task is to determine if a page contains a LIST of job postings that users can browse and apply to."
+    - role: "user"
+      content: "Analyze this web page and determine if it's a target page containing a LIST of job postings (not just a single job). If it is, it should be marked as a target. If not, suggest alternative URLs that might contain job listings. Page URL: {url}\n\nPage content: {text}\n\nLinks found on page: {links}"
+  response_format:
+    type: "json_schema"
+    json_schema:
+      name: "career_validation"
+      schema:
+        type: "object"
+        properties:
+          is_target:
+            type: "boolean"
+            description: "Whether this page contains a LIST of job postings that users can browse (true) or not (false)"
+          confidence:
+            type: "number"
+            description: "Confidence score between 0-100"
+          reasoning:
+            type: "string" 
+            description: "Explanation for the decision"
+          suggested_urls:
+            type: "array"
+            description: "URLs that might contain job listings if current page is not a target"
+            items:
+              type: "object"
+              properties:
+                url:
+                  type: "string"
+                  description: "URL that might contain job listings"
+                reason:
+                  type: "string"
+                  description: "Why this URL might be relevant"
+              required: ["url", "reason"]
+              additionalProperties: False
+        required: ["is_target", "confidence", "reasoning", "suggested_urls"] 
+        additionalProperties: False
+      strict: True
+

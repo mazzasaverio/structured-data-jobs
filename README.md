@@ -1,27 +1,6 @@
 # Lean Jobs Crawler
 
-A specialized web crawler for discovering job postings directly from company websites, designed to work across different website structures using openAI.
-
-## Overview
-
-This project aims to create a standardized approach to crawling job postings across various company websites, regardless of their structure or features. The crawler uses Large Language Models (LLMs) to:
-
-The system discovers and processes four types of URLs:
-
-1. CompanyUrl: The main website URLs for companies with their names
-2. Frontier: the table records previously explored URLs, distinguishing between those that no longer need exploration and those related to job postings. It includes a "depth" column (showing the level where the URL was found) and a column indicating whether the URL belongs to a job posting page (True/False).
-3. JobPostingUrl: Individual job description pages
-
-> **Note:** In the current implementation, company URLs are populated manually. Future development will include a separate crawler to automatically discover and validate company career sites. The present focus is on identifying and storing job postings from known companies.
-
-
-- Let's begin at the most basic level. Look for a link like 'Careers' or 'Work With Us' since, in 95% of cases, it will be on the homepage of the official website. (As usual, we’ll handle exceptions at the end)
-
-I'm using Playwright to find and extract career-related URLs from company websites. (However, we should consider exploring more efficient alternatives to minimize dependencies while maintaining performance.) The crawler will function as follows:
-
-- Depth Level 0: It will scan websites for links with keywords like "Careers," "Work With Us," or similar phrases, identifying relevant URLs based on the link text.
-- Depth Level ≥ 1: After finding a career-related page, it will navigate to it, extract all textual content, and save it as a .txt file for further analysis.
-
+A specialized web crawler is designed to scrape job postings directly from company websites. It follows a standardized method, leveraging an LLM to pinpoint the URLs where job listings are hosted.
 
 ## Project Status
 
@@ -37,6 +16,25 @@ Current priorities:
 Future enhancements will include automated company discovery and more comprehensive data analysis.
 
 Contributors are welcome, but be aware that major refactoring may occur as the project evolves.
+
+## Overview
+
+The system relies on two main database tables:
+
+1. **CompanyUrl**: Stores the main website URLs of companies
+2. **Frontier**: Tracks explored URLs, starting from the company's root URL (the seed). This table includes key fields such as:
+   - **Depth** (indicating the level where the URL was found)
+   - **Target status** – Indicates whether the URL contains a **list** of job postings.
+
+> **Note:** Currently, company URLs are added manually. In future updates, a dedicated crawler will be implemented to automatically discover all companies in a given city. For now, the primary goal is to identify and store job postings from known companies.
+
+## Crawling Process
+
+The crawler operates at different depth levels:
+
+- **Depth Level 0**: It scans websites for links with keywords like "Careers," "Work With Us," or similar phrases, identifying relevant URLs based on the link text. In approximately 95% of cases, these links are found on the homepage of the official website.
+
+- **Depth Level ≥ 1**: Once a career-related page is found, the system navigates to it since job postings may be deeper within the site or in different subsections. Then, we use OpenAI's LLM structured output analysis to determine whether the URL is a seed child URL worth exploring further or a target URL that directly lists all job postings.
 
 ## Architecture
 
@@ -135,4 +133,3 @@ docker-compose down
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
