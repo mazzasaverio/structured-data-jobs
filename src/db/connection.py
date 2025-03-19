@@ -76,7 +76,21 @@ async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
             logfire.info("Database session committed")
         except Exception as e:
             await session.rollback()
-            logfire.error("Database session error", error=str(e))
+            error_msg = str(e)
+            error_type = type(e).__name__
+            
+            # Log more details for potential duplicate entries
+            if "duplicate key" in error_msg.lower() or "unique constraint" in error_msg.lower():
+                logfire.error("Database duplicate entry error", 
+                            error=error_msg,
+                            error_type=error_type,
+                            constraint=error_msg.split("constraint")[1] if "constraint" in error_msg else "unknown",
+                            trace=traceback.format_exc())
+            else:
+                logfire.error("Database session error", 
+                            error=error_msg,
+                            error_type=error_type,
+                            trace=traceback.format_exc())
             raise
         finally:
             await session.close()

@@ -8,12 +8,20 @@ import gc
 import warnings
 import atexit
 import signal
+import yaml
+from pathlib import Path
 from src.utils.logging import setup_logging, log_span, enable_debug_logging, log_separator
 from src.db.connection import init_db, test_connection, get_db_session, verify_database_url
 from src.db.models import CompanyUrl, FrontierUrl
 from src.crawler.career_crawler import run_career_crawler       
+import aiohttp
+from urllib.parse import urlparse
+from sqlalchemy.exc import SQLAlchemyError
 
 _subprocess_resources = []
+
+# Get the project root directory
+repo_root = os.getenv('PROJECT_ROOT', os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 def track_resource(resource, name):
     """Track a resource for debugging purposes"""
@@ -31,6 +39,30 @@ warnings.filterwarnings("ignore",
                        message="Event loop is closed", 
                        category=RuntimeWarning)
 
+def load_companies_from_yaml():
+    """Load companies from the YAML configuration file."""
+    try:
+        config_path = Path(repo_root) / "src" / "config" / "companies.yaml"
+        
+        if not config_path.exists():
+            logfire.warning(f"Companies config file not found at {config_path}")
+            return []
+            
+        with open(config_path, 'r', encoding='utf-8') as f:
+            config = yaml.safe_load(f)
+            
+        if not config or 'companies' not in config:
+            logfire.warning("No companies found in config file")
+            return []
+            
+        companies = config['companies']
+        logfire.info(f"Loaded {len(companies)} companies from config file")
+        return companies
+    except Exception as e:
+        logfire.error(f"Error loading companies from YAML: {str(e)}")
+        return []
+
+
 async def main():
     """Main application entry point."""
     setup_logging()
@@ -38,8 +70,6 @@ async def main():
     with log_span("database_initialization"):
         await init_db()
         logfire.info("Database initialized successfully")
-    
-    logfire.info("Application started successfully")
     
     log_separator("DATABASE OPERATIONS")
     try:
@@ -49,51 +79,66 @@ async def main():
             companies = result.scalars().all()
             
             if not companies:
-                logfire.info("No companies found. Creating test company")
-                company = CompanyUrl(
-                    name="Igenius",
-                    url="https://www.igenius.ai",
-                )
-                session.add(company)
+                logfire.info("No companies found in database. Loading from config file...")
+                companies_to_add = load_companies_from_yaml()
+                for company_data in companies_to_add:
+                    company = CompanyUrl(
+                        name=company_data["name"],
+                        url=company_data["url"],
+                    )
+                    session.add(company)
+
                 await session.commit()
-                logfire.info("Test company created", id=company.id)
+                logfire.info(f"Added {len(companies_to_add)} companies to database")
             else:
-                logfire.info("Found companies in database", count=len(companies))
+                # Check for new companies in YAML that aren't in the database
+                yaml_companies = load_companies_from_yaml()
                 
-                for i, company in enumerate(companies):
+                companies_added = 0
+                for company_data in yaml_companies:
                     try:
-                        if isinstance(company, int):
-                            company_obj = await session.get(CompanyUrl, company)
-                            if company_obj:
-                                logfire.info("Company details", 
-                                           company_id=company_obj.id,
-                                           company_name=company_obj.name,
-                                           url=getattr(company_obj, 'url', None))
-                            else:
-                                logfire.warning(f"Company with ID {company} not found")
-                        elif hasattr(company, 'name') and hasattr(company, 'id'):
-                            logfire.info("Company details", 
-                                       company_id=company.id,
-                                       company_name=company.name,
-                                       url=getattr(company, 'url', None))
-                        else:
-                            logfire.warning(f"Invalid company object #{i}", 
-                                          type=str(type(company)))
+                        # First check if this company exists by URL (most reliable identifier)
+                        result = await session.execute(
+                            CompanyUrl.__table__.select().where(
+                                CompanyUrl.url == company_data["url"]
+                            )
+                        )
+                        existing_company = result.scalar_one_or_none()
+                        
+                        if existing_company:
+                            logfire.debug(f"Company with URL {company_data['url']} already exists, skipping")
+                            continue
+                            
+                        # If we get here, the company doesn't exist - add it
+                        company = CompanyUrl(
+                            name=company_data["name"],
+                            url=company_data["url"],
+                        )
+                        session.add(company)
+                        
+                        await session.commit()
+                        companies_added += 1
+                        
                     except Exception as e:
-                        logfire.error(f"Error processing company #{i}", error=str(e))
+                        import traceback
+                        logfire.error(f"Error processing company {company_data['name']}", 
+                                   error_type=type(e).__name__,
+                                   error=str(e),
+                                   traceback=traceback.format_exc())
+                        await session.rollback()
+                
+                if companies_added > 0:
+                    logfire.info(f"Successfully added {companies_added} new companies")
+                else:
+                    logfire.info("No new companies were added")
     except Exception as e:
-        import traceback
-        logfire.error("Database session error", 
-                    error_type=type(e).__name__,
-                    error=str(e),
-                    traceback=traceback.format_exc())
-        return 1
-    
+        logfire.error("Error in database operations", error=str(e), traceback=traceback.format_exc())
+        raise
+   
     log_separator("RUNNING CRAWLER")
-    logfire.info("Starting career page crawler...")
+
     try:
         with logfire.span("career_crawler_execution") as span:
-            logfire.info("Starting career crawler")
             await run_career_crawler()
             logfire.info("Career crawler completed successfully")
     except Exception as e:
@@ -138,14 +183,9 @@ if __name__ == "__main__":
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     
-    # Now you can log, but pass the loop explicitly to all_tasks
-    logfire.info("Starting application", active_tasks="N/A")  # Initialize without tasks count
-    
     try:
-        logfire.info("Running main function")
         exit_code = loop.run_until_complete(main())
-        logfire.info("Main function completed")
-        
+
         # Now check for pending tasks with explicit loop reference
         pending = asyncio.all_tasks(loop)
         logfire.info("Pending tasks before cleanup", 
@@ -164,10 +204,7 @@ if __name__ == "__main__":
             loop.run_until_complete(asyncio.wait(pending, timeout=5))
     finally:
         gc.collect()
-        
-        # Add a small delay to let OS processes terminate
-        time.sleep(0.5)
-        
+    
         # Explicitly terminate any remaining browser processes
         try:
             import psutil

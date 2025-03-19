@@ -1,0 +1,10 @@
+{
+  "page_url": "https://careers.agilelab.it",
+  "analysis_timestamp": "20250319_174621",
+  "result": {
+    "is_target": true,
+    "confidence": 95,
+    "reasoning": "The page contains a list of job postings, including titles, locations, and links to detailed descriptions. This indicates it is a target page for job listings.",
+    "suggested_urls": []
+  }
+}

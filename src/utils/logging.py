@@ -2,6 +2,7 @@ import logfire
 import os
 from contextlib import contextmanager
 from typing import Optional, Any, Dict
+import logging
 
 def setup_logging(service_name: str = "lean-jobs-crawler", 
                   environment: Optional[str] = None):
@@ -26,6 +27,15 @@ def setup_logging(service_name: str = "lean-jobs-crawler",
         logfire.instrument_sqlalchemy()
     except (ImportError, AttributeError):
         pass
+    
+    # Add these lines to suppress SQLAlchemy logs
+    logging.getLogger('sqlalchemy').setLevel(logging.ERROR)
+    logging.getLogger('sqlalchemy.engine').setLevel(logging.ERROR)
+    logging.getLogger('sqlalchemy.pool').setLevel(logging.ERROR)
+    logging.getLogger('sqlalchemy.dialects').setLevel(logging.ERROR)
+    
+    # If you're using asyncio SQLAlchemy
+    logging.getLogger('asyncio_sqlalchemy').setLevel(logging.ERROR)
     
     logfire.info("Logging system initialized successfully")
 

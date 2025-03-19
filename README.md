@@ -32,8 +32,49 @@ The system relies on two main database tables:
 
 The crawler operates at different depth levels:
 
-- **Depth Level 0**: It scans websites for links with keywords like "Careers," "Work With Us," or similar phrases, identifying relevant URLs based on the link text. In approximately 95% of cases, these links are found on the homepage of the official website.
+- **Depth Level 0**: It scans websites for links with keywords like "Careers," "Work With Us," or similar phrases, identifying relevant URLs based on the link text. In approximately 95% of cases, these links are found on the homepage of the official website. 
 
+The crawler only scans websites that either don't have an identified "target" URL yet, or where the previously found target URL is no longer valid (which may happen if the website structure has changed). 
+
+## Career Page Search Strategies
+
+The crawler uses a multi-stage approach to locate company career pages, organized in order of increasing complexity:
+
+1. **Direct URL Probing**
+   - Attempts common career page paths like `/careers`, `/jobs`, `/work-with-us`
+   - Fast and non-intrusive, doesn't require page interaction
+   - Validates found pages by checking for job-related terms
+
+2. **Simple Text Matching**
+   - Scans the homepage for obvious career links
+   - Looks for text like "careers", "jobs", "work with us", "join our team"
+   - Minimal page parsing required
+
+3. **Sitemap Exploration**
+   - Checks if the site has a sitemap.xml
+   - Scans for URLs containing career-related terms
+   - Effective for sites with well-structured sitemaps
+
+4. **Primary Navigation Search**
+   - Examines main navigation elements
+   - Identifies career links in headers and main menus
+   - Focuses on the most visible navigation areas
+
+5. **Secondary Areas Search**
+   - Explores footers and secondary navigation sections
+   - Often finds career links in "About Us" or company information areas
+   - Checks less prominent but common career link locations
+
+6. **Interactive Navigation**
+   - Clicks through menus that might reveal career links
+   - Explores dropdowns and expandable sections
+   - Handles dynamic navigation elements requiring interaction
+
+7. **Search Function**
+   - Uses the site's search functionality if available
+   - Searches for "careers" or "jobs" terms
+   - Last resort for sites with non-standard navigation
+   
 - **Depth Level ≥ 1**: Once a career-related page is found, the system navigates to it since job postings may be deeper within the site or in different subsections. Then, we use OpenAI's LLM structured output analysis to determine whether the URL is a seed child URL worth exploring further or a target URL that directly lists all job postings.
 
 ## Architecture

@@ -148,12 +148,12 @@ class CareerPageValidator:
                 "response_format": {"type": "json_object"}
             }
     
-    async def analyze_career_page(self, page_text: str, page_url: str, page_links: List[dict]) -> Tuple[bool, List[dict]]:
+    async def analyze_career_page(self, page_text: str, page_url: str) -> Tuple[bool, List[dict]]:
         """
         Analyze a career page to determine if it's a target page containing a list of job postings.
         """
         try:
-            prompt_text = self._prepare_prompt(page_text, page_url, page_links)
+            prompt_text = self._prepare_prompt(page_text, page_url)
             response_content = await self.llm_processor.make_request(prompt_text)
             result = json.loads(response_content)
             
@@ -216,27 +216,16 @@ class CareerPageValidator:
         logfire.info("Using fallback validation", keyword_matches=keyword_matches)
         return keyword_matches >= 2  # If at least 2 keywords match, it's probably a job page
     
-    def _prepare_prompt(self, page_text: str, page_url: str, page_links: List[dict]) -> str:
+    def _prepare_prompt(self, page_text: str, page_url: str) -> str:
         """Prepare the prompt for the LLM."""
-        # Limit page text to avoid token limits (around 6K characters)
-        max_text_length = 6000
-        truncated_text = page_text[:max_text_length] + ("..." if len(page_text) > max_text_length else "")
-        
-        # Format the most important links (limit to 15 to save tokens)
-        formatted_links = []
-        for link in page_links[:15]:
-            formatted_links.append(f"- \"{link.get('text', '').strip()}\": {link.get('url', '')}")
-        
-        links_text = "\n".join(formatted_links)
+        # Provide the full page text instead of truncating
+        full_text = page_text
         
         # Create the prompt
         prompt = f"""Analyze this web page from {page_url} to determine if it's a valid career/jobs page with actual job listings.
 
-PAGE TEXT EXCERPT:
-{truncated_text}
-
-IMPORTANT LINKS ON THE PAGE:
-{links_text}
+PAGE TEXT:
+{full_text}
 
 Respond with a detailed analysis determining if this is a valid career page with job listings. If it's not, suggest alternative URLs from the links that might contain job listings.
 """

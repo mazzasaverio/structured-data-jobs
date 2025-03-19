@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List, Optional
-from sqlalchemy import ForeignKey, String, Text, DateTime, Boolean, func, Column, Integer, UniqueConstraint
+from sqlalchemy import ForeignKey, String, Text, DateTime, Boolean, func, Column, Integer, UniqueConstraint, event
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 
@@ -31,6 +31,7 @@ class FrontierUrl(Base):
     __tablename__ = "frontier_urls"
     
     id: Mapped[int] = mapped_column(primary_key=True)
+    url_domain: Mapped[str] = mapped_column(String(255), nullable=False)
     url: Mapped[str] = mapped_column(String(1024), nullable=False)
     company_id: Mapped[int] = mapped_column(ForeignKey("company_urls.id"), nullable=False)
     depth: Mapped[int] = mapped_column(Integer, default=0)  # Level where URL was found
@@ -48,3 +49,28 @@ class FrontierUrl(Base):
     )
      
     company: Mapped["CompanyUrl"] = relationship(back_populates="frontier_urls")
+
+
+# SQLAlchemy event listener to populate url_domain with the company's url
+@event.listens_for(FrontierUrl, 'before_insert')
+def populate_url_domain(mapper, connection, frontier_url):
+    """Populate url_domain with the URL from the associated CompanyUrl before insert"""
+    if frontier_url.company_id and not frontier_url.url_domain:
+        # Get the company's URL from the session
+        from sqlalchemy.orm import Session
+        session = Session(connection)
+        company = session.get(CompanyUrl, frontier_url.company_id)
+        if company:
+            frontier_url.url_domain = company.url
+
+
+# Event listener for relationship changes - updates url_domain if company_id changes
+@event.listens_for(FrontierUrl, 'before_update')
+def update_url_domain(mapper, connection, frontier_url):
+    """Update url_domain if company_id changes"""
+    if hasattr(frontier_url, '_sa_instance_state') and frontier_url._sa_instance_state.attrs.get('company_id').history.has_changes():
+        from sqlalchemy.orm import Session
+        session = Session(connection)
+        company = session.get(CompanyUrl, frontier_url.company_id)
+        if company:
+            frontier_url.url_domain = company.url

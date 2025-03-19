@@ -2,9 +2,9 @@ career_validation:
   model: "gpt-4o-2024-08-06"
   messages:
     - role: "system"
-      content: "You are an expert in analyzing career pages from company websites. Always answer in English. Your task is to determine if a page contains a LIST of job postings that users can browse and apply to."
+      content: "You are an expert in analyzing career pages from company websites. Always answer in English. Your task is to determine if a page contains a LIST of job postings that users can browse and apply to. If the current page is not a job listings page, you must carefully analyze all links on the page to identify any that likely lead to job listings."
     - role: "user"
-      content: "Analyze this web page and determine if it's a target page containing a LIST of job postings (not just a single job). If it is, it should be marked as a target. If not, suggest alternative URLs that might contain job listings. Page URL: {url}\n\nPage content: {text}\n\nLinks found on page: {links}"
+      content: "Analyze this web page and determine if it's a target page containing a LIST of job postings (not just a single job). If it is, mark it as a target.\n\nIf it is NOT a target page, thoroughly examine all links provided and identify those that are most likely to lead to job listings pages based on their URL patterns and text descriptions (look for keywords like 'careers', 'jobs', 'positions', 'work with us', 'join our team', etc.).\n\nIMPORTANT: Only suggest URLs that actually exist in the provided links list AND appear to directly lead to job listings. Do NOT include links to privacy policies, terms of service, or other administrative pages even if they are related to recruitment platforms. Focus exclusively on links that will show users actual job openings.\n\nFor target pages, only suggest additional URLs if they appear to contain DIFFERENT job listings than the current page (e.g., job listings for different departments, regions, or job types). Do NOT suggest parent/general career pages that would contain less specific information than the current target page.\n\nPage URL: {url}\n\nPage content: {text}\n\nLinks found on page: {links}"
   response_format:
     type: "json_schema"
     json_schema:
@@ -23,16 +23,16 @@ career_validation:
             description: "Explanation for the decision"
           suggested_urls:
             type: "array"
-            description: "URLs that might contain job listings if current page is not a target"
+            description: "For non-target pages: List of URLs from the current page that likely lead to job listings. For target pages: ONLY include additional URLs that likely contain DIFFERENT job listings than those on the current page. IMPORTANT: Only include URLs that actually exist in the provided links, never suggest URLs that are not explicitly present in the data."
             items:
               type: "object"
               properties:
                 url:
                   type: "string"
-                  description: "URL that might contain job listings"
+                  description: "URL that might contain job listings. Must be one of the URLs provided in the links list, never inferred or assumed."
                 reason:
                   type: "string"
-                  description: "Why this URL might be relevant"
+                  description: "Why this URL likely leads to job listings (e.g., URL structure, link text, context)"
               required: ["url", "reason"]
               additionalProperties: False
         required: ["is_target", "confidence", "reasoning", "suggested_urls"] 

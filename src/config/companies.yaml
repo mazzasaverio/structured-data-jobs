@@ -1,0 +1,18 @@
+# List of companies to initialize the crawler with
+# Each company should have a name and website URL
+companies:
+  - name: "Igenius"
+    url: "https://www.igenius.ai"
+  - name: "Prima"
+    url: "https://www.prima.it"
+  - name: "Casavo"
+    url: "https://www.casavo.com"
+  - name: "Xtreamers"
+    url: "https://xtreamers.io"
+  - name: "agilelab"
+    url: "https://www.agilelab.it"
+  - name: "Satispay"  
+    url: "https://www.satispay.com/it-it"
+  # Add more companies here as needed
+  # - name: "Company Name"
+  #   url: "https://www.example.com" 
