@@ -13,6 +13,7 @@ companies:
     url: "https://www.agilelab.it"
   - name: "Satispay"  
     url: "https://www.satispay.com/it-it"
-  # Add more companies here as needed
-  # - name: "Company Name"
-  #   url: "https://www.example.com" 
+  - name: "weroad"
+    url: "https://www.weroad.it"
+  - name: "intella"
+    url: "https://www.intella.tech/"

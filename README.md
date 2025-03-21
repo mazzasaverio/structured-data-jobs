@@ -1,6 +1,6 @@
 # Lean Jobs Crawler
 
-A specialized web crawler is designed to scrape job postings directly from company websites. It follows a standardized method, leveraging an LLM to pinpoint the URLs where job listings are hosted.
+A specialized web crawler is built to extract job postings directly from company websites. It uses a standardized method and leverages an LLM to identify the exact URLs where job listings are found. The aim is to have the data to create a platform that continuously provides an up-to-date view of the best companies, workplaces, and projects to work on.
 
 ## Project Status
 
@@ -32,13 +32,7 @@ The system relies on two main database tables:
 
 The crawler operates at different depth levels:
 
-- **Depth Level 0**: It scans websites for links with keywords like "Careers," "Work With Us," or similar phrases, identifying relevant URLs based on the link text. In approximately 95% of cases, these links are found on the homepage of the official website. 
-
-The crawler only scans websites that either don't have an identified "target" URL yet, or where the previously found target URL is no longer valid (which may happen if the website structure has changed). 
-
-## Career Page Search Strategies
-
-The crawler uses a multi-stage approach to locate company career pages, organized in order of increasing complexity:
+- **Depth Level 0**: The crawler uses a multi-stage approach to locate company career pages, organized in order of increasing complexity:
 
 1. **Direct URL Probing**
    - Attempts common career page paths like `/careers`, `/jobs`, `/work-with-us`
