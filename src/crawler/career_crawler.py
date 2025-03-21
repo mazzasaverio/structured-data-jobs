@@ -1,5 +1,4 @@
 import asyncio
-import os
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Tuple
@@ -11,21 +10,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.db.models import CompanyUrl, FrontierUrl
 from src.db.connection import get_db_session
-from src.utils.logging import log_span
 import re
 from src.crawler.career_validator import CareerPageValidator
 from sqlalchemy.exc import SQLAlchemyError, OperationalError, IntegrityError
-import traceback
 
 # Import needed for sitemap exploration
 import aiohttp
 from urllib.parse import urlparse
 
-# Career-related terms in English and Italian
-CAREER_TERMS = [
-    "career", "careers", "jobs", "job", "work with us", "join us", "join our team",
-    "lavora con noi", "carriere", "opportunità", "opportunita", "lavoro", "posizioni aperte"
-]
 
 class CareerCrawler:
     """Crawler for finding career pages on company websites."""
@@ -52,13 +44,12 @@ class CareerCrawler:
     
     async def find_career_link(self, page: Page) -> Optional[str]:
         """Find career page using multiple strategies in optimal order."""
-        # Get domain information
+
         base_url = page.url.rstrip('/')
         parsed_url = urlparse(base_url)
         domain = f"{parsed_url.scheme}://{parsed_url.netloc}"
         
         # =============== STRATEGY 1: Direct URL Probing ===============
-        logfire.info("Trying direct URL probing for career pages")
         common_career_paths = [
             "/careers", "/careers/", "/jobs", "/jobs/", "/en/careers", "/en/careers/", 
             "/join-us", "/work-with-us", "/about/careers",
@@ -71,21 +62,12 @@ class CareerCrawler:
         for path in common_career_paths:
             try:
                 url = f"{domain}{path}"
-                logfire.debug(f"Trying URL: {url}")
-                
-                # Navigate to the potential career page with a short timeout
                 response = await page.goto(url, wait_until="domcontentloaded", timeout=5000)
                 
                 # Check if page exists (status code 200)
                 if response and response.status == 200:
-                    # Verify it's actually a career page by looking for job-related terms
-                    content = await page.content()
-                    job_terms = ["job", "position", "opening", "career", "opportunity", 
-                               "team", "hiring", "recruit", "join"]
-                    
-                    if any(term in content.lower() for term in job_terms):
-                        logfire.info(f"Found career page by direct URL: {url}")
-                        return url
+                    return url
+                
             except Exception as e:
                 logfire.debug(f"Error probing URL {path}", error=str(e))
         
@@ -141,124 +123,6 @@ class CareerCrawler:
         # Return to home page for next strategies
         await page.goto(base_url, wait_until="domcontentloaded")
         
-        # =============== STRATEGY 4: Primary Navigation ===============
-        logfire.info("Exploring primary navigation")
-        nav_selectors = [
-            "nav", "header", ".header", ".navigation", ".main-menu", 
-            ".navbar", ".nav-menu", "#main-menu"
-        ]
-        
-        for selector in nav_selectors:
-            try:
-                if await page.locator(selector).count() > 0:
-                    nav_element = page.locator(selector).first
-                    
-                    # Search for career-related links in the navigation
-                    for text in career_link_texts:
-                        try:
-                            link = nav_element.locator(f"a:text-matches('{text}', 'i')").first
-                            if await link.count() > 0:
-                                href = await link.get_attribute("href")
-                                if href:
-                                    full_url = href if href.startswith("http") else f"{domain}{href}"
-                                    logfire.info(f"Found career link in primary navigation: {full_url}")
-                                    return full_url
-                        except Exception:
-                            continue
-            except Exception as e:
-                logfire.debug(f"Error exploring navigation {selector}", error=str(e))
-        
-        # =============== STRATEGY 5: Footer and Secondary Areas ===============
-        logfire.info("Checking footer and secondary areas")
-        secondary_selectors = [
-            "footer", ".footer", "#footer", ".bottom", ".secondary-menu",
-            ".links", ".site-links", ".meta-links"
-        ]
-        
-        for selector in secondary_selectors:
-            try:
-                if await page.locator(selector).count() > 0:
-                    element = page.locator(selector).first
-                    
-                    # Check for career links
-                    for text in career_link_texts:
-                        try:
-                            link = element.locator(f"a:text-matches('{text}', 'i')").first
-                            if await link.count() > 0:
-                                href = await link.get_attribute("href")
-                                if href:
-                                    full_url = href if href.startswith("http") else f"{domain}{href}"
-                                    logfire.info(f"Found career link in secondary area: {full_url}")
-                                    return full_url
-                        except Exception:
-                            continue
-            except Exception as e:
-                logfire.debug(f"Error exploring secondary area {selector}", error=str(e))
-        
-        # =============== STRATEGY 6: Interactive Navigation ===============
-        logfire.info("Trying interactive navigation elements")
-        interactive_selectors = [
-            "a:has-text('Company')", "a:has-text('About')", "a:has-text('About us')",
-            "button:has-text('Menu')", "[aria-label='menu']", ".menu-toggle",
-            ".dropdown", "nav .has-submenu", ".header-menu"
-        ]
-        
-        for selector in interactive_selectors:
-            try:
-                if await page.locator(selector).count() > 0:
-                    logfire.info(f"Clicking interactive element: {selector}")
-                    await page.locator(selector).first.click()
-                    await page.wait_for_timeout(1000)  # Wait for animation
-                    
-                    # Now look for career links in the expanded menu
-                    for text in career_link_texts:
-                        try:
-                            link = page.locator(f"a:text-matches('{text}', 'i')").first
-                            if await link.count() > 0:
-                                href = await link.get_attribute("href")
-                                if href:
-                                    full_url = href if href.startswith("http") else f"{domain}{href}"
-                                    logfire.info(f"Found career link after interaction: {full_url}")
-                                    return full_url
-                        except Exception:
-                            continue
-            except Exception as e:
-                logfire.debug(f"Error with interactive element {selector}", error=str(e))
-        
-        # =============== STRATEGY 7: Search Function ===============
-        logfire.info("Trying site search if available")
-        search_selectors = [
-            "input[type='search']", ".search-input", "input[placeholder*='search' i]",
-            "[aria-label='Search']", ".search-form input", "#search"
-        ]
-        
-        for selector in search_selectors:
-            try:
-                if await page.locator(selector).count() > 0:
-                    search_input = page.locator(selector).first
-                    await search_input.fill("careers")
-                    await search_input.press("Enter")
-                    await page.wait_for_load_state("networkidle")
-                    
-                    # Look for career-related links in the search results
-                    for text in career_link_texts:
-                        try:
-                            link = page.locator(f"a:text-matches('{text}', 'i')").first
-                            if await link.count() > 0:
-                                href = await link.get_attribute("href")
-                                if href:
-                                    full_url = href if href.startswith("http") else f"{domain}{href}"
-                                    logfire.info(f"Found career link via search: {full_url}")
-                                    return full_url
-                        except Exception:
-                            continue
-            except Exception as e:
-                logfire.debug(f"Error using search function", error=str(e))
-        
-        # If we get here, no career page was found after all attempts
-        logfire.warning("No career link found after all attempts")
-        return None
-    
     async def extract_page_text(self, page: Page) -> str:
         """
         Extract links from the page with their text, context, and potential content description.
@@ -543,20 +407,55 @@ class CareerCrawler:
         
         try:
             async with get_db_session() as session:
-                # Subquery to find companies that have at least one target URL
+                # First, check for broken target URLs and remove them
+                target_urls = await session.execute(
+                    select(FrontierUrl).where(FrontierUrl.is_target == True)
+                )
+                target_urls = target_urls.scalars().all()
+                
+                # Track companies that had broken targets so we can process them again
+                companies_with_broken_targets = set()
+                
+                for target_url in target_urls:
+                    try:
+                        # Check if URL is broken
+                        response = None
+                        try:
+                            page = await context.new_page()
+                            response = await page.goto(target_url.url, timeout=30000, wait_until="domcontentloaded")
+                            await page.close()
+                        except Exception as e:
+                            logfire.warning(f"Failed to access target URL", url=target_url.url, error=str(e))
+                            response = None
+                        
+                        # If URL is broken (no response or error status)
+                        if response is None or response.status >= 400:
+                            logfire.info(f"Found broken target URL - deleting", url=target_url.url)
+                            companies_with_broken_targets.add(target_url.company_id)
+                            await session.delete(target_url)
+                            await session.flush()
+                    except Exception as e:
+                        logfire.error(f"Error checking target URL", url=target_url.url, error=str(e))
+                
+                # Commit the deletions
+                await session.commit()
+                
+                # Subquery to find companies that have at least one VALID target URL
                 companies_with_targets = select(FrontierUrl.company_id).where(
                     FrontierUrl.is_target == True
                 ).distinct().scalar_subquery()
                 
                 # Main query to find companies without any target URLs
+                # or companies that had broken targets
                 result = await session.execute(
                     select(CompanyUrl).where(
-                        CompanyUrl.id.not_in(companies_with_targets)
+                        CompanyUrl.id.not_in(companies_with_targets) | 
+                        CompanyUrl.id.in_(list(companies_with_broken_targets))
                     )
                 )
                 companies = result.scalars().all()
                 
-                logfire.info(f"Found {len(companies)} companies without target job pages to process")
+                logfire.info(f"Found {len(companies)} companies to process (without targets or with broken targets)")
 
                 for company in companies:
                     try:

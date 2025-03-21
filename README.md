@@ -48,48 +48,10 @@ The crawler operates at different depth levels:
    - Checks if the site has a sitemap.xml
    - Scans for URLs containing career-related terms
    - Effective for sites with well-structured sitemaps
-
-4. **Primary Navigation Search**
-   - Examines main navigation elements
-   - Identifies career links in headers and main menus
-   - Focuses on the most visible navigation areas
-
-5. **Secondary Areas Search**
-   - Explores footers and secondary navigation sections
-   - Often finds career links in "About Us" or company information areas
-   - Checks less prominent but common career link locations
-
-6. **Interactive Navigation**
-   - Clicks through menus that might reveal career links
-   - Explores dropdowns and expandable sections
-   - Handles dynamic navigation elements requiring interaction
-
-7. **Search Function**
-   - Uses the site's search functionality if available
-   - Searches for "careers" or "jobs" terms
-   - Last resort for sites with non-standard navigation
    
 - **Depth Level ≥ 1**: Once a career-related page is found, the system navigates to it since job postings may be deeper within the site or in different subsections. Then, we use OpenAI's LLM structured output analysis to determine whether the URL is a seed child URL worth exploring further or a target URL that directly lists all job postings.
 
-## Architecture
-
-The system follows a modular architecture:
-
-- **URL Discovery**: Uses LLMs to identify promising target URLs and job posting URLs
-- **Crawling Engine**: Efficiently navigates websites while respecting robots.txt and rate limits
-- **Frontier Management**: Tracks explored URLs to avoid redundant crawling
-- **Content Extraction**: Parses job posting data into a standardized format
-- **Storage Layer**: Persists both the raw and structured data in Neon Postgres
-- **Orchestration**: Manages crawling jobs, retries, and scheduling
-
-## Tech Stack
-
-- **Package Management**: [uv](https://github.com/astral-sh/uv)
-- **Database**: [Neon Postgres](https://neon.tech/)
-- **ORM**: SQLAlchemy
-- **Logging**: [Logfire](https://github.com/logfire-sh/logfire-python)
-- **Runtime**: Python 3.11+
-- **Containerization**: Docker for cloud deployment
+The script always checks whether there's no target URL in the frontier_urls table or if the existing target URL is broken.
 
 ## Getting Started
 
