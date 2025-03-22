@@ -17,3 +17,9 @@ companies:
     url: "https://www.weroad.it"
   - name: "intella"
     url: "https://www.intella.tech/"
+  - name: "fiscozen"
+    url: "https://www.fiscozen.it/"
+
+
+sources:
+  - https://www.greatplacetowork.it

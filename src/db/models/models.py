@@ -24,6 +24,7 @@ class CompanyUrl(Base):
     )
     
     frontier_urls: Mapped[List["FrontierUrl"]] = relationship(back_populates="company", cascade="all, delete-orphan")
+    job_posts: Mapped[List["JobPost"]] = relationship(back_populates="company", cascade="all, delete-orphan")
 
 
 class FrontierUrl(Base):
@@ -49,6 +50,26 @@ class FrontierUrl(Base):
     )
      
     company: Mapped["CompanyUrl"] = relationship(back_populates="frontier_urls")
+
+
+class JobPost(Base):
+    """Job posts extracted from target URLs"""
+    __tablename__ = "job_posts"
+    
+    id: Mapped[int] = mapped_column(primary_key=True)
+    title: Mapped[str] = mapped_column(String(255), nullable=False)
+    url: Mapped[str] = mapped_column(String(1024), nullable=False, unique=True)
+    url_domain: Mapped[str] = mapped_column(String(255), nullable=False)
+    url_target: Mapped[str] = mapped_column(String(1024), nullable=False)
+    company_id: Mapped[int] = mapped_column(ForeignKey("company_urls.id"), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime, 
+        server_default=func.now(), 
+        onupdate=func.now()
+    )
+    
+    company: Mapped["CompanyUrl"] = relationship(back_populates="job_posts")
 
 
 # SQLAlchemy event listener to populate url_domain with the company's url

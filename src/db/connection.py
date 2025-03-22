@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from sqlalchemy import text
 
-from src.db.models import Base
+from src.db.models.models import Base
 from src.utils.logging import  log_span, log_db_query
 import logfire
 

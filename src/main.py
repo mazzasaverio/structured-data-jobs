@@ -12,7 +12,7 @@ import yaml
 from pathlib import Path
 from src.utils.logging import setup_logging, log_span, enable_debug_logging, log_separator
 from src.db.connection import init_db, test_connection, get_db_session, verify_database_url
-from src.db.models import CompanyUrl, FrontierUrl
+from src.db.models.models import CompanyUrl, FrontierUrl
 from src.crawler.career_crawler import run_career_crawler       
 import aiohttp
 from urllib.parse import urlparse

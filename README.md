@@ -53,6 +53,14 @@ The crawler operates at different depth levels:
 
 The script always checks whether there's no target URL in the frontier_urls table or if the existing target URL is broken.
 
+The next step is to set up an independent crawler that regularly scans each target, uses Playwright to extract all the text (including expanding any job listings if needed), and then applies an LLM—using a structured approach similar to what’s in the codebase—to extract each job listing. We'll store the relevant details in a new table.
+
+
+Let's use alembic for migration. So
+
+
+
+
 ## Getting Started
 
 ### Prerequisites

@@ -1,0 +1,56 @@
+job_extraction:
+  model: "gpt-4o-2024-08-06"
+  messages:
+    - role: "system"
+      content: "You are an expert in analyzing job postings from career pages. Always answer in English. Your task is to extract structured information from job listings, including title, URL, and any other relevant details."
+    - role: "user"
+      content: "Analyze this job listings page and extract all individual job postings in a structured format. For each job listing, extract the job title and URL.\n\nPage URL: {url}\n\nPage content: {text}"
+  response_format:
+    type: "json_schema"
+    json_schema:
+      name: "job_extraction"
+      schema:
+        type: "object"
+        properties:
+          job_listings:
+            type: "array"
+            description: "List of job listings extracted from the page"
+            items:
+              type: "object"
+              properties:
+                title:
+                  type: "string"
+                  description: "Job title"
+                url:
+                  type: "string"
+                  description: "URL of the job posting"
+                roles:
+                  type: "string"
+                  description: "The role that best describes the job posting. If it doesn't match any of the options, choose 'Other'."
+                  enum:
+                    [
+                      "Data Engineer",
+                      "Data Analyst",
+                      "Data Scientist",
+                      "Data Architect",
+                      "DataOps Engineer",
+                      "Software Engineer",
+                      "Backend Engineer",
+                      "Frontend Engineer",
+                      "Full Stack Engineer",
+                      "Full Stack Developer",
+                      "DevOps Engineer",
+                      "Cloud Engineer",
+                      "Other"
+                    ]  
+              required: ["title", "url", "roles"]
+              additionalProperties: False
+          extraction_success:
+            type: "boolean"
+            description: "Whether the extraction was successful"
+          reasoning:
+            type: "string"
+            description: "Explanation for the extraction process or any issues encountered"
+        required: ["job_listings", "extraction_success", "reasoning"]
+        additionalProperties: False
+      strict: True 

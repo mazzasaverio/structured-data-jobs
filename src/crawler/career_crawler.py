@@ -8,7 +8,7 @@ from playwright.async_api import async_playwright, Page, Browser, BrowserContext
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.db.models import CompanyUrl, FrontierUrl
+from src.db.models.models import CompanyUrl, FrontierUrl
 from src.db.connection import get_db_session
 import re
 from src.crawler.career_validator import CareerPageValidator
