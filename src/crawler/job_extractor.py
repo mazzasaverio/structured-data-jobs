@@ -572,13 +572,17 @@ class JobExtractor:
                         already_exists_count += 1
                         continue
                     
+                    # Get the role from the job data (with fallback to "Other")
+                    job_role = job.get("role", "Other")
+                    
                     # Create new job post
                     new_job = JobPost(
                         title=job_title,
                         url=job_url,
                         url_domain=frontier_url.url_domain,
                         url_target=frontier_url.url,
-                        company_id=frontier_url.company_id
+                        company_id=frontier_url.company_id,
+                        role=job_role
                     )
                     
                     session.add(new_job)

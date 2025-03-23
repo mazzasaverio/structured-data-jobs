@@ -11,7 +11,6 @@
 .prompts
 .cursor
 output
-migrations
 data
 # Node.js
 node_modules/

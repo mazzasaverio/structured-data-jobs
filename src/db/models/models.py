@@ -58,6 +58,7 @@ class JobPost(Base):
     
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String(255), nullable=False)
+    role: Mapped[str] = mapped_column(String(255), nullable=False)
     url: Mapped[str] = mapped_column(String(1024), nullable=False, unique=True)
     url_domain: Mapped[str] = mapped_column(String(255), nullable=False)
     url_target: Mapped[str] = mapped_column(String(1024), nullable=False)

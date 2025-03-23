@@ -24,7 +24,7 @@ job_extraction:
                 url:
                   type: "string"
                   description: "URL of the job posting"
-                roles:
+                role:
                   type: "string"
                   description: "The role that best describes the job posting. If it doesn't match any of the options, choose 'Other'."
                   enum:
@@ -43,7 +43,7 @@ job_extraction:
                       "Cloud Engineer",
                       "Other"
                     ]  
-              required: ["title", "url", "roles"]
+              required: ["title", "url", "role"]
               additionalProperties: False
           extraction_success:
             type: "boolean"

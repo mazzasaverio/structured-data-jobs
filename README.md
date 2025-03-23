@@ -53,13 +53,7 @@ The crawler operates at different depth levels:
 
 The script always checks whether there's no target URL in the frontier_urls table or if the existing target URL is broken.
 
-The next step is to set up an independent crawler that regularly scans each target, uses Playwright to extract all the text (including expanding any job listings if needed), and then applies an LLM—using a structured approach similar to what’s in the codebase—to extract each job listing. We'll store the relevant details in a new table.
-
-
-Let's use alembic for migration. So
-
-
-
+The next step is to set up an independent crawler that regularly scans each target, uses Playwright to extract all the text (including expanding any job listings if needed), and then applies an LLM—using a structured approach similar to what's in the codebase—to extract each job listing. We'll store the relevant details in a new table.
 
 ## Getting Started
 
@@ -94,6 +88,39 @@ Let's use alembic for migration. So
    cp .env.example .env
    # Edit .env with your database credentials and other settings
    ```
+
+### Database Migrations with Alembic
+
+This project uses Alembic for database schema migrations. After setting up your environment:
+
+1. Initialize the database (if first time):
+   ```bash
+   # First, ensure your database connection is properly configured in .env
+   uv run alembic upgrade head
+   ```
+
+2. When making schema changes:
+   ```bash
+   # Create a new migration after modifying models
+   uv run alembic revision --autogenerate -m "Description of changes"
+   
+   # Apply the migration
+   uv run alembic upgrade head
+   ```
+
+3. Managing migrations:
+   ```bash
+   # View migration history
+   uv run alembic history
+   
+   # Downgrade to a specific version
+   uv run alembic downgrade <revision_id>
+   
+   # Downgrade one version
+   uv run alembic downgrade -1
+   ```
+
+Note: Always review auto-generated migrations before applying them to ensure they correctly capture your intended changes.
 
 ### Local Development
 
