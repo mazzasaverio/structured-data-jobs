@@ -16,9 +16,11 @@ companies:
   - name: "weroad"
     url: "https://www.weroad.it"
   - name: "intella"
-    url: "https://www.intella.tech/"
+    url: "https://www.intella.tech"
   - name: "fiscozen"
-    url: "https://www.fiscozen.it/"
+    url: "https://www.fiscozen.it"
+  - name: "generali"
+    url: "https://www.generali.it"
 
 
 sources:
