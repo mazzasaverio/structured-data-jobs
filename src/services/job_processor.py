@@ -40,19 +40,12 @@ async def process_content(source_url: str, content_text: str, llm_config: Dict[s
             api_version="2024-12-01-preview"
         )
         
-        # Initialize LLM processor with the provided config
         llm_processor = LLMProcessor(client, llm_config)
+
+        response_content = await llm_processor.make_request(content_text)
         
-        # Prepare prompt with source URL and content
-        prompt_text = _prepare_job_prompt(source_url, content_text)
-        
-        # Make request to LLM
-        response_content = await llm_processor.make_request(prompt_text)
-        
-        # Parse response as JSON
         job_details = json.loads(response_content)
         
-        # Add metadata
         job_details["source_url"] = source_url
         job_details["processed_timestamp"] = llm_processor.last_api_call_time
         
@@ -68,34 +61,3 @@ async def process_content(source_url: str, content_text: str, llm_config: Dict[s
             "processing_status": "failed"
         }
 
-def _prepare_job_prompt(source_url: str, content_text: str) -> str:
-    """
-    Prepare the prompt for job content processing.
-    
-    Args:
-        source_url (str): The URL of the job posting
-        content_text (str): The extracted text content from the job posting
-        
-    Returns:
-        str: The prepared prompt for the LLM
-    """
-    prompt = f"""Extract detailed information from this job posting.
-
-SOURCE URL: {source_url}
-
-JOB POSTING CONTENT:
-{content_text}
-
-Please extract all relevant information about this job posting, including but not limited to:
-- Job title
-- Company name
-- Location (remote, on-site, hybrid)
-- Employment type (full-time, part-time, contract)
-- Experience level required
-- Education requirements
-- Skills required and preferred
-- Responsibilities
-- Benefits and perks
-- Salary information (if available)
-"""
-    return prompt 

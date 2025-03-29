@@ -6,9 +6,17 @@ While the initial setup will focus on tech roles—particularly data engineering
 
 ## Data Pipeline
 
-### 1. Career Pages
+### 0. Companies
 
 Once installation and setup are complete, the first step is to prepare a seed list of companies we want to gather information on, including company details and job postings. We'll use each company's main domain as the primary key for identification. TODO: In the future, we could add a crawling and data collection layer to keep the company list up to date.
+
+```bash
+uv run -m src.pipeline.00_companies
+```
+
+### 1. Career Pages
+
+
 
 ```bash
 uv run -m src.pipeline.01_career_pages

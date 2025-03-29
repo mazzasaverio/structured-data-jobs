@@ -1,7 +1,7 @@
 import os
 import sys
 
-# Aggiungi la directory principale al sys.path
+# Add project root to Python path
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, "../.."))
 if project_root not in sys.path:
@@ -19,9 +19,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.db.models.models import CompanyUrl, FrontierUrl
 from src.db.connection import get_db_session
-import re
-from src.pipeline.career_validator import CareerPageValidator
-from sqlalchemy.exc import SQLAlchemyError, OperationalError, IntegrityError
 
 # Import needed for sitemap exploration
 import aiohttp
@@ -31,6 +28,11 @@ from src.utils.logging import setup_logging
 
 setup_logging(service_name="career-crawler")            
 
+from src.services.html_to_markdown import get_page_markdown
+from src.services.job_processor import process_content
+from src.utils.config_loader import load_prompt_config
+from src.utils.file_utils import write_to_file
+
 class CareerCrawler:
     """Crawler for finding career pages on company websites."""
     
@@ -38,12 +40,7 @@ class CareerCrawler:
         """Initialize crawler with output directory."""
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
-        try:
-            self.validator = CareerPageValidator()
-        except Exception as e:
-            logfire.error("Failed to initialize CareerPageValidator", error=str(e))
-            raise  # Re-raise to prevent crawler from starting with invalid config
-    
+
     async def setup_browser(self) -> Tuple[Browser, BrowserContext]:
         """Set up Playwright browser and context."""
         playwright = await async_playwright().start()
@@ -54,11 +51,10 @@ class CareerCrawler:
         )
         return browser, context
     
-    async def find_career_link(self, page: Page) -> Optional[str]:
+    async def find_career_link(self, url: str) -> Optional[str]:
         """Find career page using multiple strategies in optimal order."""
 
-        base_url = page.url.rstrip('/')
-        parsed_url = urlparse(base_url)
+        parsed_url = urlparse(url.rstrip('/'))
         domain = f"{parsed_url.scheme}://{parsed_url.netloc}"
         
         # =============== STRATEGY 1: Direct URL Probing ===============
@@ -71,19 +67,95 @@ class CareerCrawler:
             "/lavora-con-noi", "/opportunita", "/carriere"
         ]
         
-        for path in common_career_paths:
-            try:
-                url = f"{domain}{path}"
-                response = await page.goto(url, wait_until="domcontentloaded", timeout=5000)
-                
-                # Check if page exists (status code 200)
-                if response and response.status == 200:
-                    return url
-                
-            except Exception as e:
-                logfire.debug(f"Error probing URL {path}", error=str(e))
+        # Create a new page for URL checking
+        playwright = await async_playwright().start()
+        browser = await playwright.chromium.launch(headless=True)
+        context = await browser.new_context(
+            viewport={"width": 1280, "height": 800},
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        )
+        page = await context.new_page()
         
-         
+        try:
+            # Try Strategy 1: Direct URL Probing
+            for path in common_career_paths:
+                try:
+                    check_url = f"{domain}{path}"
+                    response = await page.goto(check_url, wait_until="domcontentloaded", timeout=5000)
+                    
+                    # Check if page exists (status code 200)
+                    if response and response.status == 200:
+                        return check_url
+                    
+                except Exception as e:
+                    logfire.debug(f"Error probing URL {path}", error=str(e))
+            
+            # =============== STRATEGY 2: Link Text Analysis ===============
+            logfire.info("Strategy 1 failed, trying Strategy 2: Link Text Analysis")
+            
+            # Keywords that might indicate career pages (in English and Italian)
+            career_keywords = [
+                "career", "careers", "jobs", "join us", "work with us", "join our team", 
+                "opportunities", "employment", "vacancies", "job openings", "open positions",
+                "lavora con noi", "opportunità", "carriere", "posizioni aperte", "lavoro",
+                "unisciti a noi", "join", "team", "careers", "hiring", "work for us"
+            ]
+            
+            # Navigate to the main company page
+            try:
+                await page.goto(url, wait_until="domcontentloaded", timeout=10000)
+                
+                # Extract all links from the page
+                links = await page.query_selector_all('a, button')
+                
+                for link in links:
+                    try:
+                        # Get text content
+                        text_content = await link.text_content()
+                        if not text_content:
+                            continue
+                        
+                        text_content = text_content.lower().strip()
+                        
+                        # Check if any career keyword is in the link text
+                        if any(keyword.lower() in text_content for keyword in career_keywords):
+                            # For anchor tags, get the href attribute
+                            if await link.get_attribute('href'):
+                                href = await link.get_attribute('href')
+                                
+                                # Skip non-navigational links
+                                if not href or href == '#' or href.startswith('javascript:') or href.startswith('mailto:'):
+                                    continue
+                                    
+                                # Normalize URL
+                                if not href.startswith('http'):
+                                    if href.startswith('/'):
+                                        href = f"{domain}{href}"
+                                    else:
+                                        href = f"{domain}/{href}"
+                                
+                                logfire.info(f"Found potential career link via text analysis: {href}")
+                                
+                                # Verify the link works
+                                try:
+                                    response = await page.goto(href, wait_until="domcontentloaded", timeout=5000)
+                                    if response and response.status == 200:
+                                        return href
+                                except Exception as e:
+                                    logfire.debug(f"Error validating potential career link", error=str(e))
+                                    
+                    except Exception as e:
+                        logfire.debug(f"Error analyzing link", error=str(e))
+                        
+            except Exception as e:
+                logfire.debug(f"Error navigating to main page for link analysis", error=str(e))
+                
+            return None
+        finally:
+            await context.close()
+            await browser.close()
+            await playwright.stop()
+    
     async def extract_page_text(self, page: Page) -> str:
         """
         Extract links from the page with their text, context, and potential content description.
@@ -215,56 +287,23 @@ class CareerCrawler:
         
         return result
     
-    async def process_company(self, company: CompanyUrl, browser: Browser, session: AsyncSession) -> None:
+    async def process_company(self, company: CompanyUrl, session: AsyncSession) -> None:
         """Process a single company to find its career page."""
-        logfire.info(f"Processing company: {company.name}", url=company.url)
+        logfire.info(f"Processing company: {company.name} - {company.url}")
+
+        config = load_prompt_config("01_career_pages")
+        llm_config = config.get("career_validation")
         
-        context = await browser.new_context()
-        page = await context.new_page()
         
         try:
-            # Visit company homepage (level 0)
-            await page.goto(company.url, timeout=60000, wait_until="domcontentloaded")
-            career_url = await self.find_career_link(page)
+            # level 0
+            career_url = await self.find_career_link(company.url)
+
+            if not career_url:
+                logfire.info(f"No career page found for {company.url}")
+                return
             
             logfire.info(f"Found career page: {career_url}")
-            
-            # If no career page found, use the domain URL
-            if career_url is None:
-                parsed_url = urlparse(company.url)
-                domain = f"{parsed_url.scheme}://{parsed_url.netloc}"
-                career_url = domain
-                logfire.info(f"No specific career page found, using domain: {domain}")
-                
-                # Check if this domain URL already exists in frontier
-                existing_entry = await session.execute(
-                    select(FrontierUrl).where(
-                        FrontierUrl.company_id == company.id,
-                        (FrontierUrl.url == domain) | (FrontierUrl.url_domain == domain)
-                    )
-                )
-                existing_entry = existing_entry.scalars().first()
-                
-                if not existing_entry:
-                    career_frontier = FrontierUrl(
-                        company_id=company.id,
-                        url_domain=domain,
-                        url="", 
-                        depth=1,
-                        is_target=False,
-                        last_visited=datetime.now()
-                    )
-                    session.add(career_frontier)
-                    await session.commit()
-                    logfire.info(f"Added new frontier URL: {career_url}")
-           
-                else:
-                    logfire.info(f"Domain URL already exists in frontier: {domain}")
-                    # Skip further processing if we're just using the domain
-                    return
-            
-            # Visit career page and extract text
-            await page.goto(career_url, timeout=60000, wait_until="domcontentloaded")
             
             # Check if career URL already exists in frontier
             existing_career = await session.execute(
@@ -276,22 +315,16 @@ class CareerCrawler:
             existing_career = existing_career.scalars().first()
 
             # Extract text and links
-            page_text = await self.extract_page_text(page)
+            content_text = await get_page_markdown(career_url, 
+                                                save_to_file=True,
+                                                filename=f"data/output/{company.name}_career_page.md")
 
-            # Save page text and links to file
-            safe_filename = re.sub(r'[^\w\-_]', '_', company.name)
-            text_file_path = self.output_dir / f"{safe_filename}_page_text.txt"
-            with open(text_file_path, "w", encoding="utf-8") as f:
-                f.write(f"URL: {career_url}\n\n")
-                f.write(page_text)
-                
-            logfire.info(f"Saved page text and links to file", file_path=str(text_file_path))
-
-            # Use LLM to determine if this page is a target (contains a LIST of job postings)
-            is_target, suggested_urls = await self.validator.analyze_career_page(
-                page_text=page_text,
-                page_url=career_url,
-            )
+            json_data = await process_content(career_url, content_text, llm_config)
+            
+            # Save JSON data to the same folder
+            write_to_file(json_data, f"data/output/{company.name}_career_page.json")
+            
+            is_target, suggested_urls = json_data.get("is_target"), json_data.get("suggested_urls")
 
             if existing_career:
                 # Update existing record
@@ -326,7 +359,7 @@ class CareerCrawler:
             
             # If not a target but has suggested URLs, add them to frontier
             if not is_target and suggested_urls:
-                logfire.info(f"LLM suggests exploring these URLs:", urls=suggested_urls)
+                logfire.info(f"LLM suggests exploring these URLs {suggested_urls}")
                 
                 # Visit each suggested URL to check if it's a target
                 for suggestion in suggested_urls:
@@ -335,27 +368,25 @@ class CareerCrawler:
                         continue
                         
                     try:
-                        logfire.info(f"Checking suggested URL: {suggested_url}")
-                        await page.goto(suggested_url, timeout=60000, wait_until="domcontentloaded")
+                        # Convert relative URL to absolute URL if needed
+                        if not suggested_url.startswith('http'):
+                            parsed_url = urlparse(career_url)
+                            base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
+                            if suggested_url.startswith('/'):
+                                suggested_url = f"{base_url}{suggested_url}"
+                            else:
+                                suggested_url = f"{base_url}/{suggested_url}"
                         
-                        # Extract and analyze
-                        suggestion_text = await self.extract_page_text(page)
+                        suggestion_text = await get_page_markdown(suggested_url, 
+                                                save_to_file=True,
+                                                filename=f"data/output/{company.name}_suggested_page.md")
                         
-                        # Save suggested page text to file
-                        safe_company_name = re.sub(r'[^\w\-_]', '_', company.name)
-                        safe_url = re.sub(r'[^\w\-_]', '_', suggested_url.split('/')[-1])[:50]
-                        suggestion_file_path = self.output_dir / f"{safe_company_name}_suggested_{safe_url}_text.txt"
-                        with open(suggestion_file_path, "w", encoding="utf-8") as f:
-                            f.write(f"URL: {suggested_url}\n\n")
-                            f.write(suggestion_text)
+                        json_data = await process_content(suggested_url, suggestion_text, llm_config)
                         
-                        logfire.info(f"Saved suggested page text to file", file_path=str(suggestion_file_path))
-                      
-                        is_suggested_target, _ = await self.validator.analyze_career_page(
-                            page_text=suggestion_text,
-                            page_url=suggested_url,
-                         
-                        )
+                        # Save suggested page JSON data
+                        write_to_file(json_data, f"data/output/{company.name}_suggested_page.json")
+                        
+                        is_suggested_target = json_data.get("is_target")
                         
                         # Update frontier entry
                         frontier_entry = await session.execute(
@@ -403,9 +434,16 @@ class CareerCrawler:
                          error=str(e),
                          traceback=traceback.format_exc())
 
-        finally:
-            await context.close()
-    
+    async def check_url_exists(self, url: str) -> bool:
+        """Check if a URL exists and returns a valid response."""
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.head(url, allow_redirects=True, timeout=10) as response:
+                    return response.status < 400
+        except Exception as e:
+            logfire.debug(f"Error checking URL: {url}", error=str(e))
+            return False
+
     async def run(self) -> None:
         """Run crawler on all companies in database."""
 
@@ -424,18 +462,11 @@ class CareerCrawler:
                 
                 for target_url in target_urls:
                     try:
-                        # Check if URL is broken
-                        response = None
-                        try:
-                            page = await context.new_page()
-                            response = await page.goto(target_url.url, timeout=30000, wait_until="domcontentloaded")
-                            await page.close()
-                        except Exception as e:
-                            logfire.warning(f"Failed to access target URL", url=target_url.url, error=str(e))
-                            response = None
+                        # Check if URL is broken using simplified method
+                        url_exists = await self.check_url_exists(target_url.url)
                         
-                        # If URL is broken (no response or error status)
-                        if response is None or response.status >= 400:
+                        # If URL is broken
+                        if not url_exists:
                             logfire.info(f"Found broken target URL - deleting", url=target_url.url)
                             companies_with_broken_targets.add(target_url.company_id)
                             await session.delete(target_url)
@@ -463,7 +494,7 @@ class CareerCrawler:
                 for company in companies:
                     try:
                         logfire.info(f"Processing company: {company.name}", url=company.url)
-                        await self.process_company(company, browser, session)
+                        await self.process_company(company, session)
                     except Exception as e:
                         import traceback
                         logfire.error(f"Error processing company", 
@@ -499,37 +530,64 @@ async def run_career_crawler():
         await crawler.run()
         
     finally:
+        # Close resources in reverse order of creation
         if page:
             try:
                 await page.close()
-            except:
-                pass
+            except Exception as e:
+                logfire.error("Error closing page", error=str(e))
                 
         if context:
             try:
                 await context.close()
-            except:
-                pass
+            except Exception as e:
+                logfire.error("Error closing context", error=str(e))
                 
         if browser:
             try:
                 await browser.close()
-            except:
-                pass
+            except Exception as e:
+                logfire.error("Error closing browser", error=str(e))
                 
         if playwright:
             try:
                 await playwright.stop()
-            except:
-                pass
+            except Exception as e:
+                logfire.error("Error stopping playwright", error=str(e))
 
 if __name__ == "__main__":
+    # Create and set the event loop
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    
     try:
-        asyncio.run(run_career_crawler())
+        # Run the main crawler task
+        loop.run_until_complete(run_career_crawler())
+    except KeyboardInterrupt:
+        logfire.info("Career crawler stopped by user")
+    except Exception as e:
+        logfire.error(f"Career crawler failed with error", error=str(e), exc_info=True)
     finally:
-        # Pulizia esplicita delle risorse del loop di eventi
-        loop = asyncio.get_event_loop()
-        if loop.is_running():
-            loop.stop()
-        if not loop.is_closed():
-            loop.close()
+        # Cancel any pending tasks
+        pending = asyncio.all_tasks(loop)
+        for task in pending:
+            if not task.done():
+                task.cancel()
+        
+        # Run the event loop until all tasks are cancelled
+        if pending:
+            loop.run_until_complete(asyncio.gather(*pending, return_exceptions=True))
+        
+        # Clean up loop resources explicitly
+        loop.run_until_complete(loop.shutdown_asyncgens())
+        if hasattr(loop, "shutdown_default_executor"):  # Python 3.9+
+            loop.run_until_complete(loop.shutdown_default_executor())
+        
+        # Close the loop
+        loop.close()
+        
+        # Set the event loop policy to None to avoid the "Event loop is closed" error
+        # during garbage collection of subprocess transports
+        asyncio.set_event_loop(None)
+        
+        logfire.info("Successfully shut down career crawler")
