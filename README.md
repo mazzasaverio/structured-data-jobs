@@ -8,28 +8,24 @@ While the initial setup will focus on tech roles—particularly data engineering
 
 ### 0. Companies
 
-Once installation and setup are complete, the first step is to prepare a seed list of companies we want to gather information on, including company details and job postings. We'll use each company's main domain as the primary key for identification. TODO: In the future, we could add a crawling and data collection layer to keep the company list up to date.
-
 ```bash
 uv run -m src.pipeline.00_companies
 ```
+Once installation and setup are complete, the first step is to prepare a seed list of companies we want to gather information on, including company details and job postings. We'll use each company's main domain as the primary key for identification. TODO: In the future, we could add a crawling and data collection layer to keep the company list up to date.
 
 ### 1. Career Pages
-
-
 
 ```bash
 uv run -m src.pipeline.01_career_pages
 ```
 
-## Crawling Methodology
-
 We're trying to identify all the pages where job listings are typically posted. To do this, we use the following approach. The crawler operates across different depth levels:
 
-1.1 **Depth Level 0: Career Page Discovery**: We check for common URL patterns like /careers, /jobs, etc.
-We'll implement several strategies, but to begin with, let's keep it simple. Most companies have a dedicated path for job postings, so we can take advantage of that. This method is fast, non-intrusive, and doesn't require interacting with the page.
 
-1.2 **Depth Level ≥ 1**: Once we find a career-related page, the system follows it, since job listings are often nested deeper in the site or split into subpages. We then use OpenAI's LLM to analyze the structured output and decide whether a URL is a seed (to explore further) or a target (that lists all job postings directly). Also in this case, let's keep it simple for now
+1.1 **Depth Level 0: Career Page Discovery**: We check for common URL patterns like /careers, /jobs, etc.
+We'll implement several strategies, but to begin with, let's keep it simple. Most companies have a dedicated path for job postings, so we can take advantage of that. This method is fast, non-intrusive, and doesn't require interacting with the page. Second strategy is to find about buttuns in the page the can redirect to a potentially target page
+
+1.2 **Depth Level ≥ 1**: Once we find a career-related page, the system follows it, since job listings are often nested deeper in the site or split into subpages. We then use OpenAI's LLM to analyze the structured output and decide whether a URL is a seed (to explore further) or a target (that lists all job postings directly). Also in this case, let's keep it simple for now and we implement a recursive aproach that end if a target url is found
 
 The crawler maintains state awareness, verifying target URL validity and handling broken links automatically.
 
