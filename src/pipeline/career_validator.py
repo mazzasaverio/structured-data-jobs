@@ -128,7 +128,7 @@ class CareerPageValidator:
     
     def _load_prompt_config(self) -> Dict[str, Any]:
         """Load prompt configuration from YAML file."""
-        config_path = Path(repo_root) / "src" / "config" / "career_validation.yaml"
+        config_path = Path(repo_root) / "src" / "config" / "01_career_pages.yaml"
         
         try:
             with open(config_path, 'r', encoding='utf-8') as f:
@@ -231,7 +231,6 @@ Respond with a detailed analysis determining if this is a valid career page with
 """
         return prompt 
     
-
 
 
 

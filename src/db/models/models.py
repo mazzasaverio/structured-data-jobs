@@ -1,6 +1,6 @@
 from datetime import datetime
-from typing import List, Optional
-from sqlalchemy import ForeignKey, String, Text, DateTime, Boolean, func, Column, Integer, UniqueConstraint, event
+from typing import List, Optional, Dict, Any
+from sqlalchemy import ForeignKey, String, Text, DateTime, Boolean, func, Column, Integer, UniqueConstraint, event, JSON
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 
@@ -71,6 +71,29 @@ class JobPost(Base):
     )
     
     company: Mapped["CompanyUrl"] = relationship(back_populates="job_posts")
+    job_detail: Mapped["JobDetail"] = relationship(back_populates="job_post", cascade="all, delete-orphan")
+
+
+class JobDetail(Base):
+    """Structured details extracted from individual job post pages"""
+    __tablename__ = "job_details"
+    
+    id: Mapped[int] = mapped_column(primary_key=True)
+    job_post_id: Mapped[int] = mapped_column(ForeignKey("job_posts.id"), unique=True, nullable=False)
+    description: Mapped[str | None] = mapped_column(Text)
+    responsibilities: Mapped[List[str] | None] = mapped_column(JSON)
+    qualifications: Mapped[List[str] | None] = mapped_column(JSON)
+    location: Mapped[str | None] = mapped_column(String(255))
+    salary_range: Mapped[str | None] = mapped_column(String(255))
+    extraction_metadata: Mapped[Dict[str, Any] | None] = mapped_column(JSON)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime, 
+        server_default=func.now(), 
+        onupdate=func.now()
+    )
+    
+    job_post: Mapped["JobPost"] = relationship(back_populates="job_detail")
 
 
 # SQLAlchemy event listener to populate url_domain with the company's url

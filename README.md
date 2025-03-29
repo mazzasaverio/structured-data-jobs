@@ -1,71 +1,48 @@
-# Lean Jobs Crawler
+# Structured Data Jobs
 
-A specialized web crawler is built to extract job postings directly from company websites. It uses a standardized method and leverages an LLM to identify the exact URLs where job listings are found. The aim is to have the data to create a platform that continuously provides an up-to-date view of the best companies, workplaces, and projects to work on.
+This project aims to build a data pipeline that can collect data about companies and job opportunities, tailored to the information you care about and the types of roles you want to track. The pipeline will pull data directly from company websites and use OpenAI tools to structure it and populate the data model.
 
-## Project Status
+While the initial setup will focus on tech roles—particularly data engineering and software engineering—it’s designed to be easily adaptable for tracking any kind of role or information you’d like to analyze over time.
 
-⚠️ **Early Development Phase** ⚠️
+## Data Pipeline
 
-This project is currently in its very early stages of development. The core functionality is being implemented, and the architecture is subject to change. The repository has just been initialized, and significant parts of the codebase are still under construction.
+### 1. Career Pages
 
-Current priorities:
-- Setting up the database schema
-- Implementing the crawling logic for job postings from known company sites
-- Developing the content extraction for standardized job data
+Once installation and setup are complete, the first step is to prepare a seed list of companies we want to gather information on, including company details and job postings. We'll use each company's main domain as the primary key for identification. TODO: In the future, we could add a crawling and data collection layer to keep the company list up to date.
 
-Future enhancements will include automated company discovery and more comprehensive data analysis.
+```bash
+uv run -m src.pipeline.01_career_pages
+```
 
-Contributors are welcome, but be aware that major refactoring may occur as the project evolves.
+## Crawling Methodology
 
-## Overview
+We're trying to identify all the pages where job listings are typically posted. To do this, we use the following approach. The crawler operates across different depth levels:
 
-The system relies on two main database tables:
+1.1 **Depth Level 0: Career Page Discovery**: We check for common URL patterns like /careers, /jobs, etc.
+We'll implement several strategies, but to begin with, let's keep it simple. Most companies have a dedicated path for job postings, so we can take advantage of that. This method is fast, non-intrusive, and doesn't require interacting with the page.
 
-1. **CompanyUrl**: Stores the main website URLs of companies
-2. **Frontier**: Tracks explored URLs, starting from the company's root URL (the seed). This table includes key fields such as:
-   - **Depth** (indicating the level where the URL was found)
-   - **Target status** – Indicates whether the URL contains a **list** of job postings.
+1.2 **Depth Level ≥ 1**: Once we find a career-related page, the system follows it, since job listings are often nested deeper in the site or split into subpages. We then use OpenAI's LLM to analyze the structured output and decide whether a URL is a seed (to explore further) or a target (that lists all job postings directly). Also in this case, let's keep it simple for now
 
-> **Note:** Currently, company URLs are added manually. In future updates, a dedicated crawler will be implemented to automatically discover all companies in a given city. For now, the primary goal is to identify and store job postings from known companies.
+The crawler maintains state awareness, verifying target URL validity and handling broken links automatically.
 
-## Crawling Process
-
-The crawler operates at different depth levels:
-
-- **Depth Level 0**: The crawler uses a multi-stage approach to locate company career pages, organized in order of increasing complexity:
-
-1. **Direct URL Probing**
-   - Attempts common career page paths like `/careers`, `/jobs`, `/work-with-us`
-   - Fast and non-intrusive, doesn't require page interaction
-   - Validates found pages by checking for job-related terms
-
-2. **Simple Text Matching**
-   - Scans the homepage for obvious career links
-   - Looks for text like "careers", "jobs", "work with us", "join our team"
-   - Minimal page parsing required
-
-3. **Sitemap Exploration**
-   - Checks if the site has a sitemap.xml
-   - Scans for URLs containing career-related terms
-   - Effective for sites with well-structured sitemaps
-   
-- **Depth Level ≥ 1**: Once a career-related page is found, the system navigates to it since job postings may be deeper within the site or in different subsections. Then, we use OpenAI's LLM structured output analysis to determine whether the URL is a seed child URL worth exploring further or a target URL that directly lists all job postings.
-
-The script always checks whether there's no target URL in the frontier_urls table or if the existing target URL is broken.
+### 2. Job Listings
 
 The next step is to set up an independent crawler that regularly scans each target, uses Playwright to extract all the text (including expanding any job listings if needed), and then applies an LLM to extract each job listing. We'll store the relevant details in a new table.
 
+The next step is to choose the role (for example Data Engineer and Software Engineer) from the role in job_posts table and extrat from the related url structured information following similat approach already adopted
+
+### 3. Job Details
+
+The next step is to configure a YAML file with a list of roles (like Data Engineer or Software Engineer), then use it to filter roles from the job_posts table and extract structured data from the related URLs, just like we did before. Go ahead and create the table, config files, and the necessary code to make this work.
 
 
-## Getting Started
-
-### Prerequisites
+### System Requirements
 
 - Python 3.11+
-- Docker and Docker Compose (for containerized deployment)
-- Access to a Neon Postgres database
+- Docker + Docker Compose
+- Neon Postgres database
 
-### Installation
+### Installation Steps
 
 1. Clone the repository:
    ```bash
@@ -73,56 +50,54 @@ The next step is to set up an independent crawler that regularly scans each targ
    cd lean-jobs-crawler
    ```
 
-2. Set up the project with uv:
+2. UV-based setup:
    ```bash
-   # Install uv if not installed
+   # Install UV package manager
    curl -LsSf https://astral.sh/uv/install.sh | sh
    
-   # Initialize the project
+   # Project initialization
    uv init
    
-   # Install dependencies from pyproject.toml
+   # Dependency installation
    uv sync
    ```
 
-3. Configure environment variables:
+3. Environment configuration:
    ```bash
    cp .env.example .env
-   # Edit .env with your database credentials and other settings
+   # Configure database and system settings
    ```
 
-### Database Migrations with Alembic
+### Database Management
 
-This project uses Alembic for database schema migrations. After setting up your environment:
+Using Alembic for schema migrations:
 
-1. Initialize the database (if first time):
+1. Initial setup:
    ```bash
-   # First, ensure your database connection is properly configured in .env
+   # Database initialization
    uv run alembic upgrade head
    ```
 
-2. When making schema changes:
+2. Schema modifications:
    ```bash
-   # Create a new migration after modifying models
+   # Generate migration
    uv run alembic revision --autogenerate -m "Description of changes"
    
-   # Apply the migration
+   # Apply changes
    uv run alembic upgrade head
    ```
 
-3. Managing migrations:
+3. Migration management:
    ```bash
-   # View migration history
+   # History viewing
    uv run alembic history
    
-   # Downgrade to a specific version
+   # Version control
    uv run alembic downgrade <revision_id>
-   
-   # Downgrade one version
    uv run alembic downgrade -1
    ```
 
-Note: Always review auto-generated migrations before applying them to ensure they correctly capture your intended changes.
+Important: Always review auto-generated migrations before deployment.
 
 ### Local Development
 
@@ -167,3 +142,19 @@ docker-compose down
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+## Project Status
+
+⚠️ **Early Development Phase** ⚠️
+
+This project is in active early development. Core functionality is being implemented and architecture may evolve significantly. The codebase is under construction with ongoing major development.
+
+Current Focus Areas:
+- Database schema implementation
+- Job posting crawler development
+- Standardized content extraction system
+
+Future planned enhancements include automated company discovery and advanced data analytics capabilities.
+
+Contributors welcome - note that significant refactoring may occur as the project matures.

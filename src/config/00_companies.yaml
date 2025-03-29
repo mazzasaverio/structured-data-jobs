@@ -4,7 +4,7 @@ companies:
   - name: "Igenius"
     url: "https://www.igenius.ai"
   - name: "Prima"
-    url: "https://www.prima.it"
+    url: "https://www.helloprima.com"
   - name: "Casavo"
     url: "https://www.casavo.com"
   - name: "Xtreamers"
@@ -21,7 +21,16 @@ companies:
     url: "https://www.fiscozen.it"
   - name: "generali"
     url: "https://www.generali.it"
-
+  - name: "bonusx"
+    url: "https://bonusx.it"
+  - name: "igenius"
+    url: "https://www.igenius.ai"
+  - name: "vedrai"
+    url: "https://vedrai.com"
+  - name: "octopus"
+    url: "https://octopusenergy.it"
 
 sources:
   - https://www.greatplacetowork.it
+  - https://github.com/remoteintech/remote-jobs
+

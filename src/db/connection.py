@@ -111,7 +111,6 @@ async def init_db() -> None:
         finally:
             await engine.dispose()
 
-
 async def test_connection() -> bool:
     """Test database connectivity."""
     engine = create_async_db_engine()
@@ -185,3 +184,4 @@ def verify_database_url():
     logfire.info("Database URL verified", url=safe_url)
     
     return True
+

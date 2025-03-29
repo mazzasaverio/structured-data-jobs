@@ -7,37 +7,32 @@ import logging
 def setup_logging(service_name: str = "lean-jobs-crawler", 
                   environment: Optional[str] = None):
     """Set up the Logfire logging system."""
-
+    
+    # Add a check to prevent multiple initializations
+    if getattr(setup_logging, 'initialized', False):
+        return
+        
     logfire.configure(
         service_name=service_name,
-          console={
-         "colors": "auto",
-    } 
-     
+        console={
+            "colors": "auto",
+        } 
     )
-
-    try: 
-        import asyncpg
-        logfire.instrument_asyncpg()
-    except (ImportError, AttributeError):
-        pass
     
-    try:
-        import sqlalchemy
-        logfire.instrument_sqlalchemy()
-    except (ImportError, AttributeError):
-        pass
+    # Mark as initialized
+    setup_logging.initialized = True
     
-    # Add these lines to suppress SQLAlchemy logs
-    logging.getLogger('sqlalchemy').setLevel(logging.ERROR)
-    logging.getLogger('sqlalchemy.engine').setLevel(logging.ERROR)
-    logging.getLogger('sqlalchemy.pool').setLevel(logging.ERROR)
-    logging.getLogger('sqlalchemy.dialects').setLevel(logging.ERROR)
+    # try: 
+    #     import asyncpg
+    #     logfire.instrument_asyncpg()
+    # except (ImportError, AttributeError):
+    #     pass
     
-    # If you're using asyncio SQLAlchemy
-    logging.getLogger('asyncio_sqlalchemy').setLevel(logging.ERROR)
-    
-    logfire.info("Logging system initialized successfully")
+    # try:
+    #     import sqlalchemy
+    #     logfire.instrument_sqlalchemy()
+    # except (ImportError, AttributeError):
+    #     pass
 
 @contextmanager
 def log_span(name: str, extra_attrs: Optional[Dict[str, Any]] = None):

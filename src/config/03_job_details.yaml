@@ -1,0 +1,44 @@
+job_detail_extraction:
+  model: "gpt-4o-2024-08-06" # Or your preferred model
+  messages:
+    - role: "system"
+      content: "You are an expert in analyzing individual job posting pages. Always answer in English. Your task is to extract specific structured details from the job description content provided."
+    - role: "user"
+      content: "Analyze the content of this job posting page and extract the following details in a structured format. If a piece of information is not clearly present, omit the field or set it to null.\n\nPage URL: {url}\n\nPage content: {text}"
+  response_format:
+    type: "json_schema"
+    json_schema:
+      name: "job_detail_extraction"
+      schema:
+        type: "object"
+        properties:
+          description:
+            type: "string"  
+            description: "A brief summary or overview of the job role."
+          responsibilities: 
+            type: "array"
+            description: "List of key responsibilities or tasks for the role."
+            items:
+              type: "string"
+              description: "A key responsibility or task for the role."
+          qualifications:
+            type: "array"
+            description: "List of required or preferred qualifications, skills, or experience."
+            items:
+              type: "string"
+              description: "A required or preferred qualification, skill, or experience for the role."
+          location:
+            type: "string"
+            description: "The primary work location(s) mentioned (e.g., 'San Francisco, CA', 'Remote', 'Hybrid - London'). Be specific."
+          salary_range:
+            type: "string"
+            description: "Any mention of salary, compensation range, or benefits (e.g., '$100,000 - $130,000 per year', 'Competitive + Equity')."
+        required: ["description", "responsibilities", "qualifications", "location", "salary_range"]
+        additionalProperties: False
+      strict: True 
+
+target_roles:
+  - "Data Engineer"
+  # Target roles represent the specific job positions the system will focus on
+  # during the extraction process. Only job postings matching these roles will be
+  # processed by the system. You can add multiple roles to expand the search scope.

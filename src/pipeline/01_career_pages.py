@@ -1,3 +1,12 @@
+import os
+import sys
+
+# Aggiungi la directory principale al sys.path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(current_dir, "../.."))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
 import asyncio
 from datetime import datetime
 from pathlib import Path
@@ -11,13 +20,16 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.db.models.models import CompanyUrl, FrontierUrl
 from src.db.connection import get_db_session
 import re
-from src.crawler.career_validator import CareerPageValidator
+from src.pipeline.career_validator import CareerPageValidator
 from sqlalchemy.exc import SQLAlchemyError, OperationalError, IntegrityError
 
 # Import needed for sitemap exploration
 import aiohttp
 from urllib.parse import urlparse
 
+from src.utils.logging import setup_logging
+
+setup_logging(service_name="career-crawler")            
 
 class CareerCrawler:
     """Crawler for finding career pages on company websites."""
@@ -55,7 +67,7 @@ class CareerCrawler:
             "/join-us", "/work-with-us", "/about/careers",
             "/company/careers", "/join", "/opportunities", "/company/jobs", "/team","/lavora-con-noi",
             "/about/jobs", "/about-us/careers", "/about-us/jobs",
-            "/it/careers", "/it/jobs",
+            "/it/careers", "/it/jobs", "/it/carriere", "/it/carriere/", "/it/jobs/", "/it/careers/",
             "/lavora-con-noi", "/opportunita", "/carriere"
         ]
         
@@ -71,58 +83,7 @@ class CareerCrawler:
             except Exception as e:
                 logfire.debug(f"Error probing URL {path}", error=str(e))
         
-        # Return to home page for next strategies
-        await page.goto(base_url, wait_until="domcontentloaded")
-        await page.wait_for_load_state("networkidle")
-        
-        # =============== STRATEGY 2: Simple Text Matching ===============
-        logfire.info("Trying simple text matching for career links")
-        career_link_texts = [
-            "careers", "jobs", "work with us", "join us", "join our team", 
-            "open positions", "we're hiring", "lavora con noi", "opportunità",
-            "join", "recruiting", "carriere", "career", "job"
-        ]
-        
-        for text in career_link_texts:
-            try:
-                link_selector = f"a:text-matches('{text}', 'i')"
-                if await page.locator(link_selector).count() > 0:
-                    link = page.locator(link_selector).first
-                    href = await link.get_attribute("href")
-                    if href:
-                        full_url = href if href.startswith("http") else f"{domain}{href}"
-                        logfire.info(f"Found career link via text match: {full_url}")
-                        return full_url
-            except Exception as e:
-                logfire.debug(f"Error in text matching for '{text}'", error=str(e))
-        
-        # =============== STRATEGY 3: Sitemap Exploration ===============
-        logfire.info("Checking sitemap for career pages")
-        try:
-            sitemap_url = f"{domain}/sitemap.xml"
-            async with aiohttp.ClientSession() as client_session:
-                async with client_session.get(sitemap_url, timeout=5) as response:
-                    if response.status == 200:
-                        sitemap_text = await response.text()
-                        career_patterns = ["career", "job", "join", "opportunit", "work-with"]
-                        
-                        import re
-                        for pattern in career_patterns:
-                            # Look for URLs containing career-related terms
-                            matches = re.findall(rf'<loc>(https?://[^<]+{pattern}[^<]*)</loc>', sitemap_text, re.IGNORECASE)
-                            for match in matches:
-                                try:
-                                    await page.goto(match, wait_until="domcontentloaded", timeout=5000)
-                                    logfire.info(f"Found potential career page via sitemap: {match}")
-                                    return match
-                                except Exception:
-                                    continue
-        except Exception as e:
-            logfire.debug(f"Error exploring sitemap", error=str(e))
-        
-        # Return to home page for next strategies
-        await page.goto(base_url, wait_until="domcontentloaded")
-        
+         
     async def extract_page_text(self, page: Page) -> str:
         """
         Extract links from the page with their text, context, and potential content description.
@@ -268,6 +229,40 @@ class CareerCrawler:
             
             logfire.info(f"Found career page: {career_url}")
             
+            # If no career page found, use the domain URL
+            if career_url is None:
+                parsed_url = urlparse(company.url)
+                domain = f"{parsed_url.scheme}://{parsed_url.netloc}"
+                career_url = domain
+                logfire.info(f"No specific career page found, using domain: {domain}")
+                
+                # Check if this domain URL already exists in frontier
+                existing_entry = await session.execute(
+                    select(FrontierUrl).where(
+                        FrontierUrl.company_id == company.id,
+                        (FrontierUrl.url == domain) | (FrontierUrl.url_domain == domain)
+                    )
+                )
+                existing_entry = existing_entry.scalars().first()
+                
+                if not existing_entry:
+                    career_frontier = FrontierUrl(
+                        company_id=company.id,
+                        url_domain=domain,
+                        url="", 
+                        depth=1,
+                        is_target=False,
+                        last_visited=datetime.now()
+                    )
+                    session.add(career_frontier)
+                    await session.commit()
+                    logfire.info(f"Added new frontier URL: {career_url}")
+           
+                else:
+                    logfire.info(f"Domain URL already exists in frontier: {domain}")
+                    # Skip further processing if we're just using the domain
+                    return
+            
             # Visit career page and extract text
             await page.goto(career_url, timeout=60000, wait_until="domcontentloaded")
             
@@ -290,7 +285,6 @@ class CareerCrawler:
                 f.write(f"URL: {career_url}\n\n")
                 f.write(page_text)
                 
-            
             logfire.info(f"Saved page text and links to file", file_path=str(text_file_path))
 
             # Use LLM to determine if this page is a target (contains a LIST of job postings)
@@ -305,16 +299,28 @@ class CareerCrawler:
                 existing_career.last_visited = datetime.now()
                 logfire.info(f"Updated existing frontier URL: {career_url}")
             else:
-                # Create new record
-                career_frontier = FrontierUrl(
-                    company_id=company.id,
-                    url=career_url,
-                    depth=1,
-                    is_target=is_target,
-                    last_visited=datetime.now()
+                # Only create a new record if we haven't already created one for this URL
+                # (this prevents duplicates when career_url == domain)
+                existing_record = await session.execute(
+                    select(FrontierUrl).where(
+                        FrontierUrl.company_id == company.id,
+                        FrontierUrl.url == career_url
+                    )
                 )
-                session.add(career_frontier)
-                logfire.info(f"Added new frontier URL: {career_url}")
+                existing_record = existing_record.scalars().first()
+                
+                if not existing_record:
+                    career_frontier = FrontierUrl(
+                        company_id=company.id,
+                        url=career_url,
+                        depth=1,
+                        is_target=is_target,
+                        last_visited=datetime.now()
+                    )
+                    session.add(career_frontier)
+                    logfire.info(f"Added new frontier URL: {career_url}")
+                else:
+                    logfire.info(f"URL already exists in frontier: {career_url}")
             
             await session.flush()
             
@@ -437,9 +443,6 @@ class CareerCrawler:
                     except Exception as e:
                         logfire.error(f"Error checking target URL", url=target_url.url, error=str(e))
                 
-                # Commit the deletions
-                await session.commit()
-                
                 # Subquery to find companies that have at least one VALID target URL
                 companies_with_targets = select(FrontierUrl.company_id).where(
                     FrontierUrl.is_target == True
@@ -461,9 +464,7 @@ class CareerCrawler:
                     try:
                         logfire.info(f"Processing company: {company.name}", url=company.url)
                         await self.process_company(company, browser, session)
-                        await session.commit()
                     except Exception as e:
-                        await session.rollback()
                         import traceback
                         logfire.error(f"Error processing company", 
                                      company=company.name,
@@ -523,4 +524,12 @@ async def run_career_crawler():
                 pass
 
 if __name__ == "__main__":
-    asyncio.run(run_career_crawler())
+    try:
+        asyncio.run(run_career_crawler())
+    finally:
+        # Pulizia esplicita delle risorse del loop di eventi
+        loop = asyncio.get_event_loop()
+        if loop.is_running():
+            loop.stop()
+        if not loop.is_closed():
+            loop.close()

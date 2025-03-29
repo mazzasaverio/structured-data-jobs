@@ -166,7 +166,7 @@ class JobExtractor:
     
     def _load_prompt_config(self) -> Dict[str, Any]:
         """Load prompt configuration from YAML file."""
-        config_path = Path(repo_root) / "src" / "config" / "job_extraction.yaml"
+        config_path = Path(repo_root) / "src" / "config" / "02_job_listings.yaml"
         
         try:
             logfire.info(f"Loading prompt config from {config_path}")
