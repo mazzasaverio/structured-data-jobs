@@ -61,10 +61,12 @@ class CareerCrawler:
         common_career_paths = [
             "/careers", "/careers/", "/jobs", "/jobs/", "/en/careers", "/en/careers/", 
             "/join-us", "/work-with-us", "/about/careers",
-            "/company/careers", "/join", "/opportunities", "/company/jobs", "/team","/lavora-con-noi",
+            "/company/careers", "/join", "/opportunities", "/company/jobs", "/team", "/lavora-con-noi",
             "/about/jobs", "/about-us/careers", "/about-us/jobs",
             "/it/careers", "/it/jobs", "/it/carriere", "/it/carriere/", "/it/jobs/", "/it/careers/",
-            "/lavora-con-noi", "/opportunita", "/carriere"
+            "/lavora-con-noi", "/opportunita", "/carriere",
+            # Add more specific paths based on your screenshot
+            "/en/company/careers", "/en/company/jobs", "/en/about/careers"
         ]
         
         # Create a new page for URL checking
@@ -81,183 +83,153 @@ class CareerCrawler:
             for path in common_career_paths:
                 try:
                     check_url = f"{domain}{path}"
+                    logfire.debug(f"Probing URL: {check_url}")
                     response = await page.goto(check_url, wait_until="domcontentloaded", timeout=5000)
                     
                     # Check if page exists (status code 200)
                     if response and response.status == 200:
+                        logfire.info(f"Direct probing found working URL: {check_url}")
                         return check_url
                     
                 except Exception as e:
                     logfire.debug(f"Error probing URL {path}", error=str(e))
             
             # =============== STRATEGY 2: Link Text Analysis ===============
-            logfire.info("Strategy 1 failed, trying Strategy 2: Link Text Analysis")
+            logfire.info("Strategy 1 failed, trying Strategy 2: Link Analysis")
             
             # Keywords that might indicate career pages (in English and Italian)
             career_keywords = [
                 "career", "careers", "jobs", "join us", "work with us", "join our team", 
                 "opportunities", "employment", "vacancies", "job openings", "open positions",
                 "lavora con noi", "opportunità", "carriere", "posizioni aperte", "lavoro",
-                "unisciti a noi", "join", "team", "careers", "hiring", "work for us"
+                "unisciti a noi", "join", "team", "hiring", "work for us"
             ]
             
-            # Navigate to the main company page
+            # Career-related paths in URLs
+            career_paths = [
+                "career", "careers", "jobs", "join", "lavora", "carriere", "company/careers", 
+                "about/careers", "en/company/careers", "en/careers"
+            ]
+            
+            # Navigate to the main company page with a longer timeout for full page load
             try:
-                await page.goto(url, wait_until="domcontentloaded", timeout=10000)
+                logfire.info(f"Navigating to main page: {url}")
+                await page.goto(url, wait_until="networkidle", timeout=15000)
+                
+                # Wait a bit for any dynamic content to load
+                await page.wait_for_timeout(2000)
                 
                 # Extract all links from the page
-                links = await page.query_selector_all('a, button')
+                links = await page.query_selector_all('a')
+                logfire.info(f"Found {len(links)} links on the page")
                 
+                # DEBUG: Log all found links for troubleshooting
+                found_links = []
                 for link in links:
                     try:
-                        # Get text content
-                        text_content = await link.text_content()
-                        if not text_content:
+                        href = await link.get_attribute('href') or ''
+                        text = (await link.text_content() or '').strip()
+                        found_links.append(f"'{text}' → {href}")
+                    except Exception:
+                        pass
+                
+                logfire.debug(f"All links on page: {', '.join(found_links[:20])}{'...' if len(found_links) > 20 else ''}")
+                
+                # First, check for exact career links by href
+                for link in links:
+                    try:
+                        href = await link.get_attribute('href')
+                        if not href:
+                            continue
+                            
+                        href_lower = href.lower()
+                        
+                        # Check if the URL path contains any career indicators
+                        if any(path in href_lower for path in career_paths):
+                            text = (await link.text_content() or '').strip()
+                            logfire.info(f"Found potential career link by URL: '{text}' → {href}")
+                            
+                            # Normalize URL
+                            if not href.startswith('http'):
+                                if href.startswith('/'):
+                                    href = f"{domain}{href}"
+                                else:
+                                    href = f"{domain}/{href}"
+                            
+                            # Verify the link works
+                            try:
+                                response = await page.goto(href, wait_until="domcontentloaded", timeout=5000)
+                                if response and response.status == 200:
+                                    return href
+                            except Exception as e:
+                                logfire.debug(f"Error validating URL", url=href, error=str(e))
+                    except Exception as e:
+                        logfire.debug(f"Error processing link", error=str(e))
+                
+                # Second pass: check by link text
+                for link in links:
+                    try:
+                        href = await link.get_attribute('href')
+                        if not href or href == '#' or href.startswith('javascript:') or href.startswith('mailto:'):
                             continue
                         
-                        text_content = text_content.lower().strip()
+                        text = (await link.text_content() or '').strip()
+                        if not text:
+                            continue
                         
-                        # Check if any career keyword is in the link text
-                        if any(keyword.lower() in text_content for keyword in career_keywords):
-                            # For anchor tags, get the href attribute
-                            if await link.get_attribute('href'):
-                                href = await link.get_attribute('href')
-                                
-                                # Skip non-navigational links
-                                if not href or href == '#' or href.startswith('javascript:') or href.startswith('mailto:'):
-                                    continue
-                                    
-                                # Normalize URL
-                                if not href.startswith('http'):
-                                    if href.startswith('/'):
-                                        href = f"{domain}{href}"
-                                    else:
-                                        href = f"{domain}/{href}"
-                                
-                                logfire.info(f"Found potential career link via text analysis: {href}")
-                                
-                                # Verify the link works
-                                try:
-                                    response = await page.goto(href, wait_until="domcontentloaded", timeout=5000)
-                                    if response and response.status == 200:
-                                        return href
-                                except Exception as e:
-                                    logfire.debug(f"Error validating potential career link", error=str(e))
-                                    
+                        # Case-insensitive exact keyword match
+                        if any(keyword.lower() == text.lower() for keyword in career_keywords):
+                            logfire.info(f"Found exact keyword match: '{text}' → {href}")
+                            
+                            # Normalize URL
+                            if not href.startswith('http'):
+                                if href.startswith('/'):
+                                    href = f"{domain}{href}"
+                                else:
+                                    href = f"{domain}/{href}"
+                            
+                            # Verify the link works
+                            try:
+                                response = await page.goto(href, wait_until="domcontentloaded", timeout=5000)
+                                if response and response.status == 200:
+                                    return href
+                            except Exception as e:
+                                logfire.debug(f"Error validating URL", url=href, error=str(e))
+                        
+                        # Partial keyword match (contained within)
+                        elif any(keyword.lower() in text.lower() for keyword in career_keywords):
+                            logfire.info(f"Found partial keyword match: '{text}' → {href}")
+                            
+                            # Normalize URL
+                            if not href.startswith('http'):
+                                if href.startswith('/'):
+                                    href = f"{domain}{href}"
+                                else:
+                                    href = f"{domain}/{href}"
+                            
+                            # Verify the link works
+                            try:
+                                response = await page.goto(href, wait_until="domcontentloaded", timeout=5000)
+                                if response and response.status == 200:
+                                    return href
+                            except Exception as e:
+                                logfire.debug(f"Error validating URL", url=href, error=str(e))
+                    
                     except Exception as e:
-                        logfire.debug(f"Error analyzing link", error=str(e))
-                        
-            except Exception as e:
-                logfire.debug(f"Error navigating to main page for link analysis", error=str(e))
+                        logfire.debug(f"Error analyzing link text", error=str(e))
                 
-            return None
+                logfire.info("No career links found on main page")
+                return None
+                
+            except Exception as e:
+                logfire.error(f"Error during link analysis", error=str(e))
+                return None
+            
         finally:
             await context.close()
             await browser.close()
             await playwright.stop()
     
-    async def extract_page_text(self, page: Page) -> str:
-        """
-        Extract links from the page with their text, context, and potential content description.
-        Also includes the full text content of the page.
-        """
-        # Get the page URL and title
-        page_url = page.url
-        title = await page.title()
-        
-        # Start building the structured representation
-        structured_content = [
-            f"PAGE ANALYSIS: {title}",
-            f"URL: {page_url}",
-            "\n=== FULL PAGE TEXT ===\n"
-        ]
-        
-        # Extract full page text content
-        full_text = await page.evaluate("""() => {
-            return document.body.innerText;
-        }""")
-        
-        structured_content.append(full_text)
-        structured_content.append("\n=== LINKS ANALYSIS ===\n")
-        
-        # Extract all links on the page with their context
-        all_links = await page.locator("a").all()
-        if all_links:
-            for link in all_links:
-                try:
-                    # Get link text and URL
-                    link_text = (await link.text_content() or "").strip()
-                    href = await link.get_attribute("href") or ""
-                    
-                    # Skip empty, javascript, and mailto links
-                    if not href or href == "#" or href.startswith("javascript:") or href.startswith("mailto:"):
-                        continue
-                    
-                    # Normalize URL
-                    if not href.startswith("http"):
-                        if href.startswith("/"):
-                            parsed_url = urlparse(page_url)
-                            href = f"{parsed_url.scheme}://{parsed_url.netloc}{href}"
-                        else:
-                            href = f"{page_url.rstrip('/')}/{href.lstrip('/')}"
-                    
-                    # Try to get some context
-                    context = ""
-                    try:
-                        # Get parent element's information for context
-                        context = await link.evaluate("""el => {
-                            const parent = el.parentElement;
-                            if (parent) {
-                                // Find which section this link belongs to
-                                const section = parent.closest('header, nav, main, section, footer, aside');
-                                const sectionName = section ? section.tagName.toLowerCase() : 'unknown';
-                                
-                                // Check for common patterns indicating job listings
-                                const isJobLink = (
-                                    el.textContent.toLowerCase().includes('job') || 
-                                    el.textContent.toLowerCase().includes('position') || 
-                                    el.href.toLowerCase().includes('job') ||
-                                    el.href.toLowerCase().includes('career') ||
-                                    el.closest('.job-list, .jobs, .positions, .vacancies')
-                                );
-                                
-                                // Get some surrounding text for context
-                                let surroundingText = '';
-                                const container = el.closest('li, div, article, section') || parent;
-                                if (container && container !== el) {
-                                    surroundingText = container.textContent.substring(0, 200);
-                                }
-                                
-                                return {
-                                    tag: parent.tagName.toLowerCase(),
-                                    section: sectionName,
-                                    possibleJobListing: isJobLink,
-                                    text: surroundingText
-                                };
-                            }
-                            return null;
-                        }""")
-                    except:
-                        pass
-                    
-                    if context:
-                        section_name = context.get("section", "unknown")
-                        parent_tag = context.get("tag", "")
-                        is_job_link = context.get("possibleJobListing", False)
-                        surrounding_text = context.get("text", "").replace(link_text, f"[{link_text}]").strip()
-                        
-                        structured_content.append(f"• LINK: {link_text} → {href}")
-                        structured_content.append(f"  CONTEXT: In {section_name}/{parent_tag}")
-                        if is_job_link:
-                            structured_content.append(f"  POTENTIAL JOB LISTING: Yes")
-                        if surrounding_text:
-                            structured_content.append(f"  SURROUNDING TEXT: {surrounding_text[:150]}...")
-                    else:
-                        structured_content.append(f"• LINK: {link_text} → {href}")
-                except Exception as e:
-                    logfire.debug(f"Error extracting link context", error=str(e))
-        
-        return "\n".join(structured_content)
     
     async def extract_page_links(self, page: Page) -> List[dict]:
         """Extract all links from a page."""
@@ -361,65 +333,9 @@ class CareerCrawler:
             if not is_target and suggested_urls:
                 logfire.info(f"LLM suggests exploring these URLs {suggested_urls}")
                 
-                # Visit each suggested URL to check if it's a target
-                for suggestion in suggested_urls:
-                    suggested_url = suggestion.get('url')
-                    if not suggested_url:
-                        continue
-                        
-                    try:
-                        # Convert relative URL to absolute URL if needed
-                        if not suggested_url.startswith('http'):
-                            parsed_url = urlparse(career_url)
-                            base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
-                            if suggested_url.startswith('/'):
-                                suggested_url = f"{base_url}{suggested_url}"
-                            else:
-                                suggested_url = f"{base_url}/{suggested_url}"
-                        
-                        suggestion_text = await get_page_markdown(suggested_url, 
-                                                save_to_file=True,
-                                                filename=f"data/output/{company.name}_suggested_page.md")
-                        
-                        json_data = await process_content(suggested_url, suggestion_text, llm_config)
-                        
-                        # Save suggested page JSON data
-                        write_to_file(json_data, f"data/output/{company.name}_suggested_page.json")
-                        
-                        is_suggested_target = json_data.get("is_target")
-                        
-                        # Update frontier entry
-                        frontier_entry = await session.execute(
-                            select(FrontierUrl).where(
-                                FrontierUrl.company_id == company.id,
-                                FrontierUrl.url == suggested_url
-                            )
-                        )
-                        frontier_entry = frontier_entry.scalars().first()
-                        
-                        if frontier_entry:
-                            frontier_entry.is_target = is_suggested_target
-                            frontier_entry.last_visited = datetime.now()
-                            await session.flush()
-                        else:
-                            logfire.warning(f"Suggested URL not found in frontier", url=suggested_url)
-                            # Add to frontier with is_target=False (we'll check it later)
-                            new_frontier = FrontierUrl(
-                                company_id=company.id,
-                                url=suggested_url,
-                                depth=1,  
-                                is_target=is_suggested_target,  
-                                last_visited=None  
-                            )
-                            session.add(new_frontier)
-                            logfire.info(f"Added suggested URL to frontier", url=suggested_url)
-
-                        await session.flush()
-                            
-                    except Exception as e:
-                        logfire.error(f"Error checking suggested URL", 
-                                     url=suggested_url,
-                                     error=str(e))
+                # Recursively explore suggested URLs (up to depth 2)
+                await self.explore_suggested_urls(career_url, suggested_urls, company, session, 
+                                                 depth=1, max_depth=2, llm_config=llm_config)
             
             if is_target:
                 logfire.info("Career page is a target (contains a list of job postings)", url=career_url)
@@ -433,6 +349,112 @@ class CareerCrawler:
                          url=company.url,
                          error=str(e),
                          traceback=traceback.format_exc())
+
+    async def explore_suggested_urls(self, base_url, suggested_urls, company, session, 
+                                    depth=1, max_depth=2, llm_config=None):
+        """Recursively explore suggested URLs up to a maximum depth.
+        
+        Args:
+            base_url: The URL from which these suggestions came
+            suggested_urls: List of suggested URL dictionaries
+            company: The company object
+            session: Database session
+            depth: Current depth level (starts at 1)
+            max_depth: Maximum depth to explore (default 2)
+            llm_config: Configuration for content processing
+        
+        Returns:
+            bool: True if a target was found, False otherwise
+        """
+        if depth > max_depth or not suggested_urls:
+            return False
+            
+        target_found = False
+                
+        # Visit each suggested URL to check if it's a target
+        for suggestion in suggested_urls:
+            if target_found:
+                # Stop if we already found a target
+                break
+                
+            suggested_url = suggestion.get('url')
+            if not suggested_url:
+                continue
+                
+            try:
+                # Convert relative URL to absolute URL if needed
+                if not suggested_url.startswith('http'):
+                    parsed_url = urlparse(base_url)
+                    base_domain = f"{parsed_url.scheme}://{parsed_url.netloc}"
+                    if suggested_url.startswith('/'):
+                        suggested_url = f"{base_domain}{suggested_url}"
+                    else:
+                        suggested_url = f"{base_domain}/{suggested_url}"
+                
+                logfire.info(f"Exploring suggested URL (depth {depth})", url=suggested_url)
+                
+                suggestion_text = await get_page_markdown(suggested_url, 
+                                            save_to_file=True,
+                                            filename=f"data/output/{company.name}_suggested_page_d{depth}.md")
+                
+                json_data = await process_content(suggested_url, suggestion_text, llm_config)
+                
+                # Save suggested page JSON data
+                write_to_file(json_data, f"data/output/{company.name}_suggested_page_d{depth}.json")
+                
+                is_suggested_target = json_data.get("is_target")
+                new_suggested_urls = json_data.get("suggested_urls", [])
+                
+                # Update frontier entry
+                frontier_entry = await session.execute(
+                    select(FrontierUrl).where(
+                        FrontierUrl.company_id == company.id,
+                        FrontierUrl.url == suggested_url
+                    )
+                )
+                frontier_entry = frontier_entry.scalars().first()
+                
+                if frontier_entry:
+                    frontier_entry.is_target = is_suggested_target
+                    frontier_entry.last_visited = datetime.now()
+                    await session.flush()
+                else:
+                    # Add to frontier
+                    new_frontier = FrontierUrl(
+                        company_id=company.id,
+                        url=suggested_url,
+                        depth=depth,  
+                        is_target=is_suggested_target,  
+                        last_visited=datetime.now()  
+                    )
+                    session.add(new_frontier)
+                    logfire.info(f"Added suggested URL to frontier", url=suggested_url)
+
+                await session.flush()
+                
+                if is_suggested_target:
+                    logfire.info(f"Found target page at depth {depth}", url=suggested_url)
+                    target_found = True
+                    break
+                    
+                # If not a target and we haven't reached max depth, explore further
+                elif depth < max_depth and new_suggested_urls:
+                    logfire.info(f"Recursively exploring URLs from {suggested_url} (depth {depth+1})")
+                    found_target = await self.explore_suggested_urls(
+                        suggested_url, new_suggested_urls, company, session,
+                        depth=depth+1, max_depth=max_depth, llm_config=llm_config
+                    )
+                    if found_target:
+                        target_found = True
+                        break
+                        
+            except Exception as e:
+                logfire.error(f"Error checking suggested URL", 
+                             url=suggested_url,
+                             depth=depth,
+                             error=str(e))
+                
+        return target_found
 
     async def check_url_exists(self, url: str) -> bool:
         """Check if a URL exists and returns a valid response."""
