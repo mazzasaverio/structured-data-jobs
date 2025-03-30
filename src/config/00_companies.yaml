@@ -27,6 +27,8 @@ companies:
     url: "https://vedrai.com"
   - name: "octopus"
     url: "https://octopusenergy.it"
+  - name: "hintogroup"
+    url: "https://www.hintogroup.eu/"
 
 sources:
   - https://www.greatplacetowork.it

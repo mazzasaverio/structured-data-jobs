@@ -36,7 +36,7 @@ from src.utils.file_utils import write_to_file
 class CareerCrawler:
     """Crawler for finding career pages on company websites."""
     
-    def __init__(self, output_dir: str = "output/career_pages"):
+    def __init__(self, output_dir: str = "data/output"):
         """Initialize crawler with output directory."""
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
