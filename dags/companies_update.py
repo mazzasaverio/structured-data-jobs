@@ -48,27 +48,7 @@ def local_postgres_pipeline():
     def update_table_from_csv():
         """Legge un file CSV e aggiorna/crea una tabella Postgres."""
         try:
-            # Percorso al file CSV
-            csv_path = "/opt/airflow/include/config/data.csv"
-
-            # Se il file non esiste, creiamo dati di esempio
-            if not os.path.exists(csv_path):
-                # Crea la directory se non esiste
-                os.makedirs(os.path.dirname(csv_path), exist_ok=True)
-
-                # Crea dati di esempio
-                sample_data = pd.DataFrame(
-                    {
-                        "name": ["company1", "company2", "company3"],
-                        "url": [
-                            "http://company1.com",
-                            "http://company2.com",
-                            "http://company3.com",
-                        ],
-                    }
-                )
-                sample_data.to_csv(csv_path, index=False)
-                print(f"File CSV di esempio creato in {csv_path}")
+            csv_path = "/usr/local/airflow/include/config/companies.csv"
 
             # Leggi il CSV
             df = pd.read_csv(csv_path)
@@ -82,7 +62,7 @@ def local_postgres_pipeline():
                 df["url"] = df["url"].str.rstrip("/")
 
             # Connessione al database
-            hook = PostgresHook(postgres_conn_id="postgres_default")
+            hook = PostgresHook(postgres_conn_id="postgres_neon")
 
             # Crea tabella se non esiste
             hook.run(
@@ -117,7 +97,7 @@ def local_postgres_pipeline():
     @task
     def count_records():
         """Conta i record nella tabella aggiornata."""
-        hook = PostgresHook(postgres_conn_id="postgres_default")
+        hook = PostgresHook(postgres_conn_id="postgres_neon")
         result = hook.get_first("SELECT COUNT(*) FROM neo;")
         count = result[0]
         print(f"Numero di record nella tabella neo: {count}")
