@@ -1,0 +1,15 @@
+{
+    "version": "20250331_211244",
+    "search_date": "2025-03-31 21:12:48",
+    "companies": {
+        "Google": {
+            "total_locations": 2,
+            "file": "google_milan_locations_v20250331_211244.json"
+        },
+        "Satispay": {
+            "total_locations": 1,
+            "file": "satispay_milan_locations_v20250331_211244.json"
+        }
+    },
+    "total_locations": 3
+}

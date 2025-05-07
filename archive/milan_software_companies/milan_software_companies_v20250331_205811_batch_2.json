@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Skillbill s.r.l.",
+        "address": "Via della Signora, 6, 20122 Milano MI, Italy",
+        "website": "http://www.skillbill.it/",
+        "phone": "+39 02 8715 7217",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Nicola Stella",
+        "address": "Via Giorgio Chavez, 4, 20131 Milano MI, Italy",
+        "website": "https://www.nicolastella.it/",
+        "phone": "+39 327 930 5222",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Tanaza S.p.A",
+        "address": "Via Carlo Farini, 5, 20154 Milano MI, Italy",
+        "website": "https://www.tanaza.com/",
+        "phone": "+39 02 8718 8553",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Nextbit - Data Intelligence",
+        "address": "Viale Papiniano, 51, 20123 Milano MI, Italy",
+        "website": "http://www.nextbit.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Fiven | Milano",
+        "address": "Via Uberto Visconti di Modrone, 30, 20122 Milano MI, Italy",
+        "website": "https://www.fiven.eu/",
+        "phone": "+39 081 544 7726",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Tech Gap Italia Srl",
+        "address": "Via Gian Giacomo Mora, 14, 20123 Milano MI, Italy",
+        "website": "http://www.techgap.it/",
+        "phone": "+39 02 2111 9141",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "TIBCO Software S.r.l.",
+        "address": "Via Santa Maria Valle, 3, 20123 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 0068 1260",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Web Development Company | Best Symfony Developer | App Development Company",
+        "address": "V. Adige, 20, 20125 Milano MI, Italy",
+        "website": "https://kashinfosolutions.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "General Software",
+        "address": "Via Meravigli, 16, 20123 Milano MI, Italy",
+        "website": "http://www.gensoft.it/",
+        "phone": "+39 0824 659 0155",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Axios Systems (Italia)",
+        "address": "Spazio Blend Tower, Piazza IV Novembre, 7, 20124 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 8734 3092",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Modular Software s.r.l.s.",
+        "address": "Alzaia Naviglio Pavese, 6, 20143 Milano MI, Italy",
+        "website": "https://www.modularsoftware.it/",
+        "phone": "+39 02 539 7023",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "MONDO SOFTWARE s.r.l.",
+        "address": "Corso di Porta Romana, 46, 20122 Milano MI, Italy",
+        "website": "http://mondosoftware.it/",
+        "phone": "+39 02 3653 0600",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Aptica | Web Agency | Software House",
+        "address": "Via Bernardo Quaranta, 40, 20139 Milano MI, Italy",
+        "website": "https://web.aptica.studio/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "B Human",
+        "address": "C.so di Porta Nuova, 46, 20121 Milano MI, Italy",
+        "website": "http://www.bhuman.it/",
+        "phone": "+39 02 202 3271",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "iGenius",
+        "address": "Via Principe Amedeo, 5, 20121 Milano MI, Italy",
+        "website": "https://www.igenius.ai/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Sdkappa - make IT fly",
+        "address": "Via Paolo Lomazzo, 45, 20154 Milano MI, Italy",
+        "website": "https://www.sdkappa.com/",
+        "phone": "+39 02 3659 2451",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Qlik Italy",
+        "address": "Piazzale Luigi Cadorna, 4, 20123 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 9713 7050",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Anoki s.r.l.",
+        "address": "Via Gian Giacomo Mora, 14, 20123 Milano MI, Italy",
+        "website": "https://www.anoki.it/",
+        "phone": "+39 02 2111 9141",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Engitel S.p.A. - web agency e software factory",
+        "address": "Via Antonio Zarotto, 6, 20124 Milano MI, Italy",
+        "website": "http://www.engitel.com/",
+        "phone": "+39 02 669 3337",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Centro Software SpA (Milano)",
+        "address": "Str. 6, 20094 Assago MI, Italy",
+        "website": "https://www.centrosoftware.com/",
+        "phone": "+39 051 813324",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    }
+]

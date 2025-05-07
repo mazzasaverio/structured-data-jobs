@@ -1,0 +1,2754 @@
+[
+    {
+        "name": "IBM Studios",
+        "address": "Piazza Gae Aulenti, 10, 20124 Milano MI, Italy",
+        "website": "https://www.ibm.com/ibmstudiosmilano",
+        "phone": "+39 02 8284 8301",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Buildo",
+        "address": "Via Malaga, 4, 20143 Milano MI, Italy",
+        "website": "https://www.buildo.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "SparkFabrik",
+        "address": "Via Gustavo Fara, 9, 20124 Milano MI, Italy",
+        "website": "http://www.sparkfabrik.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Mokka Studios | Software Development Company",
+        "address": "Via Bernardo Quaranta, 45, 20139 Milano MI, Italy",
+        "website": "http://www.mokkastudios.com/",
+        "phone": "+39 340 384 0700",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "HCLTech",
+        "address": "Via Luigi Cadorna, 73, 20090 Milano MI, Italy",
+        "website": "https://www.hcltech.com/geo-presence/italy",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Co-Brains | Sviluppo Software Milano",
+        "address": "Via Giovanni Durando, 39, 20158 Milano MI, Italy",
+        "website": "https://www.co-brains.com/",
+        "phone": "+39 392 271 3169",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Intesi Group S.p.A.",
+        "address": "Via Torino, 48, 20123 Milano MI, Italy",
+        "website": "http://www.intesigroup.com/",
+        "phone": "+39 02 676 0641",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Ecomate",
+        "address": "Via Filippo Sassetti, 32, 20124 Milano MI, Italy",
+        "website": "https://ecomate.eu/",
+        "phone": "+39 02 8089 6046",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "iCubed",
+        "address": "Via Fabio Filzi, 27, 20124 Milano MI, Italy",
+        "website": "https://icubed.it/",
+        "phone": "+39 02 5750 1057",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Radicalbit | A Fortitude Group Solution",
+        "address": "Via Tortona, 4, 20144 Milano MI, Italy",
+        "website": "https://radicalbit.ai/",
+        "phone": "+39 02 3792 0598",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "SoftwareOne Italia Srl",
+        "address": "Palazzo C, Direzionale Milanofiori, Strada 2, 20057 Assago MI, Italy",
+        "website": "https://www.softwareone.com/it-it",
+        "phone": "+39 02 9475 9576",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Software AG Italia S.p.A.",
+        "address": "Bastioni di Porta Nuova, 21, 20121 Milano MI, Italy",
+        "website": "https://www.softwareag.com/en_corporate.html",
+        "phone": "+39 02 2166 8211",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Techlane | Milano - Assistenza e Consulenza Informatica per le aziende",
+        "address": "Piazza della Trivulziana, 4/A, 20126 Milano MI, Italy",
+        "website": "https://www.techlane.it/?utm_source=google&utm_medium=organic&utm_campaign=googlemybusiness",
+        "phone": "+39 02 8088 9949",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "WIIT - The Premium Cloud",
+        "address": "V. dei Mercanti, 12, 20121 Milano MI, Italy",
+        "website": "http://www.wiit.cloud/",
+        "phone": "+39 02 3660 7500",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Informatica Milano",
+        "address": "Via Marco D'Oggiono, 12, 20123 Milano MI, Italy",
+        "website": "http://www.giberti.net/",
+        "phone": "+39 02 8353 5679",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "SAS Institute Ltd.",
+        "address": "Via Carlo Darwin, 20/22, 20143 Milano MI, Italy",
+        "website": "https://www.sas.com/it_it/home.html",
+        "phone": "+39 02 831341",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Luna Labs S.r.l. Unipersonale",
+        "address": "Viale Elvezia, 18, 20154 Milano MI, Italy",
+        "website": "https://www.lunalabs.it/",
+        "phone": "+39 02 3790 2029",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Consoftware Team",
+        "address": "Piazzale Giovanni delle Bande Nere, 7, 20146 Milano MI, Italy",
+        "website": "https://www.consoftware-team.it/",
+        "phone": "+39 02 4009 5082",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "TeamSystem srl",
+        "address": "Via Emilio Cornalia, 11, 20124 Milano MI, Italy",
+        "website": "http://www.teamsystem.com/",
+        "phone": "+39 02 255 1561",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Vantisco",
+        "address": "Via Pietro Paleocapa, 7/7th floor, 20121 Milano MI, Italy",
+        "website": "https://vantisco.it/",
+        "phone": "+39 02 8736 8316",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Skillbill s.r.l.",
+        "address": "Via della Signora, 6, 20122 Milano MI, Italy",
+        "website": "http://www.skillbill.it/",
+        "phone": "+39 02 8715 7217",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Nicola Stella",
+        "address": "Via Giorgio Chavez, 4, 20131 Milano MI, Italy",
+        "website": "https://www.nicolastella.it/",
+        "phone": "+39 327 930 5222",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Tanaza S.p.A",
+        "address": "Via Carlo Farini, 5, 20154 Milano MI, Italy",
+        "website": "https://www.tanaza.com/",
+        "phone": "+39 02 8718 8553",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Nextbit - Data Intelligence",
+        "address": "Viale Papiniano, 51, 20123 Milano MI, Italy",
+        "website": "http://www.nextbit.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Fiven | Milano",
+        "address": "Via Uberto Visconti di Modrone, 30, 20122 Milano MI, Italy",
+        "website": "https://www.fiven.eu/",
+        "phone": "+39 081 544 7726",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Tech Gap Italia Srl",
+        "address": "Via Gian Giacomo Mora, 14, 20123 Milano MI, Italy",
+        "website": "http://www.techgap.it/",
+        "phone": "+39 02 2111 9141",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "TIBCO Software S.r.l.",
+        "address": "Via Santa Maria Valle, 3, 20123 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 0068 1260",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Web Development Company | Best Symfony Developer | App Development Company",
+        "address": "V. Adige, 20, 20125 Milano MI, Italy",
+        "website": "https://kashinfosolutions.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "General Software",
+        "address": "Via Meravigli, 16, 20123 Milano MI, Italy",
+        "website": "http://www.gensoft.it/",
+        "phone": "+39 0824 659 0155",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Axios Systems (Italia)",
+        "address": "Spazio Blend Tower, Piazza IV Novembre, 7, 20124 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 8734 3092",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Modular Software s.r.l.s.",
+        "address": "Alzaia Naviglio Pavese, 6, 20143 Milano MI, Italy",
+        "website": "https://www.modularsoftware.it/",
+        "phone": "+39 02 539 7023",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "MONDO SOFTWARE s.r.l.",
+        "address": "Corso di Porta Romana, 46, 20122 Milano MI, Italy",
+        "website": "http://mondosoftware.it/",
+        "phone": "+39 02 3653 0600",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Aptica | Web Agency | Software House",
+        "address": "Via Bernardo Quaranta, 40, 20139 Milano MI, Italy",
+        "website": "https://web.aptica.studio/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "B Human",
+        "address": "C.so di Porta Nuova, 46, 20121 Milano MI, Italy",
+        "website": "http://www.bhuman.it/",
+        "phone": "+39 02 202 3271",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "iGenius",
+        "address": "Via Principe Amedeo, 5, 20121 Milano MI, Italy",
+        "website": "https://www.igenius.ai/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Sdkappa - make IT fly",
+        "address": "Via Paolo Lomazzo, 45, 20154 Milano MI, Italy",
+        "website": "https://www.sdkappa.com/",
+        "phone": "+39 02 3659 2451",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Qlik Italy",
+        "address": "Piazzale Luigi Cadorna, 4, 20123 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 9713 7050",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Anoki s.r.l.",
+        "address": "Via Gian Giacomo Mora, 14, 20123 Milano MI, Italy",
+        "website": "https://www.anoki.it/",
+        "phone": "+39 02 2111 9141",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Engitel S.p.A. - web agency e software factory",
+        "address": "Via Antonio Zarotto, 6, 20124 Milano MI, Italy",
+        "website": "http://www.engitel.com/",
+        "phone": "+39 02 669 3337",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Centro Software SpA (Milano)",
+        "address": "Str. 6, 20094 Assago MI, Italy",
+        "website": "https://www.centrosoftware.com/",
+        "phone": "+39 051 813324",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "DreamSoftware",
+        "address": "Via Sebastiano del Piombo, 23, 20149 Milano MI, Italy",
+        "website": "http://dreamsoftware.it/",
+        "phone": "+39 02 3652 6600",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "ZURU Tech Italy - Milan",
+        "address": "Via Sandro Sandri, 1, 20121 Milano MI, Italy",
+        "website": "https://zuru.tech/",
+        "phone": "+39 059 333098",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Idoq srl",
+        "address": "Via Broletto, 43, 20121 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 7200 7047",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Betacom",
+        "address": "Viale Stelvio, 70, 20159 Milano MI, Italy",
+        "website": "http://www.betacom.it/",
+        "phone": "+39 011 433 2064",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Citrix Systems",
+        "address": "Largo Augusto, 8/7th floor, 20122 Milano MI, Italy",
+        "website": "https://www.citrix.com/it-it/",
+        "phone": "+39 02 7577 5802",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Axcent SRL",
+        "address": "Via Gustavo Fara, 35, 20124 Milano MI, Italy",
+        "website": "https://www.axcentcompany.it/",
+        "phone": "+39 02 4949 5301",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Cognizant Technology Solutions Italia S.p.A",
+        "address": "Via Pietro Paleocapa, 7, 20121 Milano MI, Italy",
+        "website": "http://www.cognizant.com/",
+        "phone": "+39 02 8633 7211",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Globant Milan",
+        "address": "Corso Como, 15, 20154 Milano MI, Italy",
+        "website": "https://www.globant.com/it",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Salesforce",
+        "address": "Galleria Passarella, 2, 20122 Milano MI, Italy",
+        "website": "http://www.salesforce.com/",
+        "phone": "+39 800 782 619",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Objectway Milano",
+        "address": "Via Giovanni da Procida, 24, 20149 Milano MI, Italy",
+        "website": "https://www.objectway.com/",
+        "phone": "+39 02 898001",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Xtream",
+        "address": "Via Vittoria Colonna, 46, 20149 Milano MI, Italy",
+        "website": "https://xtreamers.io/",
+        "phone": "+39 375 610 1696",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Codzilla Srl - Sviluppo App e Software",
+        "address": "Via Lattanzio, 77, 20137 Milano MI, Italy",
+        "website": "https://www.codzilla.it/",
+        "phone": "+39 351 981 9824",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Ingage | Smart Software House",
+        "address": "Via C. Romani, 2/A, 20091 Bresso MI, Italy",
+        "website": "https://www.ingage.it/",
+        "phone": "+39 02 8291 3685",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "PTC Italia - Parametric Technology Italia s.r.l.",
+        "address": "Via Galileo Galilei, 7, 20124 Milano MI, Italy",
+        "website": "http://www.ptc.com/it",
+        "phone": "+39 039 888 0140",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "WellD Italia - Milano",
+        "address": "c/o YoRoom, Via Pastrengo, 14, 20159 Milano MI, Italy",
+        "website": "http://www.welld.ch/",
+        "phone": "+39 340 492 3418",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "It Software Spa",
+        "address": "Via Santa Sofia, 27, 20122 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 583431",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Graphisoft Italia",
+        "address": "Via Galileo Galilei, 7, 20124 Milano MI, Italy",
+        "website": "https://graphisoft.com/it",
+        "phone": "+39 041 894 3500",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "LatoBit Informatica",
+        "address": "Via Luigi Galvani, 21, 20124 Milano MI, Italy",
+        "website": "http://www.latobit.it/",
+        "phone": "+39 02 8408 5990",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "RGI GROUP",
+        "address": "Via S. Gregorio, 34, 20124 Milano MI, Italy",
+        "website": "http://www.rgigroup.it/",
+        "phone": "+39 02 2219 0111",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Altamira HR Cloud Solutions",
+        "address": "Via Giovanni Marradi, 1, 20123 Milano MI, Italy",
+        "website": "https://www.altamirahrm.com/",
+        "phone": "+39 02 4810 0463",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Dev4Side",
+        "address": "Via Fabio Filzi, 5, 20124 Milano MI, Italy",
+        "website": "http://www.dev4side.com/",
+        "phone": "+39 02 8343 9531",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "SAEP ICT Engineering s.r.l. | Software House",
+        "address": "Via Ascanio Sforza, 87, 20141 Milano MI, Italy",
+        "website": "https://www.saep-ict.it/",
+        "phone": "+39 02 3668 4945",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "SYS-DAT SpA - SYS-DAT Group HQ",
+        "address": "Via Muzio Attendolo Detto Sforza, 7, 20141 Milano MI, Italy",
+        "website": "https://www.sys-datgroup.com/",
+        "phone": "+39 02 507241",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Skylabs",
+        "address": "Piazza Velasca, 10, 20122 Milano MI, Italy",
+        "website": "https://skylabs.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "PIXIE",
+        "address": "Viale Monte Grappa, 12, 20124 Milano MI, Italy",
+        "website": "https://pixie.al/",
+        "phone": "+39 327 451 1794",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Fontoso Web Agency",
+        "address": "P.za Ventiquattro Maggio, 6, 20123 Milano MI, Italy",
+        "website": "http://fontoso.it/",
+        "phone": "+39 348 574 6165",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Software Team",
+        "address": "Via Giosuè Carducci, 39, 20099 Sesto San Giovanni MI, Italy",
+        "website": "https://www.swt.it/",
+        "phone": "+39 02 8414 8166",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Taal software developer",
+        "address": "Via Mac Mahon, 16, 20154 Milano MI, Italy",
+        "website": "http://www.taal.it/",
+        "phone": "+39 02 3453 8717",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "vtenext",
+        "address": "Viale Sarca, 336/f, 20126 Milano MI, Italy",
+        "website": "https://www.vtenext.com/it/",
+        "phone": "+39 02 3790 1352",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Revool - Web design & software development - Milano",
+        "address": "Viale Milanofiori Strada 6 Edificio 4, Scala 1, 20057 Milano MI, Italy",
+        "website": "http://www.revool.it/",
+        "phone": "+39 02 4070 6471",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "SM Software",
+        "address": "Via Marco Ulpio Traiano, 16, 20149 Milano MI, Italy",
+        "website": "https://sy.mk/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "NSAi Srl - Web agency - Software developer",
+        "address": "Via Giorgio Washington, 70, 20146 Milano MI, Italy",
+        "website": "https://nsai.eu/",
+        "phone": "+39 02 1241 26108",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Digiway Srl - Consulenza, sviluppo, formazione licensing e servizi - Crossware, HCLSoftware, Libraesva, Microsoft e altri.",
+        "address": "Via Caldera, 21 c/o Regus, 20153 Milano MI, Italy",
+        "website": "https://www.digiway.it/",
+        "phone": "+39 02 8715 8030",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Cloud Finance",
+        "address": "Via Carlo Freguglia, 10, 20122 Milano MI, Italy",
+        "website": "https://www.cloudfinance.it/",
+        "phone": "+39 0824 317019",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Sadas Srl",
+        "address": "Via Boschetti, 1, 20121 Milano MI, Italy",
+        "website": "http://www.sadasdb.com/",
+        "phone": "+39 02 2901 7449",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Sirio Informatica e Sistemi",
+        "address": "Via Privata Gaetano Sbodio, 2, 20134 Milano MI, Italy",
+        "website": "https://sisthemaspa.it/",
+        "phone": "+39 02 365 8351",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "adesso.it",
+        "address": "Viale Edoardo Jenner, 51, 20159 Milano MI, Italy",
+        "website": "https://www.adesso.it/",
+        "phone": "+39 02 697731",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Sensei SRL",
+        "address": "Via Bernardo Quaranta, 45, 20139 Milano MI, Italy",
+        "website": "https://senseisrl.it/",
+        "phone": "+39 02 3669 6628",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "226Lab S.r.l | Agenzia Marketing Milano",
+        "address": "Via Privata Belgirate, 13, 20125 Milano MI, Italy",
+        "website": "https://www.226lab.com/it",
+        "phone": "+41 78 420 79 96",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Qromo",
+        "address": "Via Gaetano Donizetti, 36, 20122 Milano MI, Italy",
+        "website": "https://qromo.it/?refad=GM-button",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Software Engineering S.N.C.",
+        "address": "Via Paolo Bassi, 1, 20159 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 6680 2757",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "DevGroup srl - Sviluppo software - Hosting e domini - SaaS",
+        "address": "Via Caldera, 21, 20153 Milano MI, Italy",
+        "website": "https://devgroup.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "NEXID Srl",
+        "address": "Via Fabio Filzi, 27, 20124 Milano MI, Italy",
+        "website": "https://www.nexid.it/",
+        "phone": "+39 02 266 6490",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Eidosmedia",
+        "address": "MAC7, Via Carlo Imbonati, 18, 20159 Milano MI, Italy",
+        "website": "http://www.eidosmedia.com/",
+        "phone": "+39 02 3673 2000",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Tekio",
+        "address": "Corso Venezia, 5, 20121 Milano MI, Italy",
+        "website": "http://www.tekio.it/",
+        "phone": "+39 02 7600 3348",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "di-erre software s.r.l.",
+        "address": "Via Caduti di Marcinelle, 11, 20134 Milano MI, Italy",
+        "website": "https://www.dierresoftware.com/",
+        "phone": "+39 02 3658 8710",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "Exacon",
+        "address": "Via Edoardo Porro, 8/B, 20158 Milano MI, Italy",
+        "website": "https://www.exacon.it/",
+        "phone": "+39 02 9155 9778",
+        "business_type": "software_company",
+        "search_keyword": "software development"
+    },
+    {
+        "name": "BV Tech S.p.a.",
+        "address": "Piazza Armando Diaz, 6, 20123 Milano MI, Italy",
+        "website": "http://www.bv-tech.it/",
+        "phone": "+39 02 859 6171",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Mikamai",
+        "address": "Via Privata Decemviri, 20, 20137 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 4952 6870",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Dell Technologies",
+        "address": "Luisa, Via Luisa Battistotti Sassi, 11, 20133 Milano MI, Italy",
+        "website": "http://www.dell.it/",
+        "phone": "+39 02 3055 5103",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "ASC Technologies S.r.L.",
+        "address": "Via Privata Santi Nabore e Felice, 7, 20147 Milano MI, Italy",
+        "website": "https://www.asctechnologies.com/",
+        "phone": "+39 02 4802 7177",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "xFarm Technologies Italia",
+        "address": "Via Galileo Ferraris, 1, 20154 Milano MI, Italy",
+        "website": "https://xfarm.ag/",
+        "phone": "+39 0142 276433",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Casati Tech",
+        "address": "Via Felice Casati, 7, 20124 Milano MI, Italy",
+        "website": "http://www.casati-tech.it/",
+        "phone": "+39 328 401 8857",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "MBT - Media B2B Technology",
+        "address": "Via Filippo Sassetti, 20124 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 333 455 7829",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Ubiquicom",
+        "address": "Via Carlo de Angeli, 3, 20141 Milano MI, Italy",
+        "website": "http://www.ubiquicom.com/",
+        "phone": "+39 02 8991 9433",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Aaron Technology - Your future office, now.",
+        "address": "Via Muzio Attendolo Detto Sforza, 5, 20141 Milano MI, Italy",
+        "website": "https://www.aarontech.it/",
+        "phone": "+39 02 4549 8050",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Nexus Advanced Technologies S.R.L",
+        "address": "Via Messina, 38, 20154 Milano MI, Italy",
+        "website": "https://www.nexusat.it/",
+        "phone": "+39 02 4547 7002",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Zucchina Technologies",
+        "address": "Via Enrico Cosenz, 54, 20158 Milano MI, Italy",
+        "website": "https://zucchinatech.it/",
+        "phone": "+39 02 8716 6508",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Tesi Elettronica e Sistemi Informativi S.p.A. - Società Benefit",
+        "address": "Via Privata Oslavia, 17/8b, 20134 Milano MI, Italy",
+        "website": "https://www.tesigroup.tech/",
+        "phone": "+39 02 2171 1922",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Red Hat Spa",
+        "address": "Via Gustavo Fara, 26, 20124 Milano MI, Italy",
+        "website": "https://www.redhat.com/",
+        "phone": "+39 02 669 3111",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Skytechnology S.r.l.",
+        "address": "Via Privata Stefanardo da Vimercate, 28, 20128 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 370511",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Technology",
+        "address": "Via Privata Giuseppe Scalarini, 3, 20139 Milano MI, Italy",
+        "website": "http://www.technologysrl.org/",
+        "phone": "+39 02 5730 3118",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Var Group S.p.A. - Sede di Milano",
+        "address": "Via Privata Gaetano Sbodio, 2, 20134 Milano MI, Italy",
+        "website": "https://www.vargroup.com/it-IT",
+        "phone": "+39 02 210821",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Sistem-evo | Tech Company",
+        "address": "Viale Gran Sasso, 11, 20131 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 8736 6087",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "LT42",
+        "address": "Via Vitruvio, 1, 20124 Milano MI, Italy",
+        "website": "http://lt42.it/",
+        "phone": "+39 02 2111 5050",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Google Milan",
+        "address": "Via Federico Confalonieri, 4, 20124 Milano MI, Italy",
+        "website": "http://google.com/",
+        "phone": "+39 02 3661 8300",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "TPL informatica",
+        "address": "Via Luigi Galvani, 21, 20124 Milano MI, Italy",
+        "website": "https://www.tplinformatica.com/",
+        "phone": "+39 02 3656 3320",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "TTS - Technology Transfer System S.r.l.",
+        "address": "Via Francesco d'Ovidio, 3, 20131 Milano MI, Italy",
+        "website": "http://www.ttsnetwork.com/",
+        "phone": "+39 02 236 0544",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Inkom Engineering S.r.l.",
+        "address": "Via Francesco Sforza, 14, 20122 Milano MI, Italy",
+        "website": "https://www.inkom.it/",
+        "phone": "+39 02 4510 1355",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "AGIC",
+        "address": "Via Franco Russoli, 6, 20143 Milano MI, Italy",
+        "website": "http://www.agictech.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "ATS - Advanced Technology Solutions S.p.A.",
+        "address": "Via Montefeltro, 6, 20156 Milano MI, Italy",
+        "website": "https://www.atscom.it/web/",
+        "phone": "+39 02 3860 2500",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Links Management and Technology Spa",
+        "address": "Via Messina, 38 Torre B, 20154 Milano MI, Italy",
+        "website": "http://www.linksmt.it/",
+        "phone": "+39 0832 443911",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "INFORMATION TECHNOLOGY SERVICES",
+        "address": "Viale Abruzzi, 81, 20131 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 5530 1800",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "YouCo",
+        "address": "Viale Tunisia, 50, 20124 Milano MI, Italy",
+        "website": "http://youco.eu/",
+        "phone": "+39 02 4004 2530",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "B-Wide technologies",
+        "address": "Via Michelangelo Buonarroti, 20145 Milano MI, Italy",
+        "website": "https://www.bwidetech.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Kronos Informatica Srl",
+        "address": "Via Enrico Toti, 2, 20123 Milano MI, Italy",
+        "website": "https://www.kronos.tech/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Electe Srl",
+        "address": "Via Monte Napoleone, 8, 20121 Milano MI, Italy",
+        "website": "https://www.electe.net/",
+        "phone": "+39 02 3035 6790",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "WEY Technology S.r.l.",
+        "address": "Via Emilio Cornalia, 10, 20124 Milano MI, Italy",
+        "website": "http://www.weytec.com/",
+        "phone": "+39 02 5843 1417",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Softech - Software & Technology Srl",
+        "address": "Foro Buonaparte, 51, 20121 Milano MI, Italy",
+        "website": "http://www.stnet.it/",
+        "phone": "+39 02 4946 1064",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "H.S.C. System S.r.l.",
+        "address": "Via Valsugana, 15, 20139 Milano MI, Italy",
+        "website": "https://www.hscsystem.it/",
+        "phone": "+39 02 9824 0117",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "BBC Technologies",
+        "address": "Via Corradino D'Ascanio, 4, 20142 Milano MI, Italy",
+        "website": "https://www.bbc-tech.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Huulke S.R.L.",
+        "address": "Via Pietro Paleocapa, 1, 20121 Milano MI, Italy",
+        "website": "https://huulke.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Cloov Tech",
+        "address": "Viale Bianca Maria, 22, 20129 Milano MI, Italy",
+        "website": "https://cloov.tech/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Acm Solution S.r.l.",
+        "address": "Via Agnello, 5, 20121 Milano MI, Italy",
+        "website": "https://acmsolution.it/",
+        "phone": "+39 02 3919 8751",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Dune",
+        "address": "Via Anfiteatro, 5, 20121 Milano MI, Italy",
+        "website": "https://www.dune.it/",
+        "phone": "+39 02 929 6921",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Moviri",
+        "address": "Via Privata Simone Schiaffino, 11, 20158 Milano MI, Italy",
+        "website": "http://www.moviri.com/",
+        "phone": "+39 02 4951 7001",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Mia-Platform",
+        "address": "Via Carlo Imbonati, 18, 20159 Milano MI, Italy",
+        "website": "http://www.mia-platform.eu/",
+        "phone": "+39 02 5810 0828",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Invrsion",
+        "address": "Via Gian Battista Vico, 42, 20123 Milano MI, Italy",
+        "website": "http://www.invrsion.com/",
+        "phone": "+39 02 3599 1247",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "ITD Solutions S.p.A.",
+        "address": "Via Galileo Galilei, 7, 20124 Milano MI, Italy",
+        "website": "https://www.itdsolutions.it/",
+        "phone": "+39 06 6641 1156",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "CM.com | Milan Office",
+        "address": "Via Vittor Pisani, 15, 20124 Milano MI, Italy",
+        "website": "http://cm.com/",
+        "phone": "+39 351 761 6064",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Maticmind Spa",
+        "address": "Via Privata Roberto Bracco, 6, 20159 Milano MI, Italy",
+        "website": "https://www.maticmind.it/",
+        "phone": "+39 02 274261",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Advanced Logic | Agenzia Sviluppo Magento",
+        "address": "Via Broletto, 46, 20121 Milano MI, Italy",
+        "website": "https://www.advancedlogic.eu/",
+        "phone": "+39 02 3056 8366",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Eudata s.r.l. S.B. - Milano",
+        "address": "Via Valtorta, 48, 20127 Milano MI, Italy",
+        "website": "http://www.eudata.com/",
+        "phone": "+39 02 4549 5098",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Oracle | Italia",
+        "address": "Via Massimo D'Azeglio, 4, 20154 Milano MI, Italy",
+        "website": "http://www.oracle.it/",
+        "phone": "+39 02 2495 9355",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Aubay Italia - sede legale e operativa Milano",
+        "address": "Corso Italia, 47, 20122 Milano MI, Italy",
+        "website": "https://www.aubay.it/",
+        "phone": "+39 02 655 6761",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "HUDi - Digital Humanism",
+        "address": "Via Pietro Paleocapa, 7, 20121 Milano MI, Italy",
+        "website": "https://www.hudi.it/",
+        "phone": "+39 02 3656 6362",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Zendesk",
+        "address": "Via S. Marco, 21, 20121 Milano MI, Italy",
+        "website": "https://www.zendesk.it/",
+        "phone": "+39 040 995 6745",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "NordCom Spa",
+        "address": "Via Pietro Paleocapa, 7, 20121 Milano MI, Italy",
+        "website": "https://www.nord-com.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "LBCOMPANY Milano",
+        "address": "Via Renato Fucini, 22, 20133 Milano MI, Italy",
+        "website": "https://www.lbcompany.it/",
+        "phone": "+39 02 8154 9474",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Nacon Studio Milan S.r.l.",
+        "address": "Corso Europa, 5/7, 20122 Milano MI, Italy",
+        "website": "https://www.naconstudiomilan.com/",
+        "phone": "+39 02 4775 4133",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Fides",
+        "address": "Via Galileo Galilei, 7, 20121 Milano MI, Italy",
+        "website": "http://www.fides.it/",
+        "phone": "+39 02 4976 3967",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Artexe S.p.A. - Sede di Milano",
+        "address": "Via Giuseppe Piazzi, 2-4, 20159 Milano MI, Italy",
+        "website": "https://artexe.mapsgroup.it/",
+        "phone": "+39 0521 052300",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "ARIA S.p.A. Azienda Regionale per l'Innovazione e gli Acquisti",
+        "address": "Piazza Gae Aulenti, 1, 20154 Milano MI, Italy",
+        "website": "http://www.ariaspa.it/",
+        "phone": "+39 02 393311",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "3rdPlace",
+        "address": "Foro Buonaparte, 71, 20121 Milano MI, Italy",
+        "website": "http://3rdplace.com/",
+        "phone": "+39 02 7628 1064",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Abstract Srl",
+        "address": "Via Broletto, 43, 20121 Milano MI, Italy",
+        "website": "http://www.abstract.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Youtoo Digital | Web Agency Milano | Social media marketing",
+        "address": "Bastioni di Porta Nuova, 21, 20121 Milano MI, Italy",
+        "website": "http://www.youtoo.digital/",
+        "phone": "+39 344 272 6861",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Cdweb - B2B Digital Marketing",
+        "address": "Viale delle Rimembranze di Lambrate, 7, 20134 Milano MI, Italy",
+        "website": "https://www.cdweb.it/",
+        "phone": "+39 02 9475 0637",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Very Content - Digital agency",
+        "address": "Via Valenza, 5, 20144 Milano MI, Italy",
+        "website": "https://www.verycontent.it/",
+        "phone": "+39 02 8239 8523",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Digital Coach",
+        "address": "Viale Francesco Restelli, 3/7, 20124 Milano MI, Italy",
+        "website": "https://www.digital-coach.com/it/",
+        "phone": "+39 800 401 290",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "#00F Agency — Digital Creative Agency",
+        "address": "Via Giuseppe Meda, 36A, 20141 Milano MI, Italy",
+        "website": "https://00f.agency/",
+        "phone": "+39 379 147 4951",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "cdlab | Agenzia SEO Milano | Seo Agency Milano",
+        "address": "Piazzale Giovanni delle Bande Nere, 7, 20146 Milano MI, Italy",
+        "website": "https://www.cdlab.it/",
+        "phone": "+39 375 689 0755",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "MazzMedia - Digital Agency",
+        "address": "Via Gioacchino Rossini, 3, 20122 Milano MI, Italy",
+        "website": "http://www.mazzmedia.com/",
+        "phone": "+39 02 9439 5707",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "LOA",
+        "address": "Viale Abruzzi, 79, 20131 Milano MI, Italy",
+        "website": "http://www.loa-marketing.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Agenzia di Marketing Milano • Ad Sphera",
+        "address": "Via Rugabella, 1, 20122 Milano MI, Italy",
+        "website": "https://adsphera.com/",
+        "phone": "+39 02 4507 7980",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Nextre Digital",
+        "address": "Via Imperia, 2, 20142 Milano MI, Italy",
+        "website": "https://www.nextredigital.it/?utm_source=google&utm_medium=MyBusiness",
+        "phone": "+39 02 4951 8390",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Web Agency Milano - Web Revolution",
+        "address": "Corso Sempione, 33, 20145 Milano MI, Italy",
+        "website": "https://www.webrevolutionagency.com/",
+        "phone": "+39 02 9167 5531",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "LocalWeb",
+        "address": "Via Cerva, 31, 20122 Milano MI, Italy",
+        "website": "http://localweb.it/",
+        "phone": "+39 02 8219 6242",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "OnLime Digital Agency",
+        "address": "Via Lodovico Montegani, 23, 20141 Milano MI, Italy",
+        "website": "https://www.onlime.it/",
+        "phone": "+39 347 923 1064",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Isola di Comunicazione Digital Marketing, Siti Web, Google Ads, Social Media, Grafica, Hosting",
+        "address": "Via Francesco Baracca, 25, 20092 Cinisello Balsamo MI, Italy",
+        "website": "https://www.isoladicomunicazione.com/",
+        "phone": "+39 02 3656 5651",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Parklab agenzia Web Marketing Comunicazione - Studio grafico - Video - SEO - digital marketing - allestimento stand",
+        "address": "Via Privata Oslavia, 17, 20134 Milano MI, Italy",
+        "website": "https://www.parklab.eu/",
+        "phone": "+39 02 3670 8595",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Maraki Creative Agency Milano",
+        "address": "Piazza Gae Aulenti, 1/Torre B, 20124 Milano MI, Italy",
+        "website": "https://www.maraki.it/",
+        "phone": "+39 392 131 3320",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "The Rope | Web Agency Milano",
+        "address": "Via Lodovico Settala, 6, 20124 Milano MI, Italy",
+        "website": "https://therope.it/",
+        "phone": "+39 02 3858 5747",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Mediatica Agenzia Comunicazione ed Eventi",
+        "address": "Via della Moscova, 46/3, 20121 Milano MI, Italy",
+        "website": "https://www.mediaticacomunicazione.it/",
+        "phone": "+39 02 4004 2526",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Viva Digital",
+        "address": "Via Archimede, 12, 20091 Bresso MI, Italy",
+        "website": "https://www.vivadigital.it/",
+        "phone": "+39 02 8718 7423",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "MondoRed S.p.A. - Digital Agency Milano",
+        "address": "Corso Buenos Aires, 20, 20124 Milano MI, Italy",
+        "website": "https://www.mondored.it/?utm_source=google&utm_medium=organic&utm_campaign=Googlemybusiness",
+        "phone": "+39 0331 792411",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "SEO Leader | Consulente SEO - Esperto in consulenza SEO e Digital Marketing",
+        "address": "Viale Certosa, 218, 20156 Milano MI, Italy",
+        "website": "https://www.seoleader.digital/",
+        "phone": "+39 02 9974 9627",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Addlab",
+        "address": "Viale Monza, 91, 20125 Milano MI, Italy",
+        "website": "https://addlab.it/",
+        "phone": "+39 351 968 6588",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "IAKI - Agenzia omnichannel: social digital eventi",
+        "address": "Via Pietro Panzeri, 10, 20123 Milano MI, Italy",
+        "website": "https://www.iaki.it/",
+        "phone": "+39 02 3658 1400",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Digitalsfera® Agenzia di Web Marketing e SEO",
+        "address": "Via Filippino Lippi, 32, 20131 Milano MI, Italy",
+        "website": "https://digitalsfera.it/",
+        "phone": "+39 02 3792 0372",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "WEB AGENCY MILANO | Realizzazione siti web - Seo - Campagna ADS | FD CONSULENZE WEB",
+        "address": "Via Ippolito Rosellini, 1, 20146 Milano MI, Italy",
+        "website": "https://www.fdconsulenzeweb.it/",
+        "phone": "+39 02 8089 7430",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Syroop | Web Agency",
+        "address": "Via del Lauro, 2, 20121 Milano MI, Italy",
+        "website": "https://syroop.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Artwork - Web Agency Milano e Realizzazione Siti",
+        "address": "Via Gaspare Spontini, 9, 20129 Milano MI, Italy",
+        "website": "https://www.artworkstudios.it/",
+        "phone": "+39 02 8739 4550",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Creative Room - Communication Agency and Design in Milan",
+        "address": "Alzaia Naviglio Grande, 72, 20144 Milano MI, Italy",
+        "website": "http://www.creative-room.eu/",
+        "phone": "+39 02 3651 1895",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Strategy Design",
+        "address": "Via Edmondo de Amicis, 59, 20123 Milano MI, Italy",
+        "website": "https://strategydesign.it/",
+        "phone": "+39 02 3656 9548",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Yourdigitalweb | Digital Web Agency Milano | SEO Milano",
+        "address": "Via Achille Zezon, 5b, 20124 Milano MI, Italy",
+        "website": "http://www.yourdigitalweb.com/",
+        "phone": "+39 02 8295 5180",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "M&C SAATCHI Milano",
+        "address": "Viale Monte Nero, 76, 20135 Milano MI, Italy",
+        "website": "http://www.mcsaatchi-milano.com/",
+        "phone": "+39 02 3674 8250",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Gstarseo - Consulenza Seo e digital marketing",
+        "address": "Via Achille Maiocchi, 28, 20129 Milano MI, Italy",
+        "website": "https://www.gstarseo.it/",
+        "phone": "+39 389 952 9511",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "The Spin | Marketing Studio",
+        "address": "Via 2 Giugno, 20090 Buccinasco MI, Italy",
+        "website": "https://thespinmarketing.com/",
+        "phone": "+39 339 821 5564",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Ottobix",
+        "address": "Via Carlo Pisacane, 40, 20129 Milano MI, Italy",
+        "website": "https://www.ottobix.com/",
+        "phone": "+39 800 180 460",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "SLR - Digital & Social Media Agency",
+        "address": "Via Emilio de Marchi, 4, 20125 Milano MI, Italy",
+        "website": "https://stefanialarosa.com/",
+        "phone": "+39 348 544 0086",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Italia Multimedia - Web Agency Milano",
+        "address": "Viale Giustiniano, 5, 20129 Milano MI, Italy",
+        "website": "http://www.italiamultimedia.com/",
+        "phone": "+39 02 2040 4561",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Studio Up Web Agency Milano",
+        "address": "Via Esopo, 8, 20126 Milano MI, Italy",
+        "website": "https://www.studioup.it/",
+        "phone": "+39 02 8219 7887",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Guru Marketing",
+        "address": "Viale Abruzzi, 37, 20131 Milano MI, Italy",
+        "website": "http://guru.marketing/",
+        "phone": "+39 02 9867 0162",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Ekeria - Digital Agency",
+        "address": "Via Alessandro Tadino, 42, 20124 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 2111 8569",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Elastico Comunicazione - Web Agency Milano",
+        "address": "Via Madre Cabrini, 7, 20122 Milano MI, Italy",
+        "website": "https://www.elasticomunicazione.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Futuraweb - Web Agency Milano",
+        "address": "Via Giuseppe Frua, 19, 20146 Milano MI, Italy",
+        "website": "https://www.futuraweb.eu/",
+        "phone": "+39 02 3940 0918",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Instasamy",
+        "address": "Via Francesco Melzi d'Eril, 34 c/o REGUS, 20154 Milano MI, Italy",
+        "website": "https://instasamy.com/",
+        "phone": "+39 347 304 1077",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Socialdipity - Web Agency",
+        "address": "Via Agostino Bertani, 2, 20159 Milano MI, Italy",
+        "website": "https://socialdipity.it/",
+        "phone": "+39 348 461 1869",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Figmenta",
+        "address": "Ripa di Porta Ticinese, 7, 20143 Milano MI, Italy",
+        "website": "https://figmenta.com/",
+        "phone": "+39 02 8089 7083",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Oniro Agency",
+        "address": "Via Vincenzo Vela, 15, 20133 Milano MI, Italy",
+        "website": "https://www.oniroagency.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Clever Digital Marketing",
+        "address": "Via Giovanni Battista Pirelli, 24, 20124 Milano MI, Italy",
+        "website": "https://www.cleveragency.io/",
+        "phone": "+39 02 8239 8859",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Ads Marketing",
+        "address": "Via Felice Cavallotti, 28, 20089 Rozzano MI, Italy",
+        "website": "https://www.adsmarketing.it/",
+        "phone": "+39 02 8717 6647",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "GWC World",
+        "address": "Via Giulio Cesare Procaccini, 60, 20154 Milano MI, Italy",
+        "website": "http://www.gwcworld.com/",
+        "phone": "+39 02 8088 9709",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Media Digital Agency s.r.l.",
+        "address": "Via Serviliano Lattuada, 20, 20135 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 6666 8710",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "We Are Social",
+        "address": "Corso S. Gottardo, 42a, 20136 Milano MI, Italy",
+        "website": "http://wearesocial.it/",
+        "phone": "+39 02 8970 8500",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Agenzia di Web Marketing • Ad Web Agency",
+        "address": "Via Rugabella, 1, 20122 Milano MI, Italy",
+        "website": "https://www.adwebagency.it/",
+        "phone": "+39 02 2110 0085",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Cepar Digital Agency",
+        "address": "Via Arcivescovo Calabiana, 6, 20139 Milano MI, Italy",
+        "website": "https://www.cepar.eu/",
+        "phone": "+39 0331 542553",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Pyramid Web Agency Milano | Strategie Digital Marketing | Siti Web | eCommerce",
+        "address": "Ripa di Porta Ticinese, 39, 20143 Milano MI, Italy",
+        "website": "https://www.lapyramid.it/digital-marketing-milano/",
+        "phone": "+39 02 8716 5562",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Plugcom | Web Agency Agenzia Digital Marketing Milano",
+        "address": "Via Achille Fontanelli, 20161 Milano MI, Italy",
+        "website": "https://www.plugcom.it/",
+        "phone": "+39 351 384 7473",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Tiablo - Studio grafico e Web agency Milano",
+        "address": "Via Giovanni Cadolini, 32, 20137 Milano MI, Italy",
+        "website": "https://www.tiablo.it/",
+        "phone": "+39 02 6885 9393",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Digital Marketing e Lead Generation di Giorgio Fiorini",
+        "address": "Via Padova, 95, 20127 Milano MI, Italy",
+        "website": "https://www.georgefiorini.eu/",
+        "phone": "+39 333 292 2308",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Agenzia Web Digital Marketing",
+        "address": "Via Bruno Maderna, 2, 20138 Milano MI, Italy",
+        "website": "https://danielegrimaldi.it/",
+        "phone": "+39 393 236 0447",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Global Brand Communication - Agenzia SEO | Consulenza SEO",
+        "address": "Via Cesare Cantù, 10, 20123 Milano MI, Italy",
+        "website": "https://www.globalbrandcommunication.it/",
+        "phone": "+39 0381 313325",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "3Bit S.r.l. | Agenzia SEO Milano",
+        "address": "Via Savona, 125, 20144 Milano MI, Italy",
+        "website": "https://www.3bit.it/",
+        "phone": "+39 02 9475 1174",
+        "business_type": "software_company",
+        "search_keyword": "digital agency"
+    },
+    {
+        "name": "Graphik Design Freelance Web Designer Milano",
+        "address": "Via Giorgio Vasari, 30, 20135 Milano MI, Italy",
+        "website": "https://www.graphikdesign.it/",
+        "phone": "+39 344 260 0833",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Luca Bargigia - Web Designer Milano",
+        "address": "Via Carlo Torre, 29, 20143 Milano MI, Italy",
+        "website": "https://lucabargigia.it/",
+        "phone": "+39 393 360 2660",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "KAM Studio | Web Agency Milano",
+        "address": "Via Privata Raimondo Montecuccoli, 20/1, 20147 Milano MI, Italy",
+        "website": "http://www.kamstudio.it/",
+        "phone": "+39 349 172 3983",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "La Studio Web Agency",
+        "address": "Via Antonio Pollaiuolo, 9, 20159 Milano MI, Italy",
+        "website": "https://www.lastudioweb.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Aleide Web Agency | SEO e Ecommerce",
+        "address": "Via Carlo Goldoni, 1, 20129 Milano MI, Italy",
+        "website": "https://www.aleidewebagency.com/",
+        "phone": "+39 02 4549 3139",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "AT",
+        "address": "Via Veneto, 11, 20068 Peschiera Borromeo MI, Italy",
+        "website": "https://www.graphikdesign.it/",
+        "phone": "+39 344 260 0833",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "PG Web Solution",
+        "address": "Corso Buenos Aires, 45, 20124 Milano MI, Italy",
+        "website": "https://pgwebsolution.it/",
+        "phone": "+39 348 590 5210",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Mana Web Design",
+        "address": "Via Giovanni Pacini, 66, 20131 Milano MI, Italy",
+        "website": "https://manawebdesign.it/",
+        "phone": "+39 351 954 1349",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Web Agency Milano | Web Designer | My Web Lab",
+        "address": "Via Cassanese, 41, 20054 Segrate MI, Italy",
+        "website": "https://www.myweblab.io/",
+        "phone": "+39 327 157 3498",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "ES Design - Web Designer Milano",
+        "address": "Via Paolo Mezzanotte, 4, 20141 Milano MI, Italy",
+        "website": "https://www.esdesignweb.it/",
+        "phone": "+39 379 283 6629",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Woow Digital",
+        "address": "Piazza della Repubblica, 26, 20124 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 8715 9240",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "JDT",
+        "address": "Via dei Barbarigo, 3, 20129 Milano MI, Italy",
+        "website": "http://www.jdt.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Studio Grafico e Realizzazione Siti Web : Idea Creativa Digital Studio e Posizionamento Siti",
+        "address": "Via Cino da Pistoia, 9, 20162 Milano MI, Italy",
+        "website": "https://www.ideacreativa.eu/",
+        "phone": "+39 349 363 3930",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Eezy Web Design Milano",
+        "address": "Vicolo Calusca, 8, 20123 Milano MI, Italy",
+        "website": "https://eezyweb.it/",
+        "phone": "+39 040 247 2193",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "White Cube Space - Web Design",
+        "address": "Via Giambellino, 128, 20146 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Web Media Agency Milano SEO",
+        "address": "P.za Cesare Beccaria, 20122 Milano MI, Italy",
+        "website": "https://webagencyseo.it/web-agency-design-milano/",
+        "phone": "+39 333 560 6746",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Made In Magic",
+        "address": "Via Figino, 6, 20016 Pero MI, Italy",
+        "website": "https://www.madeinmagic.it/",
+        "phone": "+39 02 3293 2518",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "MassDesign | Realizzazione Siti Web ed eCommerce a Milano | Online Marketing",
+        "address": "Via Sant'Anna, 20090 Vimodrone MI, Italy",
+        "website": "http://www.massdesign.it/",
+        "phone": "+39 351 558 3713",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Demo WA | Web Agency Milano",
+        "address": "Via Fabio Filzi, 18, 20124 Milano MI, Italy",
+        "website": "https://demowa.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Web Designer Freelance Milano",
+        "address": "Piazza Prealpi, 3, 20155 Milano MI, Italy",
+        "website": "https://stwebdesign.it/",
+        "phone": "+39 333 484 0052",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "ProWeb Solutions",
+        "address": "Via Bartolomeo Eustachi, 33, 20129 Milano MI, Italy",
+        "website": "http://proweb-solutions.com/",
+        "phone": "+39 347 376 2016",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "MilanoWeb",
+        "address": "Via Privata Clefi, 5, 20146 Milano MI, Italy",
+        "website": "https://www.milanoweb.agency/",
+        "phone": "+39 371 362 9029",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Laura Gargiulo - web design e marketing",
+        "address": "Via​ Arrigo Minerbi, 3, 20142 Milano MI, Italy",
+        "website": "https://www.lauryn.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Parco Studio - studio di graphic design e strategie di comunicazione",
+        "address": "Via Gianfranco Zuretti, 35, 20125 Milano MI, Italy",
+        "website": "http://www.parco.studio/",
+        "phone": "+39 02 3679 9380",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Web Designer Freelance Milano - Emanuele Pinna",
+        "address": "Via Giacomo Filippo Lacaita, 2, 20139 Milano MI, Italy",
+        "website": "https://www.emanuelepinnadesign.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Realizzazione Siti Web Milano: PMR Studio Web Posizionamento Siti",
+        "address": "Viale Abruzzi, 13/A, 20131 Milano MI, Italy",
+        "website": "https://www.pmrstudioweb.it/",
+        "phone": "+39 02 9542 05370",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "IVI design & comunicazione",
+        "address": "Via S. Gregorio, 55, 20124 Milano MI, Italy",
+        "website": "http://www.ividesign.it/",
+        "phone": "+39 327 730 5748",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Dream Big Design | Siti web, social, seo, comunicazione online",
+        "address": "Via Ambrogio Binda, 33, 20143 Milano MI, Italy",
+        "website": "https://dreambigdesign.it/",
+        "phone": "+39 389 947 7668",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Litech solutions • Web designer e grafico Freelance",
+        "address": "Via Giovanni Battista Piranesi, 75, 20137 Milano MI, Italy",
+        "website": "https://www.litechsolutions.it/",
+        "phone": "+39 340 409 5526",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Web Agency Milano 3.0",
+        "address": "Via P. Picasso, 3, 20090 Buccinasco MI, Italy",
+        "website": "https://web-agency-milano.cloud/",
+        "phone": "+39 338 996 0498",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "LU3G Agenzia Web",
+        "address": "Via Enrico Fermi, 20, 20057 Assago MI, Italy",
+        "website": "https://lu3g.it/",
+        "phone": "+39 348 172 4706",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "IrBox Web & Graphic Design",
+        "address": "Via Andrea Costa, 4/a, 20131 Milano MI, Italy",
+        "website": "https://www.irbox.it/",
+        "phone": "+39 349 316 6148",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Webattitude",
+        "address": "Corso S. Gottardo, 37, 20136 Milano MI, Italy",
+        "website": "http://www.webattitude.it/",
+        "phone": "+39 02 8419 0986",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "SeoWaii | Web Agency",
+        "address": "Via Vincenzo Forcella, 13, 20144 Milano MI, Italy",
+        "website": "http://seowaii.com/",
+        "phone": "+39 377 082 2337",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Akira Digital Srl",
+        "address": "Via Gian Giacomo Mora, 22, 20123 Milano MI, Italy",
+        "website": "https://www.akiradigital.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "Creazione Siti Internet - Dataweb Service Milano",
+        "address": "Viale Emilio Caldara, 43, 20122 Milano MI, Italy",
+        "website": "http://www.datawebservice.it/",
+        "phone": "+39 02 4440 1254",
+        "business_type": "software_company",
+        "search_keyword": "web development"
+    },
+    {
+        "name": "SAM APPS Creazione App Milano",
+        "address": "Via Don Giovanni Minzoni, 1, 20044 Arese MI, Italy",
+        "website": "N/A",
+        "phone": "+39 320 065 7383",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Nextre Engineering (Sviluppo Software, App) Software house",
+        "address": "Via Imperia, 2, 20141 Milano MI, Italy",
+        "website": "https://www.nextre.it/?utm_source=google&utm_medium=MyBusiness",
+        "phone": "+39 02 4951 8390",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Mainlab Srl",
+        "address": "Via Bernardo Davanzati, 5, 20158 Milano MI, Italy",
+        "website": "https://www.mainlabonline.it/",
+        "phone": "+39 349 521 4246",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Argonfleet Web Agency Milano",
+        "address": "Via Privata Battista De Rolandi, 15, 20156 Milano MI, Italy",
+        "website": "http://argonfleet.com/",
+        "phone": "+39 02 8219 7356",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "It's Prodigy srl",
+        "address": "Via Monte Napoleone, 8, 20121 Milano MI, Italy",
+        "website": "https://www.itsprodigy.com/",
+        "phone": "+39 02 3045 7057",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "REALMORE | Realtà Aumentata e Realtà Virtuale - Sviluppo App e Soluzioni 4.0",
+        "address": "Corso Sempione, 30, 20154 Milano MI, Italy",
+        "website": "http://www.realmore.net/",
+        "phone": "+39 02 3658 9575",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Sernicola Labs Srl",
+        "address": "Via Felice Casati, 5, 20124 Milano MI, Italy",
+        "website": "https://www.sernicola-labs.com/",
+        "phone": "+39 02 2316 7033",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Inventia srl",
+        "address": "Via Antonio Fontanesi, 4, 20146 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 3669 6490",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Becreatives",
+        "address": "Via Speronari, 6, 20123 Milano MI, Italy",
+        "website": "https://www.becreatives.com/",
+        "phone": "+39 02 6206 6852",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Agenzia Grafica Milano",
+        "address": "Corso Buenos Aires, 45, 20124 Milano MI, Italy",
+        "website": "https://www.agenziagraficamilano.it/",
+        "phone": "+39 348 590 5210",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Datrix SpA",
+        "address": "Foro Buonaparte, 71, 20121 Milano MI, Italy",
+        "website": "http://datrixgroup.com/",
+        "phone": "+39 02 7628 1064",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Kotuko",
+        "address": "Via Chiese, 72, 20126 Milano MI, Italy",
+        "website": "https://www.kotuko.it/",
+        "phone": "+39 02 8342 1930",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Megalink - Sviluppo software e programmatore FileMaker Milano",
+        "address": "Via Arzaga, 11, 20146 Milano MI, Italy",
+        "website": "https://www.megalink.it/",
+        "phone": "+39 02 5501 4993",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Efebia",
+        "address": "Via Medeghino, 12, 20141 Milano MI, Italy",
+        "website": "https://efebia.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Helon SpA",
+        "address": "Via Borgogna, 5, 20122 Milano MI, Italy",
+        "website": "https://helon.io/",
+        "phone": "+39 02 3673 5700",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Growens",
+        "address": "Via Luigi Porro Lambertenghi, 7, 20159 Milano MI, Italy",
+        "website": "https://www.growens.io/",
+        "phone": "+39 02 8688 6301",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "LanMan Group",
+        "address": "Via Cenisio, 46, 20154 Milano MI, Italy",
+        "website": "https://www.lanman.it/",
+        "phone": "+39 02 8399 1970",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Cegid Italia",
+        "address": "Viale Edoardo Jenner, 73, 20158 Milano MI, Italy",
+        "website": "https://www.cegid.com/it/",
+        "phone": "+39 02 5811 5120",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Algoretico",
+        "address": "Piazzetta Umberto Giordano, 2, 20122 Milano MI, Italy",
+        "website": "https://algoretico.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "app development"
+    },
+    {
+        "name": "Softlab S.P.A.",
+        "address": "Via Gaetano de Castillia, 23, 20124 Milano MI, Italy",
+        "website": "https://www.soft.it/",
+        "phone": "+39 06 510391",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Assosoftware",
+        "address": "P.za de Angeli Ernesto, 3, 20146 Milano MI, Italy",
+        "website": "https://www.assosoftware.it/",
+        "phone": "+39 02 469 9957",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Talentia Software Italia",
+        "address": "Via Giuseppe Piazzi, 2-4, 20159 Milano MI, Italy",
+        "website": "https://www.talentia-software.com/it/",
+        "phone": "+39 02 6749 0488",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Progress Software Italy",
+        "address": "Piazzale Biancamano, 8, 20121 Milano MI, Italy",
+        "website": "http://progress.com/",
+        "phone": "+39 02 6203 3036",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "EMPSOL Srl",
+        "address": "Via Francesco Burlamacchi, 16, 20135 Milano MI, Italy",
+        "website": "http://www.empsol.it/",
+        "phone": "+39 02 8050 9762",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Lateral Studio - Sviluppo MVP per startup",
+        "address": "Via Malaga, 4, 20143 Milano MI, Italy",
+        "website": "https://lateralstudio.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Lunar Great Wall Studios S.r.l.",
+        "address": "Corso Europa, 7, 20122 Milano MI, Italy",
+        "website": "http://lgwstudios.com/",
+        "phone": "+39 347 603 4218",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Veeam Software",
+        "address": "Via Pola, 11, 20124 Milano MI, Italy",
+        "website": "http://www.veeam.com/it/",
+        "phone": "+39 02 6203 3004",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Svilapp Milano - Agenzia Web e Software House",
+        "address": "Via Ettore Troilo, 4, 20136 Milano MI, Italy",
+        "website": "https://svilapp.it/",
+        "phone": "+39 0585 082346",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "StartupItalia",
+        "address": "Via Giovanni da Procida, 35/A, 20149 Milano MI, Italy",
+        "website": "http://www.startupitalia.eu/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "PoliHub - Innovation Park & Startup Accelerator",
+        "address": "Via Giovanni Durando, 39, 20158 Milano MI, Italy",
+        "website": "http://www.polihub.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "InnovUp - Italian Innovation & Startup Ecosystem",
+        "address": "Via Pantano, 9, 20122 Milano MI, Italy",
+        "website": "https://www.innovup.net/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "PoliHub | Innovation District & Startup Accelerator by Fondazione Politecnico di Milano",
+        "address": "Via Privata Simone Schiaffino, 11, 20159 Milano MI, Italy",
+        "website": "https://www.polihub.it/",
+        "phone": "+39 02 9177 3001",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Startup Bakery",
+        "address": "Via Carlo Farini, 5, 20154 Milano MI, Italy",
+        "website": "https://www.startup-bakery.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Tinvention Ingegneria Informatica",
+        "address": "Via Giovanni Pacini, 93, 20131 Milano MI, Italy",
+        "website": "https://www.tinvention.net/",
+        "phone": "+39 349 689 8545",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Zakeke",
+        "address": "Via Copernico, 38, 20125 Milano MI, Italy",
+        "website": "https://www.zakeke.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "samtech srl - startup innovativa",
+        "address": "Via Cristina Belgioioso, 20157 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Startupbootcamp Italia",
+        "address": "Via Luigi Porro Lambertenghi, 7, 20159 Milano MI, Italy",
+        "website": "https://www.startupbootcamp.org/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "ANIMA Blockchain",
+        "address": "Via dell'Annunciata, 23, 20121 Milano MI, Italy",
+        "website": "http://animablockchain.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Syomatica Srl",
+        "address": "P.le Lugano, 9, 20158 Milano MI, Italy",
+        "website": "http://www.syomatica.com/",
+        "phone": "+39 02 4960 3924",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Impact Hub Milano",
+        "address": "Via Aosta, 4, 20155 Milano MI, Italy",
+        "website": "http://milan.impacthub.net/",
+        "phone": "+39 02 4070 9253",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "SIGHUP",
+        "address": "Via Caldera, 21, 20153 Milano MI, Italy",
+        "website": "https://sighup.io/",
+        "phone": "+39 02 8088 8106",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "PPK Innovation",
+        "address": "Via Monte Napoleone, 8, 20121 Milano MI, Italy",
+        "website": "https://ppkinnovation.com/",
+        "phone": "+39 02 8089 6815",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "G2",
+        "address": "Via Legnone, 4, 20159 Milano MI, Italy",
+        "website": "http://g2-startups.it/",
+        "phone": "+39 02 8342 2410",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Start Up Management",
+        "address": "20126, Via Tofane, 31, 20125 Milano MI, Italy",
+        "website": "http://startup-milano.it/",
+        "phone": "+39 393 953 5441",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "HITBYTES S.R.L.",
+        "address": "Via Pietro Borsieri, 25, 20159 Milano MI, Italy",
+        "website": "https://hitbytes.io/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "TeiaCare",
+        "address": "Via Privata Turro, 6, 20127 Milano MI, Italy",
+        "website": "https://teiacare.com/",
+        "phone": "+39 02 2416 9208",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Filli srl",
+        "address": "Via Spartaco, 36, 20135 Milano MI, Italy",
+        "website": "http://filli.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Startup immobiliare",
+        "address": "Via Vipacco, 6, 20126 Milano MI, Italy",
+        "website": "https://startupimmobiliare.it/",
+        "phone": "+39 02 8434 8081",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Hacking Talents Società Benefit",
+        "address": "Via Antonio Locatelli, 4, 20124 Milano MI, Italy",
+        "website": "https://hackingtalents.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Clover Venture",
+        "address": "V. Filippo Turati, 29, 20121 Milano MI, Italy",
+        "website": "http://cloverventure.it/",
+        "phone": "+39 348 559 8291",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Deix",
+        "address": "Via Lazzaretto, 19, 20124 Milano MI, Italy",
+        "website": "https://www.deix.ai/",
+        "phone": "+39 348 631 1711",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Walkstone - Advanced Technology Labs",
+        "address": "Viale Abruzzi, 13/A, 20129 Milano MI, Italy",
+        "website": "http://www.walkstone.it/",
+        "phone": "+39 329 286 6069",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "UNGUESS",
+        "address": "Via S. Gregorio, 34, 20124 Milano MI, Italy",
+        "website": "https://www.unguess.io/",
+        "phone": "+39 02 8089 6745",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Rocket Dreams",
+        "address": "Via Pastrengo, 14, 20159 Milano MI, Italy",
+        "website": "http://www.rocketdreams.io/",
+        "phone": "+39 338 717 1052",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Healthy Virtuoso",
+        "address": "Piazza Luigi di Savoia, 2, 20124 Milano MI, Italy",
+        "website": "http://www.healthyvirtuoso.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Informate.it",
+        "address": "Via della Moscova, 48, 20121 Milano MI, Italy",
+        "website": "http://www.informate.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "ADAPTA studio",
+        "address": "Via Pietro Andrea Saccardo, 9, 20134 Milano MI, Italy",
+        "website": "http://www.adapta.studio/",
+        "phone": "+39 340 877 1097",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Skillvue",
+        "address": "Future of Work House, Viale Emilio Caldara, 13, 20122 Milano MI, Italy",
+        "website": "http://www.skillvue.ai/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "SIT – Social Innovation Teams",
+        "address": "Piazza Giovanni Antonio Bazzi, 2, 20144 Milano MI, Italy",
+        "website": "http://socialinnovationteams.org/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Kjuicer",
+        "address": "Via Ruggero di Lauria, 2, 20149 Milano MI, Italy",
+        "website": "http://kjuicer.com/",
+        "phone": "+39 02 3653 9625",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Aerodynamics SRL - AI & Digital Software House",
+        "address": "Viale Belisario, 9, 20145 Milano MI, Italy",
+        "website": "https://aerodynamics.cloud/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Unità di Produzione",
+        "address": "Via Andrea Cesalpino, 7, 20128 Milano MI, Italy",
+        "website": "http://www.up.milano.it/",
+        "phone": "+39 02 8706 4696",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Gestione siti web a Milano | Prezzi trasparenti | LOG e S.r.l.",
+        "address": "Via Merano, 18, 20127 Milano MI, Italy",
+        "website": "https://log-e.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "ZeepUp",
+        "address": "Via Santa Radegonda, 11, 20121 Milano MI, Italy",
+        "website": "https://www.zeepup.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Digital Forest",
+        "address": "Via Giovanni Cadolini, 30, 20137 Milano MI, Italy",
+        "website": "http://www.digitalforest.it/",
+        "phone": "+39 02 8974 7387",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "SImba2018",
+        "address": "Corso Magenta, 31/N 1, 20123 Milano MI, Italy",
+        "website": "http://simba2018.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Thinkfor",
+        "address": "Via Antonio Bazzini, 17, 20131 Milano MI, Italy",
+        "website": "http://thinkfor.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Vittoria hub",
+        "address": "Bosch - Innovation Center, Via Marcantonio Colonna, 35, 20149 Milano MI, Italy",
+        "website": "http://vittoriahub.com/",
+        "phone": "+39 02 800391",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Miraitek Srl",
+        "address": "Via Privata Maddalena Giudice Donadoni, 20158 Milano MI, Italy",
+        "website": "https://www.miraitek.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Up2You",
+        "address": "Via Pietro Orseolo, 12, 20144 Milano MI, Italy",
+        "website": "https://www.u2y.io/",
+        "phone": "+39 375 882 8054",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Sinapsi s.r.l.",
+        "address": "Via Marco D'Agrate, 19, 20139 Milano MI, Italy",
+        "website": "http://www.sinapsi.com/",
+        "phone": "+39 02 582 0951",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "LIFEDATA Srl",
+        "address": "Via Jacopo dal Verme, 7, 20159 Milano MI, Italy",
+        "website": "https://www.lifedata.ai/",
+        "phone": "+39 351 597 5313",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Dicodata",
+        "address": "Piazzale Bacone, 7, 20129 Milano MI, Italy",
+        "website": "https://www.dicodata.it/",
+        "phone": "+39 02 8456 7040",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "IT4U Azienda informatica di vendita ed assistenza business",
+        "address": "Via Bessarione, 14, 20139 Milano MI, Italy",
+        "website": "https://www.it4u.it/",
+        "phone": "+39 02 539 6975",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Laus Informatica srl",
+        "address": "Via Giosuè Carducci, 125, 20099 Sesto San Giovanni MI, Italy",
+        "website": "https://www.lausinformatica.com/",
+        "phone": "+39 02 6129 3935",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Computer Milano - Assistenza e Riparazione PC, Computer e Notebook",
+        "address": "Via Cerva, 20, 20122 Milano MI, Italy",
+        "website": "https://www.computermilano.it/",
+        "phone": "+39 02 9713 1011",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "ITD INFORMATICA",
+        "address": "Viale delle Rimembranze di Lambrate, 7, 20134 Milano MI, Italy",
+        "website": "http://www.gruppoitd.com/",
+        "phone": "+39 02 2641 6255",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "PCDUE Assistenza IT per Aziende",
+        "address": "Via Cusio, 5, 20159 Milano MI, Italy",
+        "website": "https://www.pcdue.com/",
+        "phone": "+39 02 9713 5649",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Gisette Soluzioni Informatiche srl",
+        "address": "Via Gaetano Previati, 34, 20149 Milano MI, Italy",
+        "website": "https://www.gisette.it/consulting.asp",
+        "phone": "+39 02 466849",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Xion Informatica",
+        "address": "Via Montepulciano, 15, 20124 Milano MI, Italy",
+        "website": "https://xion.it/",
+        "phone": "+39 02 4070 9414",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Tensioninformatiche",
+        "address": "Via Lanfranco della Pila, 1, 20162 Milano MI, Italy",
+        "website": "https://www.tensioninformatiche.it/",
+        "phone": "+39 380 242 2445",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Plug and Play Italy",
+        "address": "Via Sebastiano del Piombo, 3, 20149 Milano MI, Italy",
+        "website": "http://www.plugandplayinformatica.it/",
+        "phone": "+39 02 8721 2252",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Qwerty Informatica S.r.l.",
+        "address": "V.le Bligny, 15, 20136 Milano MI, Italy",
+        "website": "http://www.qwerty-informatica.com/",
+        "phone": "+39 02 8480 0837",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "INFORMATICA MILANO ASSISTENZA A DOMICILIO",
+        "address": "Via Privata Antonio Picozzi, 6, 20131 Milano MI, Italy",
+        "website": "https://www.servizi-informatica.com/",
+        "phone": "+39 339 226 1721",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "AGP Computer snc",
+        "address": "Viale Monte Nero, 44, 20135 Milano MI, Italy",
+        "website": "https://www.agpcomputer.it/",
+        "phone": "+39 02 3656 5813",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Hinto®",
+        "address": "Via Durini, 24, 20122 Milano MI, Italy",
+        "website": "http://www.hintogroup.eu/",
+        "phone": "+39 02 3831 3616",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Informatica & Telecomunicazioni di G. Della Cerra",
+        "address": "Via Conte Rosso, 22, 20134 Milano MI, Italy",
+        "website": "https://www.ilcalcolatore.it/",
+        "phone": "+39 349 467 9889",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Nts Informatica Srl",
+        "address": "Via Pompeo Mariani, 16, 20128 Milano MI, Italy",
+        "website": "http://www.ntsinformatica.com/",
+        "phone": "+39 02 2708 0080",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Cpjed",
+        "address": "Via Masolino da Panicale, 12, 20155 Milano MI, Italy",
+        "website": "http://www.cpjed.it/",
+        "phone": "+39 02 3349 6275",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "InfoPad - Assistenza Informatica e Siti Web",
+        "address": "Viale Monza, 165, 20125 Milano MI, Italy",
+        "website": "https://www.infopad.it/",
+        "phone": "+39 02 257 6191",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "A. B. Soft Milano",
+        "address": "Via Stampa, 14, 20123 Milano MI, Italy",
+        "website": "http://www.absoftmilano.it/",
+        "phone": "+39 335 646 9512",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Computer Milano - Assistenza e Riparazione PC",
+        "address": "Via XXIV Maggio, 42, 20032 Cormano MI, Italy",
+        "website": "https://www.computermilano.it/",
+        "phone": "+39 02 9713 1011",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Supporto Informatico Aziende",
+        "address": "Viale Monza, 165/interno B, 20125 Milano MI, Italy",
+        "website": "https://www.supportoinformaticoaziende.it/",
+        "phone": "+39 351 551 6894",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Zip Computer Srl - Assistenza Computer Milano",
+        "address": "V.le Gian Galeazzo, 9, 20136 Milano MI, Italy",
+        "website": "https://www.zipcomputer.com/",
+        "phone": "+39 02 837 6570",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Informatica LLC",
+        "address": "Piazza della Repubblica, 14, 20124 Milano MI, Italy",
+        "website": "https://www.informatica.com/it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Data 3 S.R.L. Informatica E Organizzazione",
+        "address": "Viale Fratelli Casiraghi, 239, 20099 Sesto San Giovanni MI, Italy",
+        "website": "http://www.data3.it/",
+        "phone": "+39 02 680815",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "1 Byte | Soluzioni Informatiche & Software Gestionali | Milano",
+        "address": "Via Camillo Finocchiaro Aprile, 5, 20124 Milano MI, Italy",
+        "website": "http://www.1byte.it/",
+        "phone": "+39 02 8088 9312",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Assistenza PC - Servizi Informatici Computer Real",
+        "address": "Via Giovanni Prati, 2, 20145 Milano MI, Italy",
+        "website": "https://www.computer-real.it/",
+        "phone": "+39 02 3360 9099",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "EuroSpace S.r.l.",
+        "address": "Via Natale Battaglia, 25, 20127 Milano MI, Italy",
+        "website": "http://www.eurospace.it/",
+        "phone": "+39 02 4547 8131",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "Unify",
+        "address": "Via Alberto Pirelli, 6, 20153 Milano MI, Italy",
+        "website": "http://www.unify.com/it/",
+        "phone": "+39 02 3604 2400",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "C.A.T.A. Informatica",
+        "address": "S.da 1, 20057 Assago MI, Italy",
+        "website": "http://www.cata.it/",
+        "phone": "+39 02 3657 1118",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "PcBuster Assistenza Computer | Milano - Wagner",
+        "address": "Via Piero Capponi, 4, 20145 Milano MI, Italy",
+        "website": "https://pcbusterwagner.it/",
+        "phone": "+39 02 3674 1583",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "SINTESI INFORMATICA",
+        "address": "Via Melchiorre Gioia, 66, 20125 Milano MI, Italy",
+        "website": "http://www.sintesi-info.net/",
+        "phone": "+39 02 8457 3454",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "AB Informatica",
+        "address": "Via Galvano Fiamma, 11, 20129 Milano MI, Italy",
+        "website": "http://www.abinformatica.it/",
+        "phone": "+39 348 305 9167",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    }
+]

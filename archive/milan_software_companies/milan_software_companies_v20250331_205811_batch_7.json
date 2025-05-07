@@ -1,0 +1,162 @@
+[
+    {
+        "name": "BBC Technologies",
+        "address": "Via Corradino D'Ascanio, 4, 20142 Milano MI, Italy",
+        "website": "https://www.bbc-tech.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Huulke S.R.L.",
+        "address": "Via Pietro Paleocapa, 1, 20121 Milano MI, Italy",
+        "website": "https://huulke.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Cloov Tech",
+        "address": "Viale Bianca Maria, 22, 20129 Milano MI, Italy",
+        "website": "https://cloov.tech/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Acm Solution S.r.l.",
+        "address": "Via Agnello, 5, 20121 Milano MI, Italy",
+        "website": "https://acmsolution.it/",
+        "phone": "+39 02 3919 8751",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Dune",
+        "address": "Via Anfiteatro, 5, 20121 Milano MI, Italy",
+        "website": "https://www.dune.it/",
+        "phone": "+39 02 929 6921",
+        "business_type": "software_company",
+        "search_keyword": "tech company"
+    },
+    {
+        "name": "Moviri",
+        "address": "Via Privata Simone Schiaffino, 11, 20158 Milano MI, Italy",
+        "website": "http://www.moviri.com/",
+        "phone": "+39 02 4951 7001",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Mia-Platform",
+        "address": "Via Carlo Imbonati, 18, 20159 Milano MI, Italy",
+        "website": "http://www.mia-platform.eu/",
+        "phone": "+39 02 5810 0828",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Invrsion",
+        "address": "Via Gian Battista Vico, 42, 20123 Milano MI, Italy",
+        "website": "http://www.invrsion.com/",
+        "phone": "+39 02 3599 1247",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "ITD Solutions S.p.A.",
+        "address": "Via Galileo Galilei, 7, 20124 Milano MI, Italy",
+        "website": "https://www.itdsolutions.it/",
+        "phone": "+39 06 6641 1156",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "CM.com | Milan Office",
+        "address": "Via Vittor Pisani, 15, 20124 Milano MI, Italy",
+        "website": "http://cm.com/",
+        "phone": "+39 351 761 6064",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Maticmind Spa",
+        "address": "Via Privata Roberto Bracco, 6, 20159 Milano MI, Italy",
+        "website": "https://www.maticmind.it/",
+        "phone": "+39 02 274261",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Advanced Logic | Agenzia Sviluppo Magento",
+        "address": "Via Broletto, 46, 20121 Milano MI, Italy",
+        "website": "https://www.advancedlogic.eu/",
+        "phone": "+39 02 3056 8366",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Eudata s.r.l. S.B. - Milano",
+        "address": "Via Valtorta, 48, 20127 Milano MI, Italy",
+        "website": "http://www.eudata.com/",
+        "phone": "+39 02 4549 5098",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Oracle | Italia",
+        "address": "Via Massimo D'Azeglio, 4, 20154 Milano MI, Italy",
+        "website": "http://www.oracle.it/",
+        "phone": "+39 02 2495 9355",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Aubay Italia - sede legale e operativa Milano",
+        "address": "Corso Italia, 47, 20122 Milano MI, Italy",
+        "website": "https://www.aubay.it/",
+        "phone": "+39 02 655 6761",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "HUDi - Digital Humanism",
+        "address": "Via Pietro Paleocapa, 7, 20121 Milano MI, Italy",
+        "website": "https://www.hudi.it/",
+        "phone": "+39 02 3656 6362",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Zendesk",
+        "address": "Via S. Marco, 21, 20121 Milano MI, Italy",
+        "website": "https://www.zendesk.it/",
+        "phone": "+39 040 995 6745",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "NordCom Spa",
+        "address": "Via Pietro Paleocapa, 7, 20121 Milano MI, Italy",
+        "website": "https://www.nord-com.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "LBCOMPANY Milano",
+        "address": "Via Renato Fucini, 22, 20133 Milano MI, Italy",
+        "website": "https://www.lbcompany.it/",
+        "phone": "+39 02 8154 9474",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    },
+    {
+        "name": "Nacon Studio Milan S.r.l.",
+        "address": "Corso Europa, 5/7, 20122 Milano MI, Italy",
+        "website": "https://www.naconstudiomilan.com/",
+        "phone": "+39 02 4775 4133",
+        "business_type": "software_company",
+        "search_keyword": "IT company"
+    }
+]

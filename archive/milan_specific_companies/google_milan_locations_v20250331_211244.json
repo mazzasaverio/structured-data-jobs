@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Google Milan",
+        "address": "Via Federico Confalonieri, 4, 20124 Milano MI, Italy",
+        "website": "http://google.com/",
+        "phone": "+39 02 3661 8300",
+        "rating": 3.7,
+        "total_ratings": 776,
+        "location": {
+            "lat": 45.48627889999999,
+            "lng": 9.189626899999999
+        },
+        "search_keyword": "Google",
+        "opening_hours": [
+            "Monday: 8:30 AM – 5:30 PM",
+            "Tuesday: 8:30 AM – 5:30 PM",
+            "Wednesday: 8:30 AM – 5:30 PM",
+            "Thursday: 8:30 AM – 5:30 PM",
+            "Friday: 8:30 AM – 5:30 PM",
+            "Saturday: Closed",
+            "Sunday: Closed"
+        ]
+    },
+    {
+        "name": "Google Italy",
+        "address": "Google Italy, Via Federico Confalonieri, 4, 20124 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "N/A",
+        "rating": "N/A",
+        "total_ratings": "N/A",
+        "location": {
+            "lat": 45.48616029999999,
+            "lng": 9.1895724
+        },
+        "search_keyword": "Google Italy"
+    }
+]

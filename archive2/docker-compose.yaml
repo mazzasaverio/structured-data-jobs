@@ -1,0 +1,146 @@
+# docker-compose.yaml
+version: '3.8'
+
+x-airflow-common: &airflow-common
+  build:
+    context:.
+    dockerfile: Dockerfile
+    args: # Pass UID/GID during build time for user creation in Dockerfile
+      AIRFLOW_UID: ${AIRFLOW_UID:-50000}
+      AIRFLOW_GID: ${AIRFLOW_GID:-0}
+  image: airflow-pipeline-repo/custom-airflow:latest # Name your custom image
+  environment:
+    AIRFLOW_UID: ${AIRFLOW_UID:-50000}
+    AIRFLOW_GID: ${AIRFLOW_GID:-0}
+    AIRFLOW__CORE__EXECUTOR: ${AIRFLOW__CORE__EXECUTOR}
+    AIRFLOW__CORE__LOAD_EXAMPLES: ${AIRFLOW__CORE__LOAD_EXAMPLES}
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true' # Good practice for new DAGs
+    # Metadata DB Connection
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER_AIRFLOW_META}:${POSTGRES_PASSWORD_AIRFLOW_META}@${POSTGRES_HOST_AIRFLOW_META}:${POSTGRES_PORT_AIRFLOW_META}/${POSTGRES_DB_AIRFLOW_META}
+    # Celery Configuration
+    AIRFLOW__CELERY__BROKER_URL: redis://${REDIS_HOST}:${REDIS_PORT}/0
+    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${POSTGRES_USER_AIRFLOW_META}:${POSTGRES_PASSWORD_AIRFLOW_META}@${POSTGRES_HOST_AIRFLOW_META}:${POSTGRES_PORT_AIRFLOW_META}/${POSTGRES_DB_AIRFLOW_META}
+    # Neon Data DB Connection (made available to Airflow)
+    AIRFLOW_CONN_NEON_DATA_DB: postgresql://${NEON_DB_USER}:${NEON_DB_PASSWORD}@${NEON_DB_HOST}:${NEON_DB_PORT}/${NEON_DB_NAME}?sslmode=require
+  volumes:
+    -./dags:/opt/airflow/dags
+    -./logs:/opt/airflow/logs
+    -./plugins:/opt/airflow/plugins
+    -./config:/opt/airflow/config
+    # Allows tasks to write to a shared space if needed, ensure permissions are handled
+    -./shared_data:/opt/airflow/shared_data 
+  depends_on:
+    postgres-airflow-meta:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+  user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}" # Run containers with this user:group
+  restart: unless-stopped
+
+services:
+  postgres-airflow-meta:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER_AIRFLOW_META}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_AIRFLOW_META}
+      POSTGRES_DB: ${POSTGRES_DB_AIRFLOW_META}
+    volumes:
+      - postgres_airflow_meta_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432" # Map to host 5433 to avoid conflict with local Postgres on 5432
+    healthcheck:
+      test:
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.2-alpine # Use a specific version
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  airflow-init:
+    <<: *airflow-common
+    container_name: airflow_init_runner # Explicit name for clarity
+    command: >
+      bash -c "
+        airflow db init &&
+        airflow users create \
+          --username admin \
+          --password admin \
+          --firstname Admin \
+          --lastname User \
+          --role Admin \
+          --email admin@example.com |
+| true # Ignore error if user already exists
+      "
+    # This service should run once and exit.
+    # We handle this by running it explicitly: docker compose run --rm airflow-init
+    # Or by making it part of the startup sequence and ensuring it exits.
+    # For simplicity, we'll run it explicitly.
+    # To make it part of default 'up', remove 'profiles' or add to default profile
+    # and ensure it exits cleanly (e.g. by adding 'exit 0' to command if needed)
+    # For this setup, we'll use an explicit run.
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test:
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    depends_on: # Ensure init has a chance to complete, though explicit run is better
+      <<: (*airflow-common).depends_on # Inherit common dependencies
+      # airflow-init: # If init were part of default 'up' and had a healthcheck
+      #   condition: service_completed_successfully 
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    healthcheck: # Scheduler healthcheck can be more complex
+      test:
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      <<: (*airflow-common).depends_on
+
+  airflow-worker:
+    <<: *airflow-common
+    command: worker
+    # For scaling, you can add more worker replicas:
+    # deploy:
+    #   replicas: 3 
+    healthcheck: # Worker healthcheck
+      test:
+      interval: 30s
+      timeout: 30s
+      retries: 5
+    depends_on:
+      <<: (*airflow-common).depends_on
+
+  # Optional: Airflow Triggerer for deferrable operators
+  # airflow-triggerer:
+  #   <<: *airflow-common
+  #   command: triggerer
+  #   healthcheck:
+  #     test:
+  #     interval: 30s
+  #     timeout: 30s
+  #     retries: 5
+  #   depends_on:
+  #     <<: (*airflow-common).depends_on
+
+volumes:
+  postgres_airflow_meta_data:
+    driver: local

@@ -1,0 +1,34 @@
+[
+    {
+        "name": "C.A.T.A. Informatica",
+        "address": "S.da 1, 20057 Assago MI, Italy",
+        "website": "http://www.cata.it/",
+        "phone": "+39 02 3657 1118",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "PcBuster Assistenza Computer | Milano - Wagner",
+        "address": "Via Piero Capponi, 4, 20145 Milano MI, Italy",
+        "website": "https://pcbusterwagner.it/",
+        "phone": "+39 02 3674 1583",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "SINTESI INFORMATICA",
+        "address": "Via Melchiorre Gioia, 66, 20125 Milano MI, Italy",
+        "website": "http://www.sintesi-info.net/",
+        "phone": "+39 02 8457 3454",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    },
+    {
+        "name": "AB Informatica",
+        "address": "Via Galvano Fiamma, 11, 20129 Milano MI, Italy",
+        "website": "http://www.abinformatica.it/",
+        "phone": "+39 348 305 9167",
+        "business_type": "software_company",
+        "search_keyword": "azienda informatica"
+    }
+]

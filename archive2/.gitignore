@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+celerybeat-schedule
+*.egg-info/
+.cache/
+*.so
+*.coverage
+.pytest_cache/
+
+# Airflow
+airflow.db
+*.sqlite3
+logs/
+unittests.cfg
+airflow.cfg # Often configured via env vars in Docker, but local might generate it
+# Add any other Airflow-specific files you don't want to commit
+
+# IDE / OS specific
+.idea/
+.vscode/
+*.DS_Store
+Thumbs.db
+
+# Secrets - ensure.env is here if used for local secrets
+.env

@@ -1,0 +1,153 @@
+[
+    {
+        "name": "Google Milan",
+        "address": "Via Federico Confalonieri, 4, 20124 Milano MI, Italy",
+        "website": "http://google.com/",
+        "phone": "+39 02 3661 8300",
+        "rating": 3.7,
+        "total_ratings": 776,
+        "location": {
+            "lat": 45.48627889999999,
+            "lng": 9.189626899999999
+        },
+        "search_keyword": "Google",
+        "details_data": {
+            "html_attributions": [],
+            "result": {
+                "formatted_address": "Via Federico Confalonieri, 4, 20124 Milano MI, Italy",
+                "geometry": {
+                    "location": {
+                        "lat": 45.48627889999999,
+                        "lng": 9.189626899999999
+                    },
+                    "viewport": {
+                        "northeast": {
+                            "lat": 45.4876300802915,
+                            "lng": 9.190999630291502
+                        },
+                        "southwest": {
+                            "lat": 45.4849321197085,
+                            "lng": 9.1883016697085
+                        }
+                    }
+                },
+                "international_phone_number": "+39 02 3661 8300",
+                "name": "Google Milan",
+                "opening_hours": {
+                    "open_now": false,
+                    "periods": [
+                        {
+                            "close": {
+                                "day": 1,
+                                "time": "1730"
+                            },
+                            "open": {
+                                "day": 1,
+                                "time": "0830"
+                            }
+                        },
+                        {
+                            "close": {
+                                "day": 2,
+                                "time": "1730"
+                            },
+                            "open": {
+                                "day": 2,
+                                "time": "0830"
+                            }
+                        },
+                        {
+                            "close": {
+                                "day": 3,
+                                "time": "1730"
+                            },
+                            "open": {
+                                "day": 3,
+                                "time": "0830"
+                            }
+                        },
+                        {
+                            "close": {
+                                "day": 4,
+                                "time": "1730"
+                            },
+                            "open": {
+                                "day": 4,
+                                "time": "0830"
+                            }
+                        },
+                        {
+                            "close": {
+                                "day": 5,
+                                "time": "1730"
+                            },
+                            "open": {
+                                "day": 5,
+                                "time": "0830"
+                            }
+                        }
+                    ],
+                    "weekday_text": [
+                        "Monday: 8:30 AM – 5:30 PM",
+                        "Tuesday: 8:30 AM – 5:30 PM",
+                        "Wednesday: 8:30 AM – 5:30 PM",
+                        "Thursday: 8:30 AM – 5:30 PM",
+                        "Friday: 8:30 AM – 5:30 PM",
+                        "Saturday: Closed",
+                        "Sunday: Closed"
+                    ]
+                },
+                "rating": 3.7,
+                "user_ratings_total": 776,
+                "website": "http://google.com/"
+            },
+            "status": "OK"
+        },
+        "opening_hours": [
+            "Monday: 8:30 AM – 5:30 PM",
+            "Tuesday: 8:30 AM – 5:30 PM",
+            "Wednesday: 8:30 AM – 5:30 PM",
+            "Thursday: 8:30 AM – 5:30 PM",
+            "Friday: 8:30 AM – 5:30 PM",
+            "Saturday: Closed",
+            "Sunday: Closed"
+        ]
+    },
+    {
+        "name": "Google Italy",
+        "address": "Google Italy, Via Federico Confalonieri, 4, 20124 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "N/A",
+        "rating": "N/A",
+        "total_ratings": "N/A",
+        "location": {
+            "lat": 45.48616029999999,
+            "lng": 9.1895724
+        },
+        "search_keyword": "Google Italy",
+        "details_data": {
+            "html_attributions": [],
+            "result": {
+                "formatted_address": "Google Italy, Via Federico Confalonieri, 4, 20124 Milano MI, Italy",
+                "geometry": {
+                    "location": {
+                        "lat": 45.48616029999999,
+                        "lng": 9.1895724
+                    },
+                    "viewport": {
+                        "northeast": {
+                            "lat": 45.4876532302915,
+                            "lng": 9.190851880291504
+                        },
+                        "southwest": {
+                            "lat": 45.4849552697085,
+                            "lng": 9.1881539197085
+                        }
+                    }
+                },
+                "name": "Google Italy"
+            },
+            "status": "OK"
+        }
+    }
+]

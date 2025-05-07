@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Satispay",
+        "address": "Piazza Fidia, 1, 20159 Milano MI, Italy",
+        "website": "https://www.satispay.com/",
+        "phone": "N/A",
+        "rating": 4,
+        "total_ratings": 45,
+        "location": {
+            "lat": 45.488941,
+            "lng": 9.185632999999997
+        },
+        "search_keyword": "Satispay",
+        "details_data": {
+            "html_attributions": [],
+            "result": {
+                "formatted_address": "Piazza Fidia, 1, 20159 Milano MI, Italy",
+                "geometry": {
+                    "location": {
+                        "lat": 45.488941,
+                        "lng": 9.185632999999997
+                    },
+                    "viewport": {
+                        "northeast": {
+                            "lat": 45.4902010302915,
+                            "lng": 9.187058380291502
+                        },
+                        "southwest": {
+                            "lat": 45.4875030697085,
+                            "lng": 9.184360419708497
+                        }
+                    }
+                },
+                "name": "Satispay",
+                "rating": 4,
+                "user_ratings_total": 45,
+                "website": "https://www.satispay.com/"
+            },
+            "status": "OK"
+        }
+    }
+]

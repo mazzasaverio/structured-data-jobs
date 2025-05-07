@@ -1,0 +1,162 @@
+[
+    {
+        "name": "IBM Studios",
+        "address": "Piazza Gae Aulenti, 10, 20124 Milano MI, Italy",
+        "website": "https://www.ibm.com/ibmstudiosmilano",
+        "phone": "+39 02 8284 8301",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Buildo",
+        "address": "Via Malaga, 4, 20143 Milano MI, Italy",
+        "website": "https://www.buildo.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "SparkFabrik",
+        "address": "Via Gustavo Fara, 9, 20124 Milano MI, Italy",
+        "website": "http://www.sparkfabrik.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Mokka Studios | Software Development Company",
+        "address": "Via Bernardo Quaranta, 45, 20139 Milano MI, Italy",
+        "website": "http://www.mokkastudios.com/",
+        "phone": "+39 340 384 0700",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "HCLTech",
+        "address": "Via Luigi Cadorna, 73, 20090 Milano MI, Italy",
+        "website": "https://www.hcltech.com/geo-presence/italy",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Co-Brains | Sviluppo Software Milano",
+        "address": "Via Giovanni Durando, 39, 20158 Milano MI, Italy",
+        "website": "https://www.co-brains.com/",
+        "phone": "+39 392 271 3169",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Intesi Group S.p.A.",
+        "address": "Via Torino, 48, 20123 Milano MI, Italy",
+        "website": "http://www.intesigroup.com/",
+        "phone": "+39 02 676 0641",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Ecomate",
+        "address": "Via Filippo Sassetti, 32, 20124 Milano MI, Italy",
+        "website": "https://ecomate.eu/",
+        "phone": "+39 02 8089 6046",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "iCubed",
+        "address": "Via Fabio Filzi, 27, 20124 Milano MI, Italy",
+        "website": "https://icubed.it/",
+        "phone": "+39 02 5750 1057",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Radicalbit | A Fortitude Group Solution",
+        "address": "Via Tortona, 4, 20144 Milano MI, Italy",
+        "website": "https://radicalbit.ai/",
+        "phone": "+39 02 3792 0598",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "SoftwareOne Italia Srl",
+        "address": "Palazzo C, Direzionale Milanofiori, Strada 2, 20057 Assago MI, Italy",
+        "website": "https://www.softwareone.com/it-it",
+        "phone": "+39 02 9475 9576",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Software AG Italia S.p.A.",
+        "address": "Bastioni di Porta Nuova, 21, 20121 Milano MI, Italy",
+        "website": "https://www.softwareag.com/en_corporate.html",
+        "phone": "+39 02 2166 8211",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Techlane | Milano - Assistenza e Consulenza Informatica per le aziende",
+        "address": "Piazza della Trivulziana, 4/A, 20126 Milano MI, Italy",
+        "website": "https://www.techlane.it/?utm_source=google&utm_medium=organic&utm_campaign=googlemybusiness",
+        "phone": "+39 02 8088 9949",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "WIIT - The Premium Cloud",
+        "address": "V. dei Mercanti, 12, 20121 Milano MI, Italy",
+        "website": "http://www.wiit.cloud/",
+        "phone": "+39 02 3660 7500",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Informatica Milano",
+        "address": "Via Marco D'Oggiono, 12, 20123 Milano MI, Italy",
+        "website": "http://www.giberti.net/",
+        "phone": "+39 02 8353 5679",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "SAS Institute Ltd.",
+        "address": "Via Carlo Darwin, 20/22, 20143 Milano MI, Italy",
+        "website": "https://www.sas.com/it_it/home.html",
+        "phone": "+39 02 831341",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Luna Labs S.r.l. Unipersonale",
+        "address": "Viale Elvezia, 18, 20154 Milano MI, Italy",
+        "website": "https://www.lunalabs.it/",
+        "phone": "+39 02 3790 2029",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Consoftware Team",
+        "address": "Piazzale Giovanni delle Bande Nere, 7, 20146 Milano MI, Italy",
+        "website": "https://www.consoftware-team.it/",
+        "phone": "+39 02 4009 5082",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "TeamSystem srl",
+        "address": "Via Emilio Cornalia, 11, 20124 Milano MI, Italy",
+        "website": "http://www.teamsystem.com/",
+        "phone": "+39 02 255 1561",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Vantisco",
+        "address": "Via Pietro Paleocapa, 7/7th floor, 20121 Milano MI, Italy",
+        "website": "https://vantisco.it/",
+        "phone": "+39 02 8736 8316",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    }
+]

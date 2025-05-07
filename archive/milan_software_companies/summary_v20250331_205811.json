@@ -1,0 +1,36 @@
+{
+    "version": "20250331_205811",
+    "total_software_companies": 344,
+    "counts_by_keyword": {
+        "software company": 60,
+        "digital agency": 59,
+        "startup tecnologica": 45,
+        "tech company": 38,
+        "web development": 36,
+        "azienda informatica": 31,
+        "software development": 27,
+        "IT company": 20,
+        "app development": 19,
+        "software house": 9
+    },
+    "batch_files": [
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_1.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_2.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_3.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_4.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_5.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_6.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_7.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_8.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_9.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_10.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_11.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_12.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_13.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_14.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_15.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_16.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_17.json",
+        "milan_software_companies/milan_software_companies_v20250331_205811_batch_17.json"
+    ]
+}

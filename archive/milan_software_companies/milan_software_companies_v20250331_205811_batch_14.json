@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Assosoftware",
+        "address": "P.za de Angeli Ernesto, 3, 20146 Milano MI, Italy",
+        "website": "https://www.assosoftware.it/",
+        "phone": "+39 02 469 9957",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Talentia Software Italia",
+        "address": "Via Giuseppe Piazzi, 2-4, 20159 Milano MI, Italy",
+        "website": "https://www.talentia-software.com/it/",
+        "phone": "+39 02 6749 0488",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Progress Software Italy",
+        "address": "Piazzale Biancamano, 8, 20121 Milano MI, Italy",
+        "website": "http://progress.com/",
+        "phone": "+39 02 6203 3036",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "EMPSOL Srl",
+        "address": "Via Francesco Burlamacchi, 16, 20135 Milano MI, Italy",
+        "website": "http://www.empsol.it/",
+        "phone": "+39 02 8050 9762",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Lateral Studio - Sviluppo MVP per startup",
+        "address": "Via Malaga, 4, 20143 Milano MI, Italy",
+        "website": "https://lateralstudio.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Lunar Great Wall Studios S.r.l.",
+        "address": "Corso Europa, 7, 20122 Milano MI, Italy",
+        "website": "http://lgwstudios.com/",
+        "phone": "+39 347 603 4218",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Veeam Software",
+        "address": "Via Pola, 11, 20124 Milano MI, Italy",
+        "website": "http://www.veeam.com/it/",
+        "phone": "+39 02 6203 3004",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "Svilapp Milano - Agenzia Web e Software House",
+        "address": "Via Ettore Troilo, 4, 20136 Milano MI, Italy",
+        "website": "https://svilapp.it/",
+        "phone": "+39 0585 082346",
+        "business_type": "software_company",
+        "search_keyword": "software house"
+    },
+    {
+        "name": "StartupItalia",
+        "address": "Via Giovanni da Procida, 35/A, 20149 Milano MI, Italy",
+        "website": "http://www.startupitalia.eu/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "PoliHub - Innovation Park & Startup Accelerator",
+        "address": "Via Giovanni Durando, 39, 20158 Milano MI, Italy",
+        "website": "http://www.polihub.it/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "InnovUp - Italian Innovation & Startup Ecosystem",
+        "address": "Via Pantano, 9, 20122 Milano MI, Italy",
+        "website": "https://www.innovup.net/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "PoliHub | Innovation District & Startup Accelerator by Fondazione Politecnico di Milano",
+        "address": "Via Privata Simone Schiaffino, 11, 20159 Milano MI, Italy",
+        "website": "https://www.polihub.it/",
+        "phone": "+39 02 9177 3001",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Startup Bakery",
+        "address": "Via Carlo Farini, 5, 20154 Milano MI, Italy",
+        "website": "https://www.startup-bakery.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Tinvention Ingegneria Informatica",
+        "address": "Via Giovanni Pacini, 93, 20131 Milano MI, Italy",
+        "website": "https://www.tinvention.net/",
+        "phone": "+39 349 689 8545",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Zakeke",
+        "address": "Via Copernico, 38, 20125 Milano MI, Italy",
+        "website": "https://www.zakeke.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "samtech srl - startup innovativa",
+        "address": "Via Cristina Belgioioso, 20157 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Startupbootcamp Italia",
+        "address": "Via Luigi Porro Lambertenghi, 7, 20159 Milano MI, Italy",
+        "website": "https://www.startupbootcamp.org/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "ANIMA Blockchain",
+        "address": "Via dell'Annunciata, 23, 20121 Milano MI, Italy",
+        "website": "http://animablockchain.com/",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Syomatica Srl",
+        "address": "P.le Lugano, 9, 20158 Milano MI, Italy",
+        "website": "http://www.syomatica.com/",
+        "phone": "+39 02 4960 3924",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    },
+    {
+        "name": "Impact Hub Milano",
+        "address": "Via Aosta, 4, 20155 Milano MI, Italy",
+        "website": "http://milan.impacthub.net/",
+        "phone": "+39 02 4070 9253",
+        "business_type": "software_company",
+        "search_keyword": "startup tecnologica"
+    }
+]

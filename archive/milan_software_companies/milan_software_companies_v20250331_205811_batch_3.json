@@ -1,0 +1,162 @@
+[
+    {
+        "name": "DreamSoftware",
+        "address": "Via Sebastiano del Piombo, 23, 20149 Milano MI, Italy",
+        "website": "http://dreamsoftware.it/",
+        "phone": "+39 02 3652 6600",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "ZURU Tech Italy - Milan",
+        "address": "Via Sandro Sandri, 1, 20121 Milano MI, Italy",
+        "website": "https://zuru.tech/",
+        "phone": "+39 059 333098",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Idoq srl",
+        "address": "Via Broletto, 43, 20121 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 7200 7047",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Betacom",
+        "address": "Viale Stelvio, 70, 20159 Milano MI, Italy",
+        "website": "http://www.betacom.it/",
+        "phone": "+39 011 433 2064",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Citrix Systems",
+        "address": "Largo Augusto, 8/7th floor, 20122 Milano MI, Italy",
+        "website": "https://www.citrix.com/it-it/",
+        "phone": "+39 02 7577 5802",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Axcent SRL",
+        "address": "Via Gustavo Fara, 35, 20124 Milano MI, Italy",
+        "website": "https://www.axcentcompany.it/",
+        "phone": "+39 02 4949 5301",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Cognizant Technology Solutions Italia S.p.A",
+        "address": "Via Pietro Paleocapa, 7, 20121 Milano MI, Italy",
+        "website": "http://www.cognizant.com/",
+        "phone": "+39 02 8633 7211",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Globant Milan",
+        "address": "Corso Como, 15, 20154 Milano MI, Italy",
+        "website": "https://www.globant.com/it",
+        "phone": "N/A",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Salesforce",
+        "address": "Galleria Passarella, 2, 20122 Milano MI, Italy",
+        "website": "http://www.salesforce.com/",
+        "phone": "+39 800 782 619",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Objectway Milano",
+        "address": "Via Giovanni da Procida, 24, 20149 Milano MI, Italy",
+        "website": "https://www.objectway.com/",
+        "phone": "+39 02 898001",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Xtream",
+        "address": "Via Vittoria Colonna, 46, 20149 Milano MI, Italy",
+        "website": "https://xtreamers.io/",
+        "phone": "+39 375 610 1696",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Codzilla Srl - Sviluppo App e Software",
+        "address": "Via Lattanzio, 77, 20137 Milano MI, Italy",
+        "website": "https://www.codzilla.it/",
+        "phone": "+39 351 981 9824",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Ingage | Smart Software House",
+        "address": "Via C. Romani, 2/A, 20091 Bresso MI, Italy",
+        "website": "https://www.ingage.it/",
+        "phone": "+39 02 8291 3685",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "PTC Italia - Parametric Technology Italia s.r.l.",
+        "address": "Via Galileo Galilei, 7, 20124 Milano MI, Italy",
+        "website": "http://www.ptc.com/it",
+        "phone": "+39 039 888 0140",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "WellD Italia - Milano",
+        "address": "c/o YoRoom, Via Pastrengo, 14, 20159 Milano MI, Italy",
+        "website": "http://www.welld.ch/",
+        "phone": "+39 340 492 3418",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "It Software Spa",
+        "address": "Via Santa Sofia, 27, 20122 Milano MI, Italy",
+        "website": "N/A",
+        "phone": "+39 02 583431",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Graphisoft Italia",
+        "address": "Via Galileo Galilei, 7, 20124 Milano MI, Italy",
+        "website": "https://graphisoft.com/it",
+        "phone": "+39 041 894 3500",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "LatoBit Informatica",
+        "address": "Via Luigi Galvani, 21, 20124 Milano MI, Italy",
+        "website": "http://www.latobit.it/",
+        "phone": "+39 02 8408 5990",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "RGI GROUP",
+        "address": "Via S. Gregorio, 34, 20124 Milano MI, Italy",
+        "website": "http://www.rgigroup.it/",
+        "phone": "+39 02 2219 0111",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    },
+    {
+        "name": "Altamira HR Cloud Solutions",
+        "address": "Via Giovanni Marradi, 1, 20123 Milano MI, Italy",
+        "website": "https://www.altamirahrm.com/",
+        "phone": "+39 02 4810 0463",
+        "business_type": "software_company",
+        "search_keyword": "software company"
+    }
+]
