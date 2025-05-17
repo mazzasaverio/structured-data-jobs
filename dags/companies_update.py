@@ -23,7 +23,7 @@ default_args = {
 
 
 @dag(
-    dag_id="neo_data_pipeline",
+    dag_id="companies_update",
     default_args=default_args,
     schedule=None,
     catchup=False,
@@ -39,16 +39,14 @@ default_args = {
     The DAG uses a table with a predefined schema and supports upsert of existing data.
     """,
 )
-def neo_data_pipeline():
+def companies_update():
 
-    # Using SQLExecuteQueryOperator for database operations
     check_db_connection = SQLExecuteQueryOperator(
         task_id="check_db_connection",
         conn_id=POSTGRES_CONN_ID,
         sql="SELECT 1 AS connection_test;",
     )
 
-    # Using SQLExecuteQueryOperator for table creation
     create_table = SQLExecuteQueryOperator(
         task_id="create_table",
         conn_id=POSTGRES_CONN_ID,
@@ -127,7 +125,6 @@ def neo_data_pipeline():
         conn = hook.get_conn()
         cursor = conn.cursor()
 
-        # Use prepared statements for safety against SQL injection
         insert_query = f"""
             INSERT INTO {TABLE_NAME} (name, url) 
             VALUES (%s, %s)
@@ -149,28 +146,17 @@ def neo_data_pipeline():
 
         return len(transformed_data)
 
-    # Using SQLExecuteQueryOperator for counting records
-    count_records = SQLExecuteQueryOperator(
-        task_id="count_records",
-        conn_id=POSTGRES_CONN_ID,
-        sql=f"SELECT COUNT(*) AS record_count FROM {TABLE_NAME};",
-    )
-
-    # Clear task flow definition
     extracted_data = extract_data_from_csv()
     transformed_data = transform_data(extracted_data)
     records_loaded = load_data_to_postgres(transformed_data)
 
-    # Clear and readable pipeline
     (
         check_db_connection
         >> create_table
         >> extracted_data
         >> transformed_data
         >> records_loaded
-        >> count_records
     )
 
 
-# DAG instance (PEP8 convention for variable names)
-neo_data_pipeline_dag = neo_data_pipeline()
+companies_update_dag = companies_update()
