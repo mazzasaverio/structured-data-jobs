@@ -2,3 +2,9 @@
 apache-airflow-providers-postgres
 pandas
 python-dotenv
+logfire>=1.7.0
+asyncio
+pendulum
+sqlalchemy>=1.4.49,<2.0  # Compatible with Airflow's requirements
+playwright>=1.37.0
+asyncpg>=0.29.0  # Required for async SQLAlchemy with PostgreSQL
